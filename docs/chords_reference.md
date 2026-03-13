@@ -70,3 +70,5 @@
 | **TLI BLI** (Указательный верх + Указательный низ) | `&kp ENTER` (Enter) | `&kp LS(ENTER)` (Shift+Enter) | `&none` | `&none` |
 | **TLP TLR TLM TLI** (Все 4 пальца верх) | `&none` | `&none` | `&ext_power EP_OFF` (Питание ВЫКЛ) | `&bootloader` (Bootloader) |
 | **BLP BLR BLM BLI** (Все 4 пальца низ) | `&bt BT_SEL 0` (BT 1) | `&bt BT_SEL 1` (BT 2) | `&bt BT_SEL 2` (BT 3) | `&bt BT_CLR` (BT Clear) |
+| **TLP TLR TLM** (Мизинец + Безымянный + Средний верх) | `&mg_comma` (Макрос: RA(6) + Пробел) | `&none` | `&none` | `&none` |
+| **BLP BLR BLM** (Мизинец + Безымянный + Средний низ) | `&mg_dot` (Макрос: RA(7) + Пробел) | `&none` | `&none` | `&none` |
