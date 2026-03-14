@@ -5,7 +5,7 @@
  #
 
 config SHIELD_PNCATEHO_LEFT
-    def_bool $(shields_list_contains,PNCATEHO_left)
+    def_bool $(shields_list_contains,pncateho_left)
 
 config SHIELD_PNCATEHO_RIGHT
-    def_bool $(shields_list_contains,PNCATEHO_right)
+    def_bool $(shields_list_contains,pncateho_right)
