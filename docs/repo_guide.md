@@ -55,8 +55,8 @@ ZMK использует подход "Cloud First" (Сборка в облак�
 Вам потребуется установленный Docker или настроенное окружение Zephyr/West.
 Команда для сборки (примерная):
 ```bash
-west build -b nice_nano_v2 -- -DSHIELD=PNCATEHO_left
-west build -b nice_nano_v2 -- -DSHIELD=PNCATEHO_right
+west build -b nice_nano -- -DSHIELD=PNCATEHO_left
+west build -b nice_nano -- -DSHIELD=PNCATEHO_right
 ```
 
 ## Советы по редактированию `chords.dtsi`

@@ -25,8 +25,8 @@
 После скачивания архива `firmware.zip`:
 
 1.  **Распакуйте архив**. Внутри вы найдете файлы с расширением `.uf2`. Обычно их два (для левой и правой половинки), например:
-    *   `PNCATEHO_left-nice_nano_v2-zmk.uf2`
-    *   `PNCATEHO_right-nice_nano_v2-zmk.uf2`
+    *   `PNCATEHO_left-nice_nano-zmk.uf2`
+    *   `PNCATEHO_right-nice_nano-zmk.uf2`
     *(Названия могут отличаться, но суть одна: left и right)*.
 
 2.  **Подключите левую половинку** клавиатуры к компьютеру через USB.
