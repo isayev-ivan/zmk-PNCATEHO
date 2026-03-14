@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "*.keymap": "dts",
+        "*.dtsi": "dts",
+        "*.overlay": "dts",
+        "*.conf": "properties"
+    },
+    "[dts]": {
+        "editor.rulers": [],
+        "editor.wordWrap": "off"
+    }
+}

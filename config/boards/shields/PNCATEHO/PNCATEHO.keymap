@@ -50,7 +50,6 @@
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       bindings = <&kp RA(N7) &kp SPACE &sk LSHFT>;
-      label = "MG_DOT";
       wait-ms = <5>;
       tap-ms = <5>;
     };
@@ -60,7 +59,6 @@
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       bindings = <&kp RA(N6) &kp SPACE>;
-      label = "MG_COMMA";
       wait-ms = <5>;
       tap-ms = <5>;
     };
@@ -70,7 +68,6 @@
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       bindings = <&kp LS(LC(LA(N1))) &to 1>;
-      label = "MAC_TO_EN";
       wait-ms = <5>;
       tap-ms = <5>;
     };
@@ -80,7 +77,6 @@
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       bindings = <&kp LS(LC(LA(N2))) &to 0>;
-      label = "MAC_TO_RU";
       wait-ms = <5>;
       tap-ms = <5>;
     };
@@ -91,7 +87,6 @@
       // Ставит вопросительный знак, а с зажатием Shift - восклицательный знак
       quest_excl: quest_excl {
           compatible = "zmk,behavior-mod-morph";
-          label = "QUEST_EXCL";
           bindings = <&kp RA(LS(SLASH))>, <&kp EXCL>;
 
           #binding-cells = <0>;
@@ -101,7 +96,6 @@
       // Ставит скобку "(", а с зажатием Shift - "<"
       bracket_left: bracket_left {
           compatible = "zmk,behavior-mod-morph";
-          label = "BRACKET_LEFT";
           bindings = <&kp LPAR>, <&kp RA(LS(N6))>;
 
           #binding-cells = <0>;
@@ -111,7 +105,6 @@
       // Ставит скобку ")", а с зажатием Shift - ">"
       bracket_right: bracket_right {
           compatible = "zmk,behavior-mod-morph";
-          label = "BRACKET_RIGHT";
           bindings = <&kp RPAR>, <&kp RA(LS(N7))>;
 
           #binding-cells = <0>;
@@ -122,7 +115,6 @@
       // Ставит ",", а с зажатием Shift - "→" 
       comma_right: comma_right {
           compatible = "zmk,behavior-mod-morph";
-          label = "COMMA_RIGHT";
           bindings = <&kp RA(N6)>, <&kp RA(L)>;
 
           #binding-cells = <0>;
@@ -132,7 +124,6 @@
       // Ставит "-", а с зажатием Shift - "↓"
       minus_down: minus_down {
           compatible = "zmk,behavior-mod-morph";
-          label = "MINUS_DOWN";
           bindings = <&kp MINUS>, <&kp RA(K)>;
 
           #binding-cells = <0>;
@@ -141,7 +132,6 @@
       // Ставит "#", а с зажатием Shift - "↑"
       up_hash: up_hash {
           compatible = "zmk,behavior-mod-morph";
-          label = "UP_HASH";
           bindings = <&kp HASH>, <&kp RA(I)>;
 
           #binding-cells = <0>;
@@ -150,7 +140,6 @@
       // Ставит "=", а с зажатием Shift - "←"
       equal_left: equal_left {
           compatible = "zmk,behavior-mod-morph";
-          label = "EQUAL_LEFT";
           bindings = <&kp EQUAL>, <&kp RA(J)>;
 
           #binding-cells = <0>;
