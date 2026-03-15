@@ -120,16 +120,18 @@ TCOMBO(MG_COMMA, &mg_comma,   &none,         &none,       &none,         TLP TLR
 TCOMBO(MG_DOT,   &mg_dot,     &none,         &none,       &none,         BLP BLR BLM,         BRP BRR BRM)
 
 combo_l_lock_nav {
-    timeout-ms = <100>;
+    timeout-ms = <COMBO_TIMEOUT>;
     bindings = <&tog NAV_L>;
-    key-positions = <TLI TLR BLP>;
+    key-positions = <TLM BLR BLI>;
     layers = <RU_L ENG_L NAV_L>;
+    require-prior-idle-ms = <150>;
 };
 
 combo_r_lock_nav {
-    timeout-ms = <100>;
+    timeout-ms = <COMBO_TIMEOUT>;
     bindings = <&tog NAV_L>;
-    key-positions = <TRI TRR BRP>;
+    key-positions = <TRM BRR BRI>;
     layers = <RU_L ENG_L NAV_L>;
+    require-prior-idle-ms = <150>;
 };
 
