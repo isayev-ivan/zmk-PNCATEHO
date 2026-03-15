@@ -108,16 +108,16 @@ TCOMBO(O,      &kp O,       &kp LS(O),     &kp SLASH,   &none,         TLR BLM, 
 TCOMBO(SQT,    &kp SQT,     &kp LS(SQT),   &kp QMARK,   &none,         TLM BLR,     TRM BRR)
 TCOMBO(A,      &kp A,       &kp LS(A),     &kp MINUS,   &none,         TLM BLI,     TRM BRI)
 TCOMBO(RBKT,   &kp RBKT,    &kp LS(RBKT),  &kp UNDER,   &none,         TLR BLP,     TRR BRP)
-TCOMBO(GRAVE,  &kp GRAVE,   &kp LS(GRAVE), &kp EQUAL,   &none,         TLR TLM TLI, TRR TRM TRI)
-TCOMBO(NUBS,   &kp NUBS,    &kp LS(NUBS),  &kp PLUS,    &none,         BLR BLM BLI, BRR BRM BRI)
+TCOMBO(GRAVE,  &kp GRAVE,   &kp LS(GRAVE), &kp EQUAL,   &none,         BLR BLM BLI, BRR BRM BRI)
+TCOMBO(NUBS,   &kp NUBS,    &kp LS(NUBS),  &kp PLUS,    &none,         TLR TLM TLI, TRR TRM TRI)
 TCOMBO(DEL,    &kp DEL,     &none,         &kp LC(DEL), &none,         TLR BLR,     TRR BRR)
 TCOMBO(ESC,    &kp ESC,     &none,         &kp N1,      &none,         TLM BLM,     TRM BRM)
 TCOMBO(TAB,    &kp TAB,     &kp LA(TAB),   &kp LC(TAB), &none,         TLP BLP,     TRP BRP)
 TCOMBO(ENTER,  &kp ENTER,   &kp LS(ENTER), &none,       &none,         TLI BLI,     TRI BRI)
 TCOMBO(boot,   &none,       &none,  &ext_power EP_OFF,  &bootloader,   TLP TLR TLM TLI,     TRP TRR TRM TRI)
 TCOMBO(BT,     &bt BT_SEL 0,&bt BT_SEL 1,  &bt BT_SEL 2,&bt BT_CLR,    BLP BLR BLM BLI,     BRP BRR BRM BRI)
-TCOMBO(MG_COMMA, &mg_comma,   &none,         &none,       &none,         TLP TLR TLM,         TRP TRR TRM)
-TCOMBO(MG_DOT,   &mg_dot,     &none,         &none,       &none,         BLP BLR BLM,         BRP BRR BRM)
+TCOMBO(MG_COMMA, &mg_comma,   &kp COLON,     &mg_dot,           &kp SEMI,      TLP TLR TLM, TRP TRR TRM)
+TCOMBO(MINUS_DASH, &kp MINUS, &kp UNDER,     &kp LA(LS(MINUS)), &kp PIPE,      TLP TLM TLI, TRP TRM TRI)
 
 combo_l_lock_nav {
     timeout-ms = <COMBO_TIMEOUT>;
