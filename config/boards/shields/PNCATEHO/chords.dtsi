@@ -119,4 +119,17 @@ TCOMBO(BT,     &bt BT_SEL 0,&bt BT_SEL 1,  &bt BT_SEL 2,&bt BT_CLR,    BLP BLR B
 TCOMBO(MG_COMMA, &mg_comma,   &none,         &none,       &none,         TLP TLR TLM,         TRP TRR TRM)
 TCOMBO(MG_DOT,   &mg_dot,     &none,         &none,       &none,         BLP BLR BLM,         BRP BRR BRM)
 
+combo_l_lock_nav {
+    timeout-ms = <COMBO_TIMEOUT>;
+    bindings = <&tog NAV_L>;
+    key-positions = <TLI TLR BLP>;
+    layers = <DEFAULT_L ENG_L NAV_L>;
+};
+
+combo_r_lock_nav {
+    timeout-ms = <COMBO_TIMEOUT>;
+    bindings = <&tog NAV_L>;
+    key-positions = <TRI TRR BRP>;
+    layers = <DEFAULT_L ENG_L NAV_L>;
+};
 

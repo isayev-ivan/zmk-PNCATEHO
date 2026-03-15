@@ -14,6 +14,11 @@
 #define COMBO_LAYERS 0
 #define STICKY_TIMEOUT 500
 
+// LAYERS
+#define RU_L 0
+#define ENG_L 1
+#define NAV_L 2
+
 // LEFT SIDE
 #define TLP 0 // TOP
 #define TLR 1 // TOP
@@ -67,7 +72,7 @@
     mac_to_en: mac_to_en {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings = <&kp LS(LC(LA(N1))) &to 1>;
+      bindings = <&kp LS(LC(LA(N1))) &to ENG_L>;
       wait-ms = <5>;
       tap-ms = <5>;
     };
@@ -76,11 +81,11 @@
     mac_to_ru: mac_to_ru {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings = <&kp LS(LC(LA(N2))) &to 0>;
+      bindings = <&kp LS(LC(LA(N2))) &to RU_L>;
       wait-ms = <5>;
       tap-ms = <5>;
     };
-    
+
   };
 
   behaviors {
@@ -112,7 +117,7 @@
           keep-mods = <(MOD_LSFT|MOD_RSFT)>;
       };
 
-      // Ставит ",", а с зажатием Shift - "→" 
+      // Ставит ",", а с зажатием Shift - "→"
       comma_right: comma_right {
           compatible = "zmk,behavior-mod-morph";
           bindings = <&kp RA(N6)>, <&kp RA(L)>;
@@ -181,19 +186,27 @@
   keymap {
     compatible = "zmk,keymap";
 
-    default_layer {
+    ru_layer {
       bindings = <
-        &none &none &none &none               &none &none &none &none     
-        &none &none &none &none               &none &none &none &none     
-                          &none &none   &none &none     
+        &none &none &none &none               &none &none &none &none
+        &none &none &none &none               &none &none &none &none
+                          &none &none   &none &none
       >;
     };
 
     eng_layer {
       bindings = <
-        &none &none &none &none               &none &none &none &none     
-        &none &none &none &none               &none &none &none &none     
-                          &none &none   &none &none     
+        &none &none &none &none               &none &none &none &none
+        &none &none &none &none               &none &none &none &none
+                          &none &none   &none &none
+      >;
+    };
+
+    nav_layer {
+      bindings = <
+        &kp PG_UP &kp HOME &kp UP   &kp END     &kp HOME &kp UP   &kp END   &kp PG_UP
+        &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT   &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN
+                           &kp BSPC &kp SPACE   &kp SPACE &kp BSPC
       >;
     };
   };
