@@ -116,8 +116,8 @@ TCOMBO(TAB,    &kp TAB,     &kp LA(TAB),   &kp LC(TAB), &none,         TLP BLP, 
 TCOMBO(ENTER,  &kp ENTER,   &kp LS(ENTER), &none,       &none,         TLI BLI,     TRI BRI)
 TCOMBO(boot,   &none,       &none,  &ext_power EP_OFF,  &bootloader,   TLP TLR TLM TLI,     TRP TRR TRM TRI)
 TCOMBO(BT,     &bt BT_SEL 0,&bt BT_SEL 1,  &bt BT_SEL 2,&bt BT_CLR,    BLP BLR BLM BLI,     BRP BRR BRM BRI)
-TCOMBO(MG_COMMA, &mg_comma,   &kp COLON,     &mg_dot,           &kp SEMI,      TLP TLR TLM, TRP TRR TRM)
-TCOMBO(MINUS_DASH, &kp MINUS, &kp UNDER,     &kp LA(LS(MINUS)), &kp PIPE,      TLP TLM TLI, TRP TRM TRI)
+TCOMBO(MG_COMMA, &mg_comma,   &kp LS(RA(SEMI)), &mg_dot,     &kp RA(SEMI),  TLP TLR TLM,         TRP TRR TRM)
+TCOMBO(MINUS_DASH, &kp MINUS, &kp UNDER,     &kp LA(LS(MINUS)), &kp PIPE,      BLP BLR BLM, BRP BRR BRM)
 
 combo_l_lock_nav {
     timeout-ms = <COMBO_TIMEOUT>;
