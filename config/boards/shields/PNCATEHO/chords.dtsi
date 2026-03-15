@@ -123,13 +123,13 @@ combo_l_lock_nav {
     timeout-ms = <COMBO_TIMEOUT>;
     bindings = <&tog NAV_L>;
     key-positions = <TLI TLR BLP>;
-    layers = <DEFAULT_L ENG_L NAV_L>;
+    layers = <RU_L ENG_L NAV_L>;
 };
 
 combo_r_lock_nav {
     timeout-ms = <COMBO_TIMEOUT>;
     bindings = <&tog NAV_L>;
     key-positions = <TRI TRR BRP>;
-    layers = <DEFAULT_L ENG_L NAV_L>;
+    layers = <RU_L ENG_L NAV_L>;
 };
 
