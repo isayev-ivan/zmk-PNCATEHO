@@ -10,6 +10,16 @@
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/mouse.h>
 
+&mmv {
+  time-to-max-speed-ms = <500>;
+  acceleration-exponent = <1>;
+};
+
+&msc {
+  time-to-max-speed-ms = <500>;
+  acceleration-exponent = <1>;
+};
+
 // CONFIG
 #define COMBO_TIMEOUT 70
 #define COMBO_LAYERS RU_L ENG_L
@@ -93,16 +103,6 @@
   };
 
   behaviors {
-      mmv: mouse_move {
-        compatible = "zmk,behavior-mouse-move";
-        #binding-cells = <1>;
-      };
-
-      msc: mouse_scroll {
-        compatible = "zmk,behavior-mouse-scroll";
-        #binding-cells = <1>;
-      };
-
       // Ставит вопросительный знак, а с зажатием Shift - восклицательный знак
       quest_excl: quest_excl {
           compatible = "zmk,behavior-mod-morph";
