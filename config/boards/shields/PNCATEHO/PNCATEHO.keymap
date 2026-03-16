@@ -20,6 +20,8 @@
 #define ENG_L 1
 #define NAV_L 2
 #define MOUSE_L 3
+#define HOLD_NAV_L 4
+#define HOLD_MEDIA_L 5
 
 // LEFT SIDE
 #define TLP 0 // TOP
@@ -70,20 +72,20 @@
       tap-ms = <5>;
     };
 
-    // Переключение языка на английский (переключает на слой 1)
+    // Переключение языка на английский (включает слой 1 поверх 0)
     mac_to_en: mac_to_en {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings = <&kp LS(LC(LA(N1))) &to ENG_L>;
+      bindings = <&kp LS(LC(LA(N1))) &tog ENG_L>;
       wait-ms = <5>;
       tap-ms = <5>;
     };
 
-    // Переключение языка на русский (переключает на слой 0)
+    // Переключение языка на русский (выключает слой 1, возвращаясь к 0)
     mac_to_ru: mac_to_ru {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings = <&kp LS(LC(LA(N2))) &to RU_L>;
+      bindings = <&kp LS(LC(LA(N2))) &tog ENG_L>;
       wait-ms = <5>;
       tap-ms = <5>;
     };
@@ -91,6 +93,16 @@
   };
 
   behaviors {
+      mmv: mouse_move {
+        compatible = "zmk,behavior-mouse-move";
+        #binding-cells = <1>;
+      };
+
+      msc: mouse_scroll {
+        compatible = "zmk,behavior-mouse-scroll";
+        #binding-cells = <1>;
+      };
+
       // Ставит вопросительный знак, а с зажатием Shift - восклицательный знак
       quest_excl: quest_excl {
           compatible = "zmk,behavior-mod-morph";
@@ -190,17 +202,17 @@
 
     ru_layer {
       bindings = <
-        &none &none &none &none               &none &none &none &none
-        &none &none &none &none               &none &none &none &none
-                          &none &none   &none &none
+        &kp B &none &none &kp J                                        &kp J              &none &none &kp B
+        &lt HOLD_NAV_L H  &none &none &lt HOLD_MEDIA_L Y               &lt HOLD_MEDIA_L Y &none &none &lt HOLD_NAV_L H
+                                      &none               &none  &none &none
       >;
     };
 
     eng_layer {
       bindings = <
-        &none &none &none &none               &none &none &none &none
-        &none &none &none &none               &none &none &none &none
-                          &none &none   &none &none
+        &trans &trans &trans &trans               &trans &trans &trans &trans
+        &trans &trans &trans &trans               &trans &trans &trans &trans
+                      &trans &trans        &trans &trans
       >;
     };
 
@@ -214,9 +226,25 @@
 
     mouse_layer {
       bindings = <
-        &msc SCRL_UP   &mkp RCLK       &mmv MOVE_UP    &mkp LCLK       &mkp LCLK      &mmv MOVE_UP    &mkp RCLK       &msc SCRL_UP
+        &msc SCRL_UP   &mkp RCLK       &mmv MOVE_UP    &mkp LCLK      &mkp LCLK      &mmv MOVE_UP    &mkp RCLK       &msc SCRL_UP
         &msc SCRL_DOWN &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT &mmv MOVE_LEFT &mmv MOVE_DOWN  &mmv MOVE_RIGHT &msc SCRL_DOWN
-                                       &kp BSPC        &kp SPACE       &kp SPACE      &kp BSPC
+                                       &kp BSPC        &kp SPACE      &kp SPACE      &kp BSPC
+      >;
+    };
+
+    hold_nav_layer {
+      bindings = <
+        &trans &kp HOME &kp UP &kp END            &kp END &kp UP &kp HOME &trans
+        &trans &kp LEFT &kp DOWN &kp RIGHT        &kp RIGHT &kp DOWN &kp LEFT &trans
+                       &none &none   &none &none
+      >;
+    };
+
+    hold_media_layer {
+      bindings = <
+        &kp C_MUTE &kp C_PREV &kp C_VOL_UP &trans     &trans &kp C_VOL_UP &kp C_PREV &kp C_MUTE
+        &kp C_PP &kp C_NEXT &kp C_VOL_DN &trans       &trans &kp C_VOL_DN &kp C_NEXT &kp C_PP
+                       &none &none   &none &none
       >;
     };
   };
