@@ -1,4 +1,7 @@
-#define TCOMBO_LT(NAME, BINDINGS, INNER_BINDINGS, OUTER_BINDINGS,  BOTH_BINDINGS, LEFT_KEYPOS, RIGHT_KEYPOS) \
+// Макрос для клавиш, которые уже имеют поведение Layer-Tap (например &lt) на базовом слое.
+// Он генерирует только комбо с thumb-клавишами и намеренно не создает базовые "одиночные" комбо (combo_l_ / combo_r_),
+// чтобы не перекрывать поведение удержания (Hold) для перехода на другой слой.
+#define TCOMBO_NO_BASE(NAME, BINDINGS, INNER_BINDINGS, OUTER_BINDINGS,  BOTH_BINDINGS, LEFT_KEYPOS, RIGHT_KEYPOS) \
 combo_li_##NAME { \
 	timeout-ms = <COMBO_TIMEOUT>; \
 	bindings = <INNER_BINDINGS>; \
@@ -116,40 +119,18 @@ combo_r_##NAME { \
 	require-prior-idle-ms = <IDLE_MS>; \
 };
 
-combo_lang_l_ru {
-	timeout-ms = <COMBO_TIMEOUT>;
-	bindings = <&ht_combo_ru>;
-	key-positions = <LOT LIT>;
-	layers = <RU_L>;
-};
-combo_lang_r_ru {
-	timeout-ms = <COMBO_TIMEOUT>;
-	bindings = <&ht_combo_ru>;
-	key-positions = <ROT RIT>;
-	layers = <RU_L>;
-};
-combo_lang_l_en {
-	timeout-ms = <COMBO_TIMEOUT>;
-	bindings = <&ht_combo_en>;
-	key-positions = <LOT LIT>;
-	layers = <ENG_L>;
-};
-combo_lang_r_en {
-	timeout-ms = <COMBO_TIMEOUT>;
-	bindings = <&ht_combo_en>;
-	key-positions = <ROT RIT>;
-	layers = <ENG_L>;
-};
+COMBO_MIRROR_LAYERS(lang_ru, &ht_combo_ru, LOT LIT, ROT RIT, RU_L)
+COMBO_MIRROR_LAYERS(lang_en, &ht_combo_en, LOT LIT, ROT RIT, ENG_L)
 
 //    (name,   press,      inner,         out,         both,          chord,       chord)
 TCOMBO(B,      &kp B,       &kp LS(B),     &kp LEFT,    &kp LS(LEFT),  TLP,         TRP)
 TCOMBO(F,      &kp F,       &kp LS(F),     &kp UP,      &kp LS(UP),    TLR,         TRR)
 TCOMBO(T,      &kp T,       &kp LS(T),     &kp DOWN,    &kp LS(DOWN),  TLM,         TRM)
 TCOMBO(J,      &kp J,       &kp LS(J),     &kp RIGHT,   &kp LS(RIGHT), TLI,         TRI)
-TCOMBO_LT(H,   &kp H,       &kp LS(H),     &sk LGUI,    &kp HOME,      BLP,         BRP)
+TCOMBO_NO_BASE(H,   &kp H,       &kp LS(H),     &sk LGUI,    &kp HOME,      BLP,         BRP)
 TCOMBO(C,      &kp C,       &kp LS(C),     &sk LALT,    &kp PG_UP,     BLR,         BRR)
 TCOMBO(N,      &kp N,       &kp LS(N),     &sk LCTRL,   &kp PG_DN,     BLM,         BRM)
-TCOMBO_LT(Y,   &kp Y,       &kp LS(Y),     &sk LSHIFT,  &kp END,       BLI,         BRI)
+TCOMBO_NO_BASE(Y,   &kp Y,       &kp LS(Y),     &sk LSHIFT,  &kp END,       BLI,         BRI)
 TCOMBO(D,      &kp D,       &kp LS(D),     &kp N1,      &kp F1,        TLP TLI,     TRP TRI)
 TCOMBO(K,      &kp K,       &kp LS(K),     &kp N2,      &kp F2,        BLP BLI,     BRP BRI)
 TCOMBO(R,      &kp R,       &kp LS(R),     &kp N3,      &kp F3,        BLP BLR,     BRP BRR)
