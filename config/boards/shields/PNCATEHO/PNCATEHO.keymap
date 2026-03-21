@@ -95,7 +95,7 @@
     mac_to_ru: mac_to_ru {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings = <&kp LS(LC(LA(N2))) &tog ENG_L>;
+      bindings = <&kp LS(LC(LA(N2))) &tog RU_L>;
       wait-ms = <5>;
       tap-ms = <5>;
     };
