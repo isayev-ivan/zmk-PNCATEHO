@@ -82,20 +82,20 @@
       tap-ms = <5>;
     };
 
-    // Переключение языка на английский (включает слой 1 поверх 0)
+    // Переключение языка на английский
     mac_to_en: mac_to_en {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings = <&kp LS(LC(LA(N1))) &tog ENG_L>;
+      bindings = <&kp LS(LC(LA(N1))) &to ENG_L>;
       wait-ms = <5>;
       tap-ms = <5>;
     };
 
-    // Переключение языка на русский (выключает слой 1, возвращаясь к 0)
+    // Переключение языка на русский
     mac_to_ru: mac_to_ru {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings = <&kp LS(LC(LA(N2))) &tog RU_L>;
+      bindings = <&kp LS(LC(LA(N2))) &to RU_L>;
       wait-ms = <5>;
       tap-ms = <5>;
     };
@@ -254,7 +254,7 @@
       bindings = <
         &kp B             &none            &none            &kp J                       &kp J              &none            &none            &kp B
         &lt HOLD_NAV_L H  &none            &none            &lt HOLD_MEDIA_L Y          &lt HOLD_MEDIA_L Y &none            &none            &lt HOLD_NAV_L H
-                                                            &ht_outer LGUI SPACE  &ht_inner LSHIFT BSPC  &ht_inner LSHIFT BSPC  &ht_outer LGUI SPACE
+                                                            &ht_outer LSHIFT BSPC &ht_inner LGUI SPACE  &ht_inner LGUI SPACE  &ht_outer LSHIFT BSPC
       >;
     };
 
