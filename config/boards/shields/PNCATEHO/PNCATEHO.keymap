@@ -174,45 +174,45 @@
       ht_inner: ht_inner {
           compatible = "zmk,behavior-hold-tap";
           label = "HT_INNER";
-          #binding-cells = <0>;
+          #binding-cells = <2>;
           flavor = "balanced";
           tapping-term-ms = <200>;
           quick-tap-ms = <175>;
           require-prior-idle-ms = <150>;
-          bindings = <&kp LSHIFT>, <&kp BSPC>;
+          bindings = <&kp>, <&kp>;
       };
 
       ht_outer: ht_outer {
           compatible = "zmk,behavior-hold-tap";
           label = "HT_OUTER";
-          #binding-cells = <0>;
+          #binding-cells = <2>;
           flavor = "balanced";
           tapping-term-ms = <200>;
           quick-tap-ms = <175>;
           require-prior-idle-ms = <150>;
-          bindings = <&kp LGUI>, <&kp SPACE>;
+          bindings = <&kp>, <&kp>;
       };
 
       ht_combo_ru: ht_combo_ru {
           compatible = "zmk,behavior-hold-tap";
           label = "HT_COMBO_RU";
-          #binding-cells = <0>;
+          #binding-cells = <2>;
           flavor = "balanced";
           tapping-term-ms = <200>;
           quick-tap-ms = <175>;
           require-prior-idle-ms = <150>;
-          bindings = <&kp LS(LGUI)>, <&mac_to_en>;
+          bindings = <&kp>, <&mac_to_en>;
       };
 
       ht_combo_en: ht_combo_en {
           compatible = "zmk,behavior-hold-tap";
           label = "HT_COMBO_EN";
-          #binding-cells = <0>;
+          #binding-cells = <2>;
           flavor = "balanced";
           tapping-term-ms = <200>;
           quick-tap-ms = <175>;
           require-prior-idle-ms = <150>;
-          bindings = <&kp LS(LGUI)>, <&mac_to_ru>;
+          bindings = <&kp>, <&mac_to_ru>;
       };
 
       /*
@@ -254,7 +254,7 @@
       bindings = <
         &kp B             &none            &none            &kp J                       &kp J              &none            &none            &kp B
         &lt HOLD_NAV_L H  &none            &none            &lt HOLD_MEDIA_L Y          &lt HOLD_MEDIA_L Y &none            &none            &lt HOLD_NAV_L H
-                                                            &ht_outer        &ht_inner  &ht_inner          &ht_outer
+                                                            &ht_outer LGUI SPACE  &ht_inner LSHIFT BSPC  &ht_inner LSHIFT BSPC  &ht_outer LGUI SPACE
       >;
     };
 
