@@ -165,12 +165,20 @@
           mods = <(MOD_LSFT|MOD_RSFT)>;
       };
 
+      // --- Настройки Hold-Tap для Thumb-клавиш и Комбо ---
+      // Подробное описание параметров см. в docs/hold_tap_settings.md
+      // tapping-term-ms: время удержания для срабатывания Hold (200мс)
+      // quick-tap-ms: окно для двойного клика, чтобы "зажать" Tap-клавишу (например, Backspace) (175мс)
+      // require-prior-idle-ms: защита от случайных модов при быстрой печати (150мс)
+      // flavor "balanced": корректное разрешение конфликтов при перекатах пальцев
       ht_inner: ht_inner {
           compatible = "zmk,behavior-hold-tap";
           label = "HT_INNER";
           #binding-cells = <0>;
           flavor = "balanced";
           tapping-term-ms = <200>;
+          quick-tap-ms = <175>;
+          require-prior-idle-ms = <150>;
           bindings = <&kp LSHIFT>, <&kp BSPC>;
       };
 
@@ -180,6 +188,8 @@
           #binding-cells = <0>;
           flavor = "balanced";
           tapping-term-ms = <200>;
+          quick-tap-ms = <175>;
+          require-prior-idle-ms = <150>;
           bindings = <&kp LGUI>, <&kp SPACE>;
       };
 
@@ -189,6 +199,8 @@
           #binding-cells = <0>;
           flavor = "balanced";
           tapping-term-ms = <200>;
+          quick-tap-ms = <175>;
+          require-prior-idle-ms = <150>;
           bindings = <&kp LS(LGUI)>, <&mac_to_en>;
       };
 
@@ -198,6 +210,8 @@
           #binding-cells = <0>;
           flavor = "balanced";
           tapping-term-ms = <200>;
+          quick-tap-ms = <175>;
+          require-prior-idle-ms = <150>;
           bindings = <&kp LS(LGUI)>, <&mac_to_ru>;
       };
 
