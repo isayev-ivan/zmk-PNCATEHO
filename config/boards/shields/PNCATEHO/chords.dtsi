@@ -116,8 +116,31 @@ combo_r_##NAME { \
 	require-prior-idle-ms = <IDLE_MS>; \
 };
 
-COMBO_MIRROR_LAYERS(space, &kp SPACE, LIT, RIT, COMBO_LAYERS)
-COMBO_MIRROR_LAYERS(bspc,  &kp BSPC,  LOT, ROT, COMBO_LAYERS)
+combo_lang_l_ru {
+	timeout-ms = <COMBO_TIMEOUT>;
+	bindings = <&ht_combo_ru>;
+	key-positions = <LOT LIT>;
+	layers = <RU_L>;
+};
+combo_lang_r_ru {
+	timeout-ms = <COMBO_TIMEOUT>;
+	bindings = <&ht_combo_ru>;
+	key-positions = <ROT RIT>;
+	layers = <RU_L>;
+};
+combo_lang_l_en {
+	timeout-ms = <COMBO_TIMEOUT>;
+	bindings = <&ht_combo_en>;
+	key-positions = <LOT LIT>;
+	layers = <ENG_L>;
+};
+combo_lang_r_en {
+	timeout-ms = <COMBO_TIMEOUT>;
+	bindings = <&ht_combo_en>;
+	key-positions = <ROT RIT>;
+	layers = <ENG_L>;
+};
+
 //    (name,   press,      inner,         out,         both,          chord,       chord)
 TCOMBO(B,      &kp B,       &kp LS(B),     &kp LEFT,    &kp LS(LEFT),  TLP,         TRP)
 TCOMBO(F,      &kp F,       &kp LS(F),     &kp UP,      &kp LS(UP),    TLR,         TRR)

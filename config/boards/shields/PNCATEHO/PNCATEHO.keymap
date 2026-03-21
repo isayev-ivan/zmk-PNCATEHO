@@ -165,6 +165,42 @@
           mods = <(MOD_LSFT|MOD_RSFT)>;
       };
 
+      ht_inner: ht_inner {
+          compatible = "zmk,behavior-hold-tap";
+          label = "HT_INNER";
+          #binding-cells = <0>;
+          flavor = "balanced";
+          tapping-term-ms = <200>;
+          bindings = <&kp LSHIFT>, <&kp BSPC>;
+      };
+
+      ht_outer: ht_outer {
+          compatible = "zmk,behavior-hold-tap";
+          label = "HT_OUTER";
+          #binding-cells = <0>;
+          flavor = "balanced";
+          tapping-term-ms = <200>;
+          bindings = <&kp LGUI>, <&kp SPACE>;
+      };
+
+      ht_combo_ru: ht_combo_ru {
+          compatible = "zmk,behavior-hold-tap";
+          label = "HT_COMBO_RU";
+          #binding-cells = <0>;
+          flavor = "balanced";
+          tapping-term-ms = <200>;
+          bindings = <&kp LS(LGUI)>, <&mac_to_en>;
+      };
+
+      ht_combo_en: ht_combo_en {
+          compatible = "zmk,behavior-hold-tap";
+          label = "HT_COMBO_EN";
+          #binding-cells = <0>;
+          flavor = "balanced";
+          tapping-term-ms = <200>;
+          bindings = <&kp LS(LGUI)>, <&mac_to_ru>;
+      };
+
       /*
       to_en_raise: to_en_raise {
           compatible = "zmk,behavior-hold-tap";
@@ -204,7 +240,7 @@
       bindings = <
         &kp B             &none            &none            &kp J                       &kp J              &none            &none            &kp B
         &lt HOLD_NAV_L H  &none            &none            &lt HOLD_MEDIA_L Y          &lt HOLD_MEDIA_L Y &none            &none            &lt HOLD_NAV_L H
-                                                            &none            &none      &none              &none
+                                                            &ht_outer        &ht_inner  &ht_inner          &ht_outer
       >;
     };
 
@@ -220,7 +256,7 @@
       bindings = <
         &kp PG_UP         &kp HOME         &kp UP           &kp END                     &kp HOME           &kp UP           &kp END          &kp PG_UP
         &kp PG_DN         &kp LEFT         &kp DOWN         &kp RIGHT                   &kp LEFT           &kp DOWN         &kp RIGHT        &kp PG_DN
-                                                            &kp BSPC         &kp SPACE  &kp SPACE          &kp BSPC
+                                                            &trans           &trans     &trans             &trans
       >;
     };
 
@@ -228,7 +264,7 @@
       bindings = <
         &msc SCRL_UP      &mkp RCLK        &mmv MOVE_UP     &mkp LCLK                   &mkp LCLK          &mmv MOVE_UP     &mkp RCLK        &msc SCRL_UP
         &msc SCRL_DOWN    &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT             &mmv MOVE_LEFT     &mmv MOVE_DOWN   &mmv MOVE_RIGHT  &msc SCRL_DOWN
-                                                            &kp BSPC         &kp SPACE  &kp SPACE          &kp BSPC
+                                                            &trans           &trans     &trans             &trans
       >;
     };
 
@@ -236,7 +272,7 @@
       bindings = <
         &trans            &kp HOME         &kp UP           &kp END                     &kp END            &kp UP           &kp HOME         &trans
         &trans            &kp LEFT         &kp DOWN         &kp RIGHT                   &kp RIGHT          &kp DOWN         &kp LEFT         &trans
-                                                            &none            &none      &none              &none
+                                                            &trans           &trans     &trans             &trans
       >;
     };
 
@@ -244,7 +280,7 @@
       bindings = <
         &kp C_MUTE        &kp C_PREV       &kp C_VOL_UP     &trans                      &trans             &kp C_VOL_UP     &kp C_PREV       &kp C_MUTE
         &kp C_PP          &kp C_NEXT       &kp C_VOL_DN     &trans                      &trans             &kp C_VOL_DN     &kp C_NEXT       &kp C_PP
-                                                            &none            &none      &none              &none
+                                                            &trans           &trans     &trans             &trans
       >;
     };
   };
