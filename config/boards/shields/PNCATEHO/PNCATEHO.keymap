@@ -202,49 +202,49 @@
 
     ru_layer {
       bindings = <
-        &kp B &none &none &kp J                                        &kp J              &none &none &kp B
-        &lt HOLD_NAV_L H  &none &none &lt HOLD_MEDIA_L Y               &lt HOLD_MEDIA_L Y &none &none &lt HOLD_NAV_L H
-                                      &none               &none  &none &none
+        &kp B             &none            &none            &kp J                       &kp J              &none            &none            &kp B
+        &lt HOLD_NAV_L H  &none            &none            &lt HOLD_MEDIA_L Y          &lt HOLD_MEDIA_L Y &none            &none            &lt HOLD_NAV_L H
+                                                            &none            &none      &none              &none
       >;
     };
 
     eng_layer {
       bindings = <
-        &trans &trans &trans &trans               &trans &trans &trans &trans
-        &trans &trans &trans &trans               &trans &trans &trans &trans
-                      &trans &trans        &trans &trans
+        &trans            &trans           &trans           &trans                      &trans             &trans           &trans           &trans
+        &trans            &trans           &trans           &trans                      &trans             &trans           &trans           &trans
+                                                            &trans           &trans     &trans             &trans
       >;
     };
 
     nav_layer {
       bindings = <
-        &kp PG_UP &kp HOME &kp UP   &kp END     &kp HOME &kp UP   &kp END   &kp PG_UP
-        &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT   &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN
-                           &kp BSPC &kp SPACE   &kp SPACE &kp BSPC
+        &kp PG_UP         &kp HOME         &kp UP           &kp END                     &kp HOME           &kp UP           &kp END          &kp PG_UP
+        &kp PG_DN         &kp LEFT         &kp DOWN         &kp RIGHT                   &kp LEFT           &kp DOWN         &kp RIGHT        &kp PG_DN
+                                                            &kp BSPC         &kp SPACE  &kp SPACE          &kp BSPC
       >;
     };
 
     mouse_layer {
       bindings = <
-        &msc SCRL_UP   &mkp RCLK       &mmv MOVE_UP    &mkp LCLK      &mkp LCLK      &mmv MOVE_UP    &mkp RCLK       &msc SCRL_UP
-        &msc SCRL_DOWN &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT &mmv MOVE_LEFT &mmv MOVE_DOWN  &mmv MOVE_RIGHT &msc SCRL_DOWN
-                                       &kp BSPC        &kp SPACE      &kp SPACE      &kp BSPC
+        &msc SCRL_UP      &mkp RCLK        &mmv MOVE_UP     &mkp LCLK                   &mkp LCLK          &mmv MOVE_UP     &mkp RCLK        &msc SCRL_UP
+        &msc SCRL_DOWN    &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT             &mmv MOVE_LEFT     &mmv MOVE_DOWN   &mmv MOVE_RIGHT  &msc SCRL_DOWN
+                                                            &kp BSPC         &kp SPACE  &kp SPACE          &kp BSPC
       >;
     };
 
     hold_nav_layer {
       bindings = <
-        &trans &kp HOME &kp UP &kp END            &kp END &kp UP &kp HOME &trans
-        &trans &kp LEFT &kp DOWN &kp RIGHT        &kp RIGHT &kp DOWN &kp LEFT &trans
-                       &none &none   &none &none
+        &trans            &kp HOME         &kp UP           &kp END                     &kp END            &kp UP           &kp HOME         &trans
+        &trans            &kp LEFT         &kp DOWN         &kp RIGHT                   &kp RIGHT          &kp DOWN         &kp LEFT         &trans
+                                                            &none            &none      &none              &none
       >;
     };
 
     hold_media_layer {
       bindings = <
-        &kp C_MUTE &kp C_PREV &kp C_VOL_UP &trans     &trans &kp C_VOL_UP &kp C_PREV &kp C_MUTE
-        &kp C_PP &kp C_NEXT &kp C_VOL_DN &trans       &trans &kp C_VOL_DN &kp C_NEXT &kp C_PP
-                       &none &none   &none &none
+        &kp C_MUTE        &kp C_PREV       &kp C_VOL_UP     &trans                      &trans             &kp C_VOL_UP     &kp C_PREV       &kp C_MUTE
+        &kp C_PP          &kp C_NEXT       &kp C_VOL_DN     &trans                      &trans             &kp C_VOL_DN     &kp C_NEXT       &kp C_PP
+                                                            &none            &none      &none              &none
       >;
     };
   };
