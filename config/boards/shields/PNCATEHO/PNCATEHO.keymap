@@ -254,7 +254,7 @@
       bindings = <
         &kp B             &none            &none            &kp J                       &kp J              &none            &none            &kp B
         &lt HOLD_NAV_L H  &none            &none            &lt HOLD_MEDIA_L Y          &lt HOLD_MEDIA_L Y &none            &none            &lt HOLD_NAV_L H
-                                                            &ht_curved LSHIFT BSPC &ht_splayed LGUI SPACE  &ht_splayed LGUI SPACE  &ht_curved LSHIFT BSPC
+                                                            &ht_curved LGUI BSPC &ht_splayed LSHIFT SPACE  &ht_splayed RSHIFT SPACE  &ht_curved RGUI BSPC
       >;
     };
 
