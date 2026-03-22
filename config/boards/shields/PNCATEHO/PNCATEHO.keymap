@@ -42,8 +42,8 @@
 #define BLR 9 // BOTTOM
 #define BLM 10 // BOTTOM
 #define BLI 11 // BOTTOM
-#define LOT 16 // O-THUMB
-#define LIT 17 // I-THUMB
+#define LIT 16 // I-THUMB (Внутренняя для руки, согнутый палец, ближе к мизинцу, левее)
+#define LOT 17 // O-THUMB (Внешняя для руки, вытянутый палец, ближе к указательному, правее)
 
 // RIGHT SIDE
 #define TRP 7 // TOP
@@ -54,8 +54,8 @@
 #define BRR 14 // BOTTOM
 #define BRM 13 // BOTTOM
 #define BRI 12 // BOTTOM
-#define ROT 19 // O-THUMB
-#define RIT 18 // I-THUMB
+#define ROT 19 // O-THUMB (Внешняя для руки, вытянутый палец, ближе к указательному, левее)
+#define RIT 18 // I-THUMB (Внутренняя для руки, согнутый палец, ближе к мизинцу, правее)
 
 &sk {
     release-after-ms = <STICKY_TIMEOUT>;
@@ -171,9 +171,9 @@
       // quick-tap-ms: окно для двойного клика, чтобы "зажать" Tap-клавишу (например, Backspace) (175мс)
       // require-prior-idle-ms: защита от случайных модов при быстрой печати (150мс)
       // flavor "balanced": корректное разрешение конфликтов при перекатах пальцев
-      ht_inner: ht_inner {
+      ht_curved: ht_curved {
           compatible = "zmk,behavior-hold-tap";
-          label = "HT_INNER";
+          label = "HT_CURVED";
           #binding-cells = <2>;
           flavor = "balanced";
           tapping-term-ms = <200>;
@@ -182,9 +182,9 @@
           bindings = <&kp>, <&kp>;
       };
 
-      ht_outer: ht_outer {
+      ht_splayed: ht_splayed {
           compatible = "zmk,behavior-hold-tap";
-          label = "HT_OUTER";
+          label = "HT_SPLAYED";
           #binding-cells = <2>;
           flavor = "balanced";
           tapping-term-ms = <200>;
@@ -254,7 +254,7 @@
       bindings = <
         &kp B             &none            &none            &kp J                       &kp J              &none            &none            &kp B
         &lt HOLD_NAV_L H  &none            &none            &lt HOLD_MEDIA_L Y          &lt HOLD_MEDIA_L Y &none            &none            &lt HOLD_NAV_L H
-                                                            &ht_outer LSHIFT BSPC &ht_inner LGUI SPACE  &ht_inner LGUI SPACE  &ht_outer LSHIFT BSPC
+                                                            &ht_curved LSHIFT BSPC &ht_splayed LGUI SPACE  &ht_splayed LGUI SPACE  &ht_curved LSHIFT BSPC
       >;
     };
 
