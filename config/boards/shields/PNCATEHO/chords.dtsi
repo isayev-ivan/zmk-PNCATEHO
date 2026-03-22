@@ -119,8 +119,8 @@ combo_r_##NAME { \
 	require-prior-idle-ms = <IDLE_MS>; \
 };
 
-COMBO_MIRROR_LAYERS(lang_ru, &ht_combo_ru, LOT LIT, ROT RIT, RU_L)
-COMBO_MIRROR_LAYERS(lang_en, &ht_combo_en, LOT LIT, ROT RIT, ENG_L)
+COMBO_MIRROR_LAYERS(lang_ru, &ht_combo_ru LS(LGUI) 0, LOT LIT, ROT RIT, RU_L)
+COMBO_MIRROR_LAYERS(lang_en, &ht_combo_en LS(LGUI) 0, LOT LIT, ROT RIT, ENG_L)
 
 //    (name,   press,      curved,        splayed,            both,          chord,       chord)
 TCOMBO(B         , &kp B       , &kp LS(B)    , &kp LEFT     , &kp LS(LEFT)  , TLP          , TRP          )
