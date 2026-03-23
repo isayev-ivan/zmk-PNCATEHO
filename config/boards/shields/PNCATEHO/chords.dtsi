@@ -1,94 +1,102 @@
-// Макрос для клавиш, которые уже имеют поведение Layer-Tap (например &lt) на базовом слое.
-// Он генерирует только комбо с thumb-клавишами и намеренно не создает базовые "одиночные" комбо (combo_l_ / combo_r_),
-// чтобы не перекрывать поведение удержания (Hold) для перехода на другой слой.
-#define TCOMBO_NO_BASE(NAME, BINDINGS, CURVED_BINDINGS, SPLAYED_BINDINGS, BOTH_BINDINGS, LEFT_KEYPOS, RIGHT_KEYPOS) \
+/**
+ * Базовый абстрактный макрос для создания комбо-аккордов с thumb-модификаторами (без обычного клика).
+ * Генерирует 6 комбо: для левой и правой руки, с согнутым (LIT/RIT), вытянутым (LOT/ROT) и обоими большими пальцами.
+ * Намеренно не создает базовые "одиночные" комбо, чтобы не перекрывать поведение удержания (Hold) для Layer-Tap клавиш.
+ * 
+ * @param NAME Имя комбо (используется для генерации уникальных названий нод)
+ * @param LAYER Слой, на котором должны работать эти комбо
+ * @param CURVED_BINDINGS Действие при нажатии аккорда + согнутый большой палец
+ * @param SPLAYED_BINDINGS Действие при нажатии аккорда + вытянутый большой палец
+ * @param BOTH_BINDINGS Действие при нажатии аккорда + оба больших пальца
+ * @param LEFT_KEYPOS Позиции клавиш левого аккорда
+ * @param RIGHT_KEYPOS Позиции клавиш правого аккорда
+ */
+#define LAYER_TCOMBO_NO_BASE(NAME, LAYER, CURVED_BINDINGS, SPLAYED_BINDINGS, BOTH_BINDINGS, LEFT_KEYPOS, RIGHT_KEYPOS) \
 combo_lo_##NAME { \
-	timeout-ms = <COMBO_TIMEOUT>; \
-	bindings = <SPLAYED_BINDINGS>; \
-	key-positions = <LEFT_KEYPOS LOT>; \
-	layers = <COMBO_LAYERS>; \
+        timeout-ms = <COMBO_TIMEOUT>; \
+        bindings = <SPLAYED_BINDINGS>; \
+        key-positions = <LEFT_KEYPOS LOT>; \
+        layers = <LAYER>; \
 }; \
 combo_li_##NAME { \
-	timeout-ms = <COMBO_TIMEOUT>; \
-	bindings = <CURVED_BINDINGS>; \
-	key-positions = <LEFT_KEYPOS LIT>; \
-	layers = <COMBO_LAYERS>; \
+        timeout-ms = <COMBO_TIMEOUT>; \
+        bindings = <CURVED_BINDINGS>; \
+        key-positions = <LEFT_KEYPOS LIT>; \
+        layers = <LAYER>; \
 }; \
 combo_lb_##NAME { \
-	timeout-ms = <COMBO_TIMEOUT>; \
-	bindings = <BOTH_BINDINGS>; \
-	key-positions = <LEFT_KEYPOS LIT LOT>; \
-	layers = <COMBO_LAYERS>; \
+        timeout-ms = <COMBO_TIMEOUT>; \
+        bindings = <BOTH_BINDINGS>; \
+        key-positions = <LEFT_KEYPOS LIT LOT>; \
+        layers = <LAYER>; \
 }; \
 combo_ro_##NAME { \
-	timeout-ms = <COMBO_TIMEOUT>; \
-	bindings = <SPLAYED_BINDINGS>; \
-	key-positions = <RIGHT_KEYPOS ROT>; \
-	layers = <COMBO_LAYERS>; \
+        timeout-ms = <COMBO_TIMEOUT>; \
+        bindings = <SPLAYED_BINDINGS>; \
+        key-positions = <RIGHT_KEYPOS ROT>; \
+        layers = <LAYER>; \
 }; \
 combo_ri_##NAME { \
-	timeout-ms = <COMBO_TIMEOUT>; \
-	bindings = <CURVED_BINDINGS>; \
-	key-positions = <RIGHT_KEYPOS RIT>; \
-	layers = <COMBO_LAYERS>; \
+        timeout-ms = <COMBO_TIMEOUT>; \
+        bindings = <CURVED_BINDINGS>; \
+        key-positions = <RIGHT_KEYPOS RIT>; \
+        layers = <LAYER>; \
 }; \
 combo_rb_##NAME { \
-	timeout-ms = <COMBO_TIMEOUT>; \
-	bindings = <BOTH_BINDINGS>; \
-	key-positions = <RIGHT_KEYPOS RIT ROT>; \
-	layers = <COMBO_LAYERS>; \
+        timeout-ms = <COMBO_TIMEOUT>; \
+        bindings = <BOTH_BINDINGS>; \
+        key-positions = <RIGHT_KEYPOS RIT ROT>; \
+        layers = <LAYER>; \
 };
 
-#define TCOMBO(NAME, BINDINGS, CURVED_BINDINGS, SPLAYED_BINDINGS, BOTH_BINDINGS, LEFT_KEYPOS, RIGHT_KEYPOS) \
+/**
+ * Полный абстрактный макрос для создания комбо-аккордов с thumb-модификаторами.
+ * Включает в себя функционал LAYER_TCOMBO_NO_BASE, но дополнительно генерирует 
+ * 2 базовых "одиночных" комбо (для левой и правой руки без участия больших пальцев).
+ * Итого генерирует 8 комбо.
+ * 
+ * @param BINDINGS Действие при обычном нажатии аккорда (без больших пальцев)
+ * (Остальные параметры аналогичны LAYER_TCOMBO_NO_BASE)
+ */
+#define LAYER_TCOMBO(NAME, LAYER, BINDINGS, CURVED_BINDINGS, SPLAYED_BINDINGS, BOTH_BINDINGS, LEFT_KEYPOS, RIGHT_KEYPOS) \
 combo_l_##NAME { \
-	timeout-ms = <COMBO_TIMEOUT>; \
-	bindings = <BINDINGS>; \
-	key-positions = <LEFT_KEYPOS>; \
-	layers = <COMBO_LAYERS>; \
-}; \
-combo_lo_##NAME { \
-	timeout-ms = <COMBO_TIMEOUT>; \
-	bindings = <SPLAYED_BINDINGS>; \
-	key-positions = <LEFT_KEYPOS LOT>; \
-	layers = <COMBO_LAYERS>; \
-}; \
-combo_li_##NAME { \
-	timeout-ms = <COMBO_TIMEOUT>; \
-	bindings = <CURVED_BINDINGS>; \
-	key-positions = <LEFT_KEYPOS LIT>; \
-	layers = <COMBO_LAYERS>; \
-}; \
-combo_lb_##NAME { \
-	timeout-ms = <COMBO_TIMEOUT>; \
-	bindings = <BOTH_BINDINGS>; \
-	key-positions = <LEFT_KEYPOS LIT LOT>; \
-	layers = <COMBO_LAYERS>; \
+        timeout-ms = <COMBO_TIMEOUT>; \
+        bindings = <BINDINGS>; \
+        key-positions = <LEFT_KEYPOS>; \
+        layers = <LAYER>; \
 }; \
 combo_r_##NAME { \
-	timeout-ms = <COMBO_TIMEOUT>; \
-	bindings = <BINDINGS>; \
-	key-positions = <RIGHT_KEYPOS>; \
-	layers = <COMBO_LAYERS>; \
+        timeout-ms = <COMBO_TIMEOUT>; \
+        bindings = <BINDINGS>; \
+        key-positions = <RIGHT_KEYPOS>; \
+        layers = <LAYER>; \
 }; \
-combo_ro_##NAME { \
-	timeout-ms = <COMBO_TIMEOUT>; \
-	bindings = <SPLAYED_BINDINGS>; \
-	key-positions = <RIGHT_KEYPOS ROT>; \
-	layers = <COMBO_LAYERS>; \
-}; \
-combo_ri_##NAME { \
-	timeout-ms = <COMBO_TIMEOUT>; \
-	bindings = <CURVED_BINDINGS>; \
-	key-positions = <RIGHT_KEYPOS RIT>; \
-	layers = <COMBO_LAYERS>; \
-}; \
-combo_rb_##NAME { \
-	timeout-ms = <COMBO_TIMEOUT>; \
-	bindings = <BOTH_BINDINGS>; \
-	key-positions = <RIGHT_KEYPOS RIT ROT>; \
-	layers = <COMBO_LAYERS>; \
-};
+LAYER_TCOMBO_NO_BASE(NAME, LAYER, CURVED_BINDINGS, SPLAYED_BINDINGS, BOTH_BINDINGS, LEFT_KEYPOS, RIGHT_KEYPOS)
 
+/**
+ * Обертка над LAYER_TCOMBO_NO_BASE для использования на дефолтных слоях (COMBO_LAYERS).
+ * Применяется для клавиш, которые уже имеют поведение Layer-Tap (например &lt) на базовом слое.
+ */
+#define TCOMBO_NO_BASE(NAME, BINDINGS, CURVED_BINDINGS, SPLAYED_BINDINGS, BOTH_BINDINGS, LEFT_KEYPOS, RIGHT_KEYPOS) \
+    LAYER_TCOMBO_NO_BASE(NAME, COMBO_LAYERS, CURVED_BINDINGS, SPLAYED_BINDINGS, BOTH_BINDINGS, LEFT_KEYPOS, RIGHT_KEYPOS)
+
+/**
+ * Обертка над LAYER_TCOMBO для использования на дефолтных слоях (COMBO_LAYERS).
+ * Стандартный макрос для большинства аккордов клавиатуры (генерирует 8 комбинаций).
+ */
+#define TCOMBO(NAME, BINDINGS, CURVED_BINDINGS, SPLAYED_BINDINGS, BOTH_BINDINGS, LEFT_KEYPOS, RIGHT_KEYPOS) \
+    LAYER_TCOMBO(NAME, COMBO_LAYERS, BINDINGS, CURVED_BINDINGS, SPLAYED_BINDINGS, BOTH_BINDINGS, LEFT_KEYPOS, RIGHT_KEYPOS)
+
+/**
+ * Макрос для создания простых зеркальных комбо (одно действие, две стороны).
+ * Удобно для комбо, не требующих thumb-модификаторов (например, 4, 7, 8, 9 на слое цифр).
+ * 
+ * @param NAME Базовое имя комбо (будут созданы combo_l_NAME и combo_r_NAME)
+ * @param BINDINGS Действие при срабатывании комбо
+ * @param LEFT_KEYPOS Позиции клавиш на левой половине
+ * @param RIGHT_KEYPOS Позиции клавиш на правой половине
+ * @param LAYERS Слой(и), на котором(ых) работает комбо
+ */
 #define COMBO_MIRROR_LAYERS(NAME, BINDINGS, LEFT_KEYPOS, RIGHT_KEYPOS, LAYERS) \
 combo_l_##NAME { \
 	timeout-ms = <COMBO_TIMEOUT>; \
@@ -103,6 +111,12 @@ combo_r_##NAME { \
 	layers = <LAYERS>; \
 };
 
+/**
+ * Вариация COMBO_MIRROR_LAYERS с дополнительным параметром require-prior-idle-ms.
+ * Полезно для комбо, которые могут случайно срабатывать при быстрой печати.
+ * 
+ * @param IDLE_MS Время (в мс), которое клавиатура должна бездействовать перед срабатыванием комбо
+ */
 #define COMBO_MIRROR_LAYERS_IDLE(NAME, BINDINGS, LEFT_KEYPOS, RIGHT_KEYPOS, LAYERS, IDLE_MS) \
 combo_l_##NAME { \
 	timeout-ms = <COMBO_TIMEOUT>; \
@@ -123,14 +137,14 @@ COMBO_MIRROR_LAYERS(lang_ru, &ht_combo_ru LS(LGUI) 0, LOT LIT, ROT RIT, RU_L)
 COMBO_MIRROR_LAYERS(lang_en, &ht_combo_en LS(LGUI) 0, LOT LIT, ROT RIT, ENG_L)
 
 //    (name,   press,      curved,        splayed,            both,          chord,       chord)
-TCOMBO(B         , &kp B       , &kp LS(B)    , &kp LEFT     , &kp LS(LEFT)  , TLP          , TRP          )
+TCOMBO_NO_BASE(B         , &kp B       , &kp LS(B)    , &kp LEFT     , &kp LS(LEFT)  , TLP          , TRP  )
 TCOMBO(F         , &kp F       , &kp LS(F)    , &kp UP       , &kp LS(UP)    , TLR          , TRR          )
 TCOMBO(T         , &kp T       , &kp LS(T)    , &kp DOWN     , &kp LS(DOWN)  , TLM          , TRM          )
 TCOMBO(J         , &kp J       , &kp LS(J)    , &kp RIGHT    , &kp LS(RIGHT) , TLI          , TRI          )
-TCOMBO_NO_BASE(H         , &kp H       , &kp LS(H)    , &sk LGUI     , &kp HOME      , BLP          , BRP          )
+TCOMBO_NO_BASE(H         , &kp H       , &kp LS(H)    , &sk LGUI     , &kp HOME      , BLP          , BRP  )
 TCOMBO(C         , &kp C       , &kp LS(C)    , &sk LALT     , &kp PG_UP     , BLR          , BRR          )
 TCOMBO(N         , &kp N       , &kp LS(N)    , &sk LCTRL    , &kp PG_DN     , BLM          , BRM          )
-TCOMBO_NO_BASE(Y         , &kp Y       , &kp LS(Y)    , &sk LSHIFT   , &kp END       , BLI          , BRI          )
+TCOMBO_NO_BASE(Y         , &kp Y       , &kp LS(Y)    , &sk LSHIFT   , &kp END       , BLI          , BRI  )
 TCOMBO(D         , &kp D       , &kp LS(D)    , &kp N1       , &kp F1        , TLP TLI      , TRP TRI      )
 TCOMBO(K         , &kp K       , &kp LS(K)    , &kp N2       , &kp F2        , BLP BLI      , BRP BRI      )
 TCOMBO(R         , &kp R       , &kp LS(R)    , &kp N3       , &kp F3        , BLP BLR      , BRP BRR      )
@@ -165,6 +179,18 @@ TCOMBO(boot      , &none       , &none        , &ext_power EP_OFF, &bootloader  
 TCOMBO(BT        , &bt BT_SEL 0, &bt BT_SEL 1 , &bt BT_SEL 2 , &bt BT_CLR    , BLP BLR BLM BLI, BRP BRR BRM BRI)
 TCOMBO(MG_COMMA  , &mg_comma   , &mg_dot      , &kp RA(SEMI) , &kp LS(RA(SEMI)), TLP TLR TLM  , TRP TRR TRM  )
 TCOMBO(MINUS_DASH, &kp MINUS   , &kp LA(LS(MINUS)), &kp UNDER    , &kp PIPE      , BLP BLR BLM  , BRP BRR BRM  )
+
+
+// Hold Numbers Layer Combos
+COMBO_MIRROR_LAYERS(num_8, &kp N8, TLR TLM, TRR TRM, HOLD_NUM_L)
+COMBO_MIRROR_LAYERS(num_7, &kp N7, TLM TLI, TRM TRI, HOLD_NUM_L)
+COMBO_MIRROR_LAYERS(num_9, &kp N9, BLR BLM, BRR BRM, HOLD_NUM_L)
+COMBO_MIRROR_LAYERS(num_4, &kp N4, BLM BLI, BRM BRI, HOLD_NUM_L)
+
+LAYER_TCOMBO_NO_BASE(num_2, HOLD_NUM_L, &kp SYM_PERCENT, &kp SYM_NUMERO, &none       , TLM, TRM)
+LAYER_TCOMBO_NO_BASE(num_1, HOLD_NUM_L, &kp SYM_EQUAL,   &kp SYM_PLUS,   &kp SYM_STAR, TLI, TRI)
+LAYER_TCOMBO_NO_BASE(num_5, HOLD_NUM_L, &kp SYM_DOLLAR,  &kp SYM_RUBLE,  &none       , BLM, BRM)
+LAYER_TCOMBO_NO_BASE(num_0, HOLD_NUM_L, &kp SYM_CARET,   &kp SYM_MINUS,  &kp SYM_DOT , BLI, BRI)
 
 COMBO_MIRROR_LAYERS_IDLE(lock_nav,   &tog NAV_L,   TLM BLR BLI, TRM BRR BRI, RU_L ENG_L NAV_L MOUSE_L, 150)
 COMBO_MIRROR_LAYERS_IDLE(lock_mouse, &tog MOUSE_L, TLR BLM TLI, TRR BRM TRI, RU_L ENG_L NAV_L MOUSE_L, 150)

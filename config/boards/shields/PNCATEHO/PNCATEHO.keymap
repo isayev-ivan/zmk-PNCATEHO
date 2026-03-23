@@ -32,6 +32,19 @@
 #define MOUSE_L 3
 #define HOLD_NAV_L 4
 #define HOLD_MEDIA_L 5
+#define HOLD_NUM_L 6
+
+// Custom Symbols for HOLD_NUM_L
+#define SYM_PERCENT  PRCNT
+#define SYM_NUMERO   RA(N)
+#define SYM_EQUAL    EQUAL
+#define SYM_PLUS     PLUS
+#define SYM_STAR     KP_MULTIPLY
+#define SYM_DOLLAR   DLLR
+#define SYM_RUBLE    RA(H)
+#define SYM_CARET    RA(F)
+#define SYM_MINUS    KP_MINUS
+#define SYM_DOT      KP_DOT
 
 // LEFT SIDE
 #define TLP 0 // TOP
@@ -252,9 +265,9 @@
 
     ru_layer {
       bindings = <
-        &kp B             &none            &none            &kp J                       &kp J              &none            &none            &kp B
+        &lt HOLD_NUM_L B  &none            &none            &kp J                       &kp J              &none            &none            &kp B
         &lt HOLD_NAV_L H  &none            &none            &lt HOLD_MEDIA_L Y          &lt HOLD_MEDIA_L Y &none            &none            &lt HOLD_NAV_L H
-                                                            &ht_curved LGUI BSPC &ht_splayed LSHIFT SPACE  &ht_splayed RSHIFT SPACE  &ht_curved RGUI BSPC
+                                                            &ht_curved LGUI BSPC &ht_splayed LSHIFT SPACE  &ht_curved RGUI BSPC &ht_splayed RSHIFT SPACE
       >;
     };
 
@@ -284,8 +297,8 @@
 
     hold_nav_layer {
       bindings = <
-        &trans            &kp HOME         &kp UP           &kp END                     &kp END            &kp UP           &kp HOME         &trans
-        &trans            &kp LEFT         &kp DOWN         &kp RIGHT                   &kp RIGHT          &kp DOWN         &kp LEFT         &trans
+        &trans            &kp HOME         &kp UP           &kp END                     &kp HOME           &kp UP           &kp END          &trans
+        &trans            &kp LEFT         &kp DOWN         &kp RIGHT                   &kp LEFT           &kp DOWN         &kp RIGHT        &trans
                                                             &trans           &trans     &trans             &trans
       >;
     };
@@ -294,6 +307,14 @@
       bindings = <
         &kp C_MUTE        &kp C_PREV       &kp C_VOL_UP     &trans                      &trans             &kp C_VOL_UP     &kp C_PREV       &kp C_MUTE
         &kp C_PP          &kp C_NEXT       &kp C_VOL_DN     &trans                      &trans             &kp C_VOL_DN     &kp C_NEXT       &kp C_PP
+                                                            &trans           &trans     &trans             &trans
+      >;
+    };
+
+    hold_num_layer {
+      bindings = <
+        &trans            &kp N3           &kp N2           &kp N1                      &kp N1             &kp N2           &kp N3           &trans
+        &none             &kp N6           &kp N5           &kp N0                      &kp N0             &kp N5           &kp N6           &none
                                                             &trans           &trans     &trans             &trans
       >;
     };
