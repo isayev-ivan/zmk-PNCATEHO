@@ -333,7 +333,7 @@
       >;
     };
 
-    // где-то указаны
+    // TODO где-то указаны
     hold_num_layer {
       bindings = <
         &trans            &kp N3           &kp N2           &kp N1                      &kp N1             &kp N2           &kp N3           &trans
@@ -341,7 +341,7 @@
                                                             &trans           &trans     &trans             &trans
       >;
     };
-    // а где-то через транс + комбо
+    // TODO а где-то через транс + комбо
     hold_sym_layer {
       bindings = <
         &trans            &trans           &trans           &trans                      &trans             &trans           &trans           &trans
