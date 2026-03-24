@@ -136,15 +136,17 @@ combo_r_##NAME { \
 COMBO_MIRROR_LAYERS(lang_ru, &ht_combo_ru LS(LGUI) 0, LOT LIT, ROT RIT, RU_L)
 COMBO_MIRROR_LAYERS(lang_en, &ht_combo_en LS(LGUI) 0, LOT LIT, ROT RIT, ENG_L)
 
-//    (name,   press,      curved,        splayed,            both,          chord,       chord)
+// Без базовой клавиши, чтобы базово вызывать hold-cлой
 TCOMBO_NO_BASE(b         , &kp B       , &kp LS(B)    , &kp LEFT     , &kp LS(LEFT)  , TLP          , TRP  )
-TCOMBO(f         , &kp F       , &kp LS(F)    , &kp UP       , &kp LS(UP)    , TLR          , TRR          )
-TCOMBO(t         , &kp T       , &kp LS(T)    , &kp DOWN     , &kp LS(DOWN)  , TLM          , TRM          )
 TCOMBO_NO_BASE(j         , &kp J       , &kp LS(J)    , &kp RIGHT    , &kp LS(RIGHT) , TLI          , TRI  )
 TCOMBO_NO_BASE(h         , &kp H       , &kp LS(H)    , &sk LGUI     , &kp HOME      , BLP          , BRP  )
+TCOMBO_NO_BASE(y         , &kp Y       , &kp LS(Y)    , &sk LSHIFT   , &kp END       , BLI          , BRI  )
+
+//    (name,   press,      curved,        splayed,            both,          chord,       chord)
+TCOMBO(f         , &kp F       , &kp LS(F)    , &kp UP       , &kp LS(UP)    , TLR          , TRR          )
+TCOMBO(t         , &kp T       , &kp LS(T)    , &kp DOWN     , &kp LS(DOWN)  , TLM          , TRM          )
 TCOMBO(c         , &kp C       , &kp LS(C)    , &sk LALT     , &kp PG_UP     , BLR          , BRR          )
 TCOMBO(n         , &kp N       , &kp LS(N)    , &sk LCTRL    , &kp PG_DN     , BLM          , BRM          )
-TCOMBO_NO_BASE(y         , &kp Y       , &kp LS(Y)    , &sk LSHIFT   , &kp END       , BLI          , BRI  )
 TCOMBO(d         , &kp D       , &kp LS(D)    , &kp N1       , &kp F1        , TLP TLI      , TRP TRI      )
 TCOMBO(k         , &kp K       , &kp LS(K)    , &kp N2       , &kp F2        , BLP BLI      , BRP BRI      )
 TCOMBO(r         , &kp R       , &kp LS(R)    , &kp N3       , &kp F3        , BLP BLR      , BRP BRR      )
