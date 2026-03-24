@@ -33,8 +33,9 @@
 #define HOLD_NAV_L 4
 #define HOLD_MEDIA_L 5
 #define HOLD_NUM_L 6
+#define HOLD_SYM_L 7
 
-// Custom Symbols for HOLD_NUM_L
+// Custom Symbols
 #define SYM_PERCENT  PRCNT
 #define SYM_NUMERO   RA(N)
 #define SYM_EQUAL    EQUAL
@@ -45,6 +46,27 @@
 #define SYM_CARET    RA(F)
 #define SYM_MINUS    KP_MINUS
 #define SYM_DOT      KP_DOT
+#define SYM_AT       AT
+#define SYM_AMP      AMPS
+#define SYM_LBKT     LA(LBKT)
+#define SYM_RBKT     LA(RBKT)
+#define SYM_LGUIL    RA(N9)
+#define SYM_RGUIL    RA(N0)
+#define SYM_LBRACE   LS(LA(LBKT))
+#define SYM_RBRACE   LS(LA(RBKT))
+#define SYM_LPAR     LPAR
+#define SYM_RPAR     RPAR
+#define SYM_TILDE    LS(RA(GRAVE))
+#define SYM_GRAVE    RA(GRAVE)
+#define SYM_HASH     HASH
+#define SYM_EXCL     EXCL
+#define SYM_QUEST    LS(RA(SLASH))
+#define SYM_APOS     RA(SQT)
+#define SYM_BSLH     BSLH
+#define SYM_SLASH    RA(SLASH)
+#define SYM_DQUOTE   RA(LS(SQT))
+#define SYM_LT       RA(LS(N6))
+#define SYM_GT       RA(LS(N7))
 
 // LEFT SIDE
 #define TLP 0 // TOP
@@ -265,9 +287,9 @@
 
     ru_layer {
       bindings = <
-        &lt HOLD_NUM_L B  &none            &none            &kp J                       &kp J              &none            &none            &kp B
-        &lt HOLD_NAV_L H  &none            &none            &lt HOLD_MEDIA_L Y          &lt HOLD_MEDIA_L Y &none            &none            &lt HOLD_NAV_L H
-                                                            &ht_curved LGUI BSPC &ht_splayed LSHIFT SPACE  &ht_curved RGUI BSPC &ht_splayed RSHIFT SPACE
+        &lt HOLD_NUM_L B    &none    &none    &lt HOLD_SYM_L J                                                                  &lt HOLD_SYM_L J        &none    &none    &lt HOLD_NUM_L B
+        &lt HOLD_NAV_L H    &none    &none    &lt HOLD_MEDIA_L Y                                                                &lt HOLD_MEDIA_L Y      &none    &none    &lt HOLD_NAV_L H
+                                              &ht_curved LGUI BSPC    &ht_splayed LSHIFT SPACE      &ht_splayed RSHIFT SPACE    &ht_curved RGUI BSPC
       >;
     };
 
@@ -311,10 +333,19 @@
       >;
     };
 
+    // где-то указаны
     hold_num_layer {
       bindings = <
         &trans            &kp N3           &kp N2           &kp N1                      &kp N1             &kp N2           &kp N3           &trans
         &none             &kp N6           &kp N5           &kp N0                      &kp N0             &kp N5           &kp N6           &none
+                                                            &trans           &trans     &trans             &trans
+      >;
+    };
+    // а где-то через транс + комбо
+    hold_sym_layer {
+      bindings = <
+        &trans            &trans           &trans           &trans                      &trans             &trans           &trans           &trans
+        &trans            &trans           &trans           &trans                      &trans             &trans           &trans           &trans
                                                             &trans           &trans     &trans             &trans
       >;
     };
