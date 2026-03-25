@@ -327,7 +327,7 @@
 
     hold_sym_layer {
       bindings = <
-        &kp SYM_AT        &kp SYM_LPAR     &kp N2           &trans                          &trans        &kp SYM_RPAR     &kp SYM_LPAR     &kp SYM_AT
+        &kp SYM_AT        &kp SYM_LPAR     &kp SYM_RPAR     &trans                          &trans        &kp SYM_RPAR     &kp SYM_LPAR     &kp SYM_AT
         &kp SYM_HASH      &kp SYM_QUEST    &kp SYM_SLASH    &none                           &none         &kp SYM_SLASH    &kp SYM_QUEST    &kp SYM_HASH
                                                             &trans    &trans      &trans    &trans
       >;
