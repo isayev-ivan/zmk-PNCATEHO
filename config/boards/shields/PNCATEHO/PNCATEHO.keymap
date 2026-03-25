@@ -10,6 +10,8 @@
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/mouse.h>
 
+
+// Глобальные параметры скорости/ускорения мыши: &mmv для движения курсора, &msc для скролла.
 &mmv {
   time-to-max-speed-ms = <500>;
   acceleration-exponent = <1>;
@@ -20,78 +22,79 @@
   acceleration-exponent = <1>;
 };
 
-// CONFIG
-#define COMBO_TIMEOUT 70
-#define COMBO_LAYERS RU_L ENG_L
-#define STICKY_TIMEOUT 500
 
-// LAYERS
-#define RU_L 0
-#define ENG_L 1
-#define NAV_L 2
-#define MOUSE_L 3
-#define HOLD_NAV_L 4
-#define HOLD_MEDIA_L 5
-#define HOLD_NUM_L 6
-#define HOLD_SYM_L 7
+#define COMBO_TIMEOUT 70          // timeout комбо (мс)
+#define COMBO_LAYERS RU_L ENG_L   // слои, где активны базовые комбо
+#define STICKY_TIMEOUT 500        // timeout sticky-модификаторов (мс)
 
-// Custom Symbols
-#define SYM_PERCENT  PRCNT
-#define SYM_NUMERO   RA(N)
-#define SYM_EQUAL    EQUAL
-#define SYM_PLUS     PLUS
-#define SYM_STAR     KP_MULTIPLY
-#define SYM_DOLLAR   DLLR
-#define SYM_RUBLE    RA(H)
-#define SYM_CARET    RA(F)
-#define SYM_MINUS    KP_MINUS
-#define SYM_DOT      KP_DOT
-#define SYM_AT       AT
-#define SYM_AMP      AMPS
-#define SYM_LBKT     LA(LBKT)
-#define SYM_RBKT     LA(RBKT)
-#define SYM_LGUIL    RA(N9)
-#define SYM_RGUIL    RA(N0)
-#define SYM_LBRACE   LS(LA(LBKT))
-#define SYM_RBRACE   LS(LA(RBKT))
-#define SYM_LPAR     LPAR
-#define SYM_RPAR     RPAR
-#define SYM_TILDE    LS(RA(GRAVE))
-#define SYM_GRAVE    RA(GRAVE)
-#define SYM_HASH     HASH
-#define SYM_EXCL     EXCL
-#define SYM_QUEST    LS(RA(SLASH))
-#define SYM_APOS     RA(SQT)
-#define SYM_BSLH     BSLH
-#define SYM_SLASH    RA(SLASH)
-#define SYM_DQUOTE   RA(LS(SQT))
-#define SYM_LT       RA(LS(N6))
-#define SYM_GT       RA(LS(N7))
+// Слои
+#define RU_L 0                    // основной RU слой
+#define ENG_L 1                   // основной EN слой
+#define NAV_L 2                   // навигация
+#define MOUSE_L 3                 // мышь
+#define HOLD_NAV_L 4              // hold-navigationn
+#define HOLD_MEDIA_L 5            // hold-media
+#define HOLD_NUM_L 6              // hold-numbers
+#define HOLD_SYM_L 7              // hold-symbols
 
-// LEFT SIDE
-#define TLP 0 // TOP
-#define TLR 1 // TOP
-#define TLM 2 // TOP
-#define TLI 3 // TOP
-#define BLP 8 // BOTTOM
-#define BLR 9 // BOTTOM
-#define BLM 10 // BOTTOM
-#define BLI 11 // BOTTOM
-#define LIT 16 // I-THUMB (Внутренняя для руки, согнутый палец, ближе к мизинцу, левее)
-#define LOT 17 // O-THUMB (Внешняя для руки, вытянутый палец, ближе к указательному, правее)
+// Кастомные символы
+#define SYM_PERCENT  PRCNT          // %
+#define SYM_NUMERO   RA(N)          // №
+#define SYM_EQUAL    EQUAL          // =
+#define SYM_PLUS     PLUS           // +
+#define SYM_STAR     KP_MULTIPLY    // *
+#define SYM_DOLLAR   DLLR           // $
+#define SYM_RUBLE    RA(H)          // ₽
+#define SYM_CARET    RA(F)          // ^
+#define SYM_MINUS    KP_MINUS       // -
+#define SYM_DOT      KP_DOT         // .
+#define SYM_AT       AT             // @
+#define SYM_AMP      AMPS           // &
+#define SYM_LBKT     LA(LBKT)       // [
+#define SYM_RBKT     LA(RBKT)       // ]
+#define SYM_LGUIL    RA(N9)         // «
+#define SYM_RGUIL    RA(N0)         // »
+#define SYM_LBRACE   LS(LA(LBKT))   // {
+#define SYM_RBRACE   LS(LA(RBKT))   // }
+#define SYM_LPAR     LPAR           // (
+#define SYM_RPAR     RPAR           // )
+#define SYM_TILDE    LS(RA(GRAVE))  // ~
+#define SYM_GRAVE    RA(GRAVE)      // `
+#define SYM_HASH     HASH           // #
+#define SYM_EXCL     EXCL           // !
+#define SYM_QUEST    LS(RA(SLASH))  // ?
+#define SYM_APOS     RA(SQT)        // ‘
+#define SYM_BSLH     BSLH           // \
+#define SYM_SLASH    RA(SLASH)      // /
+#define SYM_DQUOTE   RA(LS(SQT))    // “
+#define SYM_LT       RA(LS(N6))     // <
+#define SYM_GT       RA(LS(N7))     // >
 
-// RIGHT SIDE
-#define TRP 7 // TOP
-#define TRR 6 // TOP
-#define TRM 5 // TOP
-#define TRI 4 // TOP
-#define BRP 15 // BOTTOM
-#define BRR 14 // BOTTOM
-#define BRM 13 // BOTTOM
-#define BRI 12 // BOTTOM
-#define ROT 19 // O-THUMB (Внешняя для руки, вытянутый палец, ближе к указательному, левее)
-#define RIT 18 // I-THUMB (Внутренняя для руки, согнутый палец, ближе к мизинцу, правее)
+// Левая сторона
+#define TLP 0   // top left pinky
+#define TLR 1   // top left ring
+#define TLM 2   // top left middle
+#define TLI 3   // top left index
+#define BLP 8   // bottom left pinky
+#define BLR 9   // bottom left ring
+#define BLM 10  // bottom left middle
+#define BLI 11  // bottom left index
+#define LIT 16  // I-THUMB (Внутренняя для руки, согнутый палец, ближе к мизинцу, левее)
+#define LOT 17  // O-THUMB (Внешняя для руки, вытянутый палец, ближе к указательному, правее)
 
+// Правая сторона
+#define TRP 7   // top right pinky
+#define TRR 6   // top right ring
+#define TRM 5   // top right middle
+#define TRI 4   // top right index
+#define BRP 15  // bottom right pinky
+#define BRR 14  // bottom right ring
+#define BRM 13  // bottom right middle
+#define BRI 12  // bottom right index
+#define ROT 19  // O-THUMB (Внешняя для руки, вытянутый палец, ближе к указательному, левее)
+#define RIT 18  // I-THUMB (Внутренняя для руки, согнутый палец, ближе к мизинцу, правее)
+
+// Глобальная настройка sticky key (&sk): как долго держится модификатор и отпускать ли его сразу после следующей клавиши.
 &sk {
     release-after-ms = <STICKY_TIMEOUT>;
     quick-release;
@@ -138,6 +141,8 @@
   };
 
   behaviors {
+      // TODO надо будет подчистить лишнее
+
       // Ставит вопросительный знак, а с зажатием Shift - восклицательный знак
       quest_excl: quest_excl {
           compatible = "zmk,behavior-mod-morph";
@@ -208,13 +213,13 @@
       // flavor "balanced": корректное разрешение конфликтов при перекатах пальцев
       ht_curved: ht_curved {
           compatible = "zmk,behavior-hold-tap";
-          label = "HT_CURVED";
+          label = "HT_CURVED"; // TODO вроде устарело?
           #binding-cells = <2>;
           flavor = "balanced";
           tapping-term-ms = <200>;
           quick-tap-ms = <175>;
           require-prior-idle-ms = <150>;
-          bindings = <&kp>, <&kp>;
+          bindings = <&kp>, <&kp>; // TODO разобраться что за бобуйня пустая
       };
 
       ht_splayed: ht_splayed {
@@ -249,34 +254,9 @@
           require-prior-idle-ms = <150>;
           bindings = <&kp>, <&mac_to_ru>;
       };
-
-      /*
-      to_en_raise: to_en_raise {
-          compatible = "zmk,behavior-hold-tap";
-          label = "TO_EN_RAISE";
-          bindings = <&mo>, <&mac_to_en>;
-
-          #binding-cells = <2>;
-          tapping-term-ms = <200>;
-          quick-tap-ms = <175>;
-          require-prior-idle-ms = <150>;
-          flavor = "balanced";
-      };
-
-      to_ru_raise: to_ru_raise {
-          compatible = "zmk,behavior-hold-tap";
-          label = "TO_RU_RAISE";
-          bindings = <&mo>, <&mac_to_ru>;
-
-          #binding-cells = <2>;
-          tapping-term-ms = <200>;
-          quick-tap-ms = <175>;
-          require-prior-idle-ms = <150>;
-          flavor = "balanced";
-      };
-      */
   };
 
+  // Подключаем комбо-аккорды
   combos {
     compatible = "zmk,combos";
     #include "chords.dtsi"
@@ -285,6 +265,9 @@
   keymap {
     compatible = "zmk,keymap";
 
+    // Нижний, нулевой слой
+    // &none кнопки будут заданы через комбо-аккорды в chords.dtsi
+    // &lt — layer-tap клавиша, которая будет срабатывать при удержании
     ru_layer {
       bindings = <
         &lt HOLD_NUM_L B    &none    &none    &lt HOLD_SYM_L J                                                                  &lt HOLD_SYM_L J        &none    &none    &lt HOLD_NUM_L B
@@ -295,9 +278,9 @@
 
     eng_layer {
       bindings = <
-        &trans            &trans           &trans           &trans                      &trans             &trans           &trans           &trans
-        &trans            &trans           &trans           &trans                      &trans             &trans           &trans           &trans
-                                                            &trans           &trans     &trans             &trans
+        &trans    &trans    &trans    &trans                          &trans    &trans    &trans    &trans
+        &trans    &trans    &trans    &trans                          &trans    &trans    &trans    &trans
+                                      &trans    &trans      &trans    &trans
       >;
     };
 
@@ -311,24 +294,24 @@
 
     mouse_layer {
       bindings = <
-        &msc SCRL_UP      &mkp RCLK        &mmv MOVE_UP     &mkp LCLK                   &mkp LCLK          &mmv MOVE_UP     &mkp RCLK        &msc SCRL_UP
-        &msc SCRL_DOWN    &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT             &mmv MOVE_LEFT     &mmv MOVE_DOWN   &mmv MOVE_RIGHT  &msc SCRL_DOWN
-                                                            &trans           &trans     &trans             &trans
+        &msc SCRL_UP      &mkp RCLK        &mmv MOVE_UP     &mkp LCLK                              &mkp LCLK          &mmv MOVE_UP     &mkp RCLK        &msc SCRL_UP
+        &msc SCRL_DOWN    &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT                        &mmv MOVE_LEFT     &mmv MOVE_DOWN   &mmv MOVE_RIGHT  &msc SCRL_DOWN
+                                                            &trans           &trans      &trans    &trans
       >;
     };
 
     hold_nav_layer {
       bindings = <
-        &trans            &kp HOME         &kp UP           &kp END                     &kp HOME           &kp UP           &kp END          &trans
-        &trans            &kp LEFT         &kp DOWN         &kp RIGHT                   &kp LEFT           &kp DOWN         &kp RIGHT        &trans
-                                                            &trans           &trans     &trans             &trans
+        &trans            &kp HOME         &kp UP           &kp END                               &kp HOME            &kp UP           &kp END          &trans
+        &trans            &kp LEFT         &kp DOWN         &kp RIGHT                             &kp LEFT            &kp DOWN         &kp RIGHT        &trans
+                                                            &trans           &trans     &trans    &trans
       >;
     };
 
     hold_media_layer {
       bindings = <
-        &kp C_MUTE        &kp C_PREV       &kp C_VOL_UP     &trans                      &trans             &kp C_VOL_UP     &kp C_PREV       &kp C_MUTE
-        &kp C_PP          &kp C_NEXT       &kp C_VOL_DN     &trans                      &trans             &kp C_VOL_DN     &kp C_NEXT       &kp C_PP
+        &kp C_MUTE        &kp C_PREV       &kp C_VOL_UP     &trans                                         &trans     &kp C_VOL_UP     &kp C_PREV       &kp C_MUTE
+        &kp C_PP          &kp C_NEXT       &kp C_VOL_DN     &trans                                         &trans     &kp C_VOL_DN     &kp C_NEXT       &kp C_PP
                                                             &trans           &trans     &trans             &trans
       >;
     };
@@ -336,17 +319,17 @@
     // TODO где-то указаны
     hold_num_layer {
       bindings = <
-        &trans            &kp N3           &kp N2           &kp N1                      &kp N1             &kp N2           &kp N3           &trans
-        &none             &kp N6           &kp N5           &kp N0                      &kp N0             &kp N5           &kp N6           &none
+        &trans            &kp N3           &kp N2           &kp N1                                         &kp N1     &kp N2           &kp N3           &trans
+        &none             &kp N6           &kp N5           &kp N0                                         &kp N0     &kp N5           &kp N6           &none
                                                             &trans           &trans     &trans             &trans
       >;
     };
-    // TODO а где-то через транс + комбо
+
     hold_sym_layer {
       bindings = <
-        &trans            &trans           &trans           &trans                      &trans             &trans           &trans           &trans
-        &trans            &trans           &trans           &trans                      &trans             &trans           &trans           &trans
-                                                            &trans           &trans     &trans             &trans
+        &kp SYM_AT        &kp SYM_LPAR     &kp N2           &trans                          &trans        &kp SYM_RPAR     &kp SYM_LPAR     &kp SYM_AT
+        &kp SYM_HASH      &kp SYM_QUEST    &kp SYM_SLASH    &none                           &none         &kp SYM_SLASH    &kp SYM_QUEST    &kp SYM_HASH
+                                                            &trans    &trans      &trans    &trans
       >;
     };
   };

@@ -88,6 +88,57 @@ LAYER_TCOMBO_NO_BASE(NAME, LAYER, CURVED_BINDINGS, SPLAYED_BINDINGS, BOTH_BINDIN
     LAYER_TCOMBO(NAME, COMBO_LAYERS, BINDINGS, CURVED_BINDINGS, SPLAYED_BINDINGS, BOTH_BINDINGS, LEFT_KEYPOS, RIGHT_KEYPOS)
 
 /**
+ * 
+ * Генератор 4-состояний mod-morph:
+ * 1) base (без модов)
+ * 2) cmd (LGUI/RGUI)
+ * 3) shift (LSHIFT/RSHIFT)
+ * 4) cmd+shift
+ *
+ * Важно: behavior-mod-morph в ZMK не ограничивается слоями напрямую.
+ * Ограничение по слоям достигается тем, где именно вы ставите `&NAME` в keymap.
+ * Внешний (публичный) behavior всегда вызывается как `&NAME`.
+ * Внутренние ноды `NAME_shift` и `NAME_cmd_shift` служебные.
+ *
+ * @param NAME Базовое имя behavior-нод
+ * @param BASE_BINDING Биндинг без модификаторов
+ * @param CMD_BINDING Биндинг при зажатом Cmd (GUI)
+ * @param SHIFT_BINDING Биндинг при зажатом Shift
+ * @param CMD_SHIFT_BINDING Биндинг при зажатых Cmd+Shift
+ */
+// TODO кажется это хуета не достойная использования
+#define MOD_MPH(NAME, BASE_BINDING, CMD_BINDING, SHIFT_BINDING, CMD_SHIFT_BINDING) \
+NAME##_shift: NAME##_shift { \
+	compatible = "zmk,behavior-mod-morph"; \
+	#binding-cells = <0>; \
+	bindings = <BASE_BINDING>, <SHIFT_BINDING>; \
+	mods = <(MOD_LSFT|MOD_RSFT)>; \
+}; \
+NAME##_cmd_shift: NAME##_cmd_shift { \
+	compatible = "zmk,behavior-mod-morph"; \
+	#binding-cells = <0>; \
+	bindings = <CMD_BINDING>, <CMD_SHIFT_BINDING>; \
+	mods = <(MOD_LSFT|MOD_RSFT)>; \
+}; \
+NAME: NAME { \
+	compatible = "zmk,behavior-mod-morph"; \
+	#binding-cells = <0>; \
+	bindings = <&NAME##_shift>, <&NAME##_cmd_shift>; \
+	mods = <(MOD_LGUI|MOD_RGUI)>; \
+};
+
+/*
+Примеры (не применяются сейчас):
+
+MOD_MPH(demo_nav_key, &kp MINUS, &kp LEFT, &kp UNDER, &kp HOME)
+MOD_MPH(demo_sym_key, &kp SYM_AT, &kp SYM_LGUIL, &kp SYM_HASH, &kp SYM_DQUOTE)
+
+Как использовать в keymap на нужных слоях:
+  - в слое NAV_L:      &demo_nav_key
+  - в слое HOLD_SYM_L: &demo_sym_key
+*/
+
+/**
  * Макрос для создания простых зеркальных комбо (одно действие, две стороны).
  * Удобно для комбо, не требующих thumb-модификаторов (например, 4, 7, 8, 9 на слое цифр).
  * 
@@ -193,14 +244,6 @@ LAYER_TCOMBO_NO_BASE(num_2, HOLD_NUM_L, &kp SYM_PERCENT, &kp SYM_NUMERO, &none  
 LAYER_TCOMBO_NO_BASE(num_1, HOLD_NUM_L, &kp SYM_EQUAL,   &kp SYM_PLUS,   &kp SYM_STAR, TLI, TRI)
 LAYER_TCOMBO_NO_BASE(num_5, HOLD_NUM_L, &kp SYM_DOLLAR,  &kp SYM_RUBLE,  &none       , BLM, BRM)
 LAYER_TCOMBO_NO_BASE(num_0, HOLD_NUM_L, &kp SYM_CARET,   &kp SYM_MINUS,  &kp SYM_DOT , BLI, BRI)
-
-// Hold Symbols Layer Combos
-LAYER_TCOMBO(sym_at   , HOLD_SYM_L, &kp SYM_AT   , &kp SYM_DOLLAR, &kp SYM_RUBLE, &kp SYM_AMP    , TLR TLM, TRR TRM)
-LAYER_TCOMBO(sym_lpar , HOLD_SYM_L, &kp SYM_LPAR , &kp SYM_LBKT  , &kp SYM_LGUIL, &kp SYM_LBRACE , TLP TLR, TRP TRR)
-LAYER_TCOMBO(sym_rpar , HOLD_SYM_L, &kp SYM_RPAR , &kp SYM_RBKT  , &kp SYM_RGUIL, &kp SYM_RBRACE , TLP TLM, TRP TRM)
-LAYER_TCOMBO(sym_hash , HOLD_SYM_L, &kp SYM_HASH , &kp SYM_TILDE , &kp SYM_GRAVE, &kp SYM_PERCENT, BLR BLM, BRR BRM)
-LAYER_TCOMBO(sym_quest, HOLD_SYM_L, &kp SYM_QUEST, &kp SYM_EXCL  , &kp SYM_APOS , &kp SYM_LT     , BLP BLR, BRP BRR)
-LAYER_TCOMBO(sym_slash, HOLD_SYM_L, &kp SYM_SLASH, &kp SYM_BSLH  , &kp SYM_DQUOTE, &kp SYM_GT    , BLP BLM, BRP BRM)
 
 COMBO_MIRROR_LAYERS_IDLE(lock_nav,   &tog NAV_L,   TLM BLR BLI, TRM BRR BRI, RU_L ENG_L NAV_L MOUSE_L, 150)
 COMBO_MIRROR_LAYERS_IDLE(lock_mouse, &tog MOUSE_L, TLR BLM TLI, TRR BRM TRI, RU_L ENG_L NAV_L MOUSE_L, 150)
