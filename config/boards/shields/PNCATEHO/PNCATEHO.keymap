@@ -64,7 +64,7 @@
 #define SYM_EXCL     EXCL           // !
 #define SYM_QUEST    LS(RA(SLASH))  // ?
 #define SYM_APOS     RA(SQT)        // ‘
-#define SYM_BSLH     BSLH           // \
+#define SYM_BSLH     BSLH           // backslash
 #define SYM_SLASH    RA(SLASH)      // /
 #define SYM_DQUOTE   RA(LS(SQT))    // “
 #define SYM_LT       RA(LS(N6))     // <
