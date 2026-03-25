@@ -43,7 +43,7 @@
 #define SYM_EQUAL    EQUAL          // =
 #define SYM_PLUS     PLUS           // +
 #define SYM_STAR     KP_MULTIPLY    // *
-#define SYM_DOLLAR   DLLR           // $
+#define SYM_DOLLAR   RA(N4)         // $
 #define SYM_RUBLE    RA(H)          // ₽
 #define SYM_CARET    RA(F)          // ^
 #define SYM_MINUS    KP_MINUS       // -
@@ -64,7 +64,7 @@
 #define SYM_EXCL     EXCL           // !
 #define SYM_QUEST    LS(RA(SLASH))  // ?
 #define SYM_APOS     RA(SQT)        // ‘
-#define SYM_BSLH     BSLH           // backslash
+#define SYM_BSLH     RA(BSLH)       // backslash
 #define SYM_SLASH    RA(SLASH)      // /
 #define SYM_DQUOTE   RA(LS(SQT))    // “
 #define SYM_LT       RA(LS(N6))     // <
