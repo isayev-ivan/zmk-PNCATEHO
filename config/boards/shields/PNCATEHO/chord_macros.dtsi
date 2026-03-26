@@ -110,16 +110,40 @@ LAYER_TCOMBO_NO_BASE(NAME, LAYER, CURVED_BINDINGS, SPLAYED_BINDINGS, BOTH_BINDIN
  * @param CMD_SHIFT_BINDING Биндинг при зажатых Cmd+Shift
  */
 #define MOD_MPH(NAME, BASE_BINDING, CMD_BINDING, SHIFT_BINDING, CMD_SHIFT_BINDING) \
+NAME##_base_masked: NAME##_base_masked { \
+	compatible = "zmk,behavior-mod-morph"; \
+	#binding-cells = <0>; \
+	bindings = <BASE_BINDING>, <BASE_BINDING>; \
+	mods = <(MOD_LGUI|MOD_RGUI|MOD_LSFT|MOD_RSFT)>; \
+}; \
+NAME##_cmd_masked: NAME##_cmd_masked { \
+	compatible = "zmk,behavior-mod-morph"; \
+	#binding-cells = <0>; \
+	bindings = <CMD_BINDING>, <CMD_BINDING>; \
+	mods = <(MOD_LGUI|MOD_RGUI|MOD_LSFT|MOD_RSFT)>; \
+}; \
+NAME##_shift_masked: NAME##_shift_masked { \
+	compatible = "zmk,behavior-mod-morph"; \
+	#binding-cells = <0>; \
+	bindings = <SHIFT_BINDING>, <SHIFT_BINDING>; \
+	mods = <(MOD_LGUI|MOD_RGUI|MOD_LSFT|MOD_RSFT)>; \
+}; \
+NAME##_cmd_shift_masked: NAME##_cmd_shift_masked { \
+	compatible = "zmk,behavior-mod-morph"; \
+	#binding-cells = <0>; \
+	bindings = <CMD_SHIFT_BINDING>, <CMD_SHIFT_BINDING>; \
+	mods = <(MOD_LGUI|MOD_RGUI|MOD_LSFT|MOD_RSFT)>; \
+}; \
 NAME##_shift: NAME##_shift { \
 	compatible = "zmk,behavior-mod-morph"; \
 	#binding-cells = <0>; \
-	bindings = <BASE_BINDING>, <SHIFT_BINDING>; \
+	bindings = <&NAME##_base_masked>, <&NAME##_shift_masked>; \
 	mods = <(MOD_LSFT|MOD_RSFT)>; \
 }; \
 NAME##_cmd_shift: NAME##_cmd_shift { \
 	compatible = "zmk,behavior-mod-morph"; \
 	#binding-cells = <0>; \
-	bindings = <CMD_BINDING>, <CMD_SHIFT_BINDING>; \
+	bindings = <&NAME##_cmd_masked>, <&NAME##_cmd_shift_masked>; \
 	mods = <(MOD_LSFT|MOD_RSFT)>; \
 }; \
 NAME: NAME { \
