@@ -339,9 +339,9 @@
 
     hold_media_layer {
       bindings = <
-        &kp C_MUTE        &kp C_PREV       &kp C_VOL_UP     &trans                                         &trans     &kp C_VOL_UP     &kp C_PREV       &kp C_MUTE
-        &kp C_PP          &kp C_NEXT       &kp C_VOL_DN     &trans                                         &trans     &kp C_VOL_DN     &kp C_NEXT       &kp C_PP
-                                                            &trans           &trans     &trans             &trans
+        &kp C_MUTE        &kp C_PREV       &kp C_VOL_UP     &trans                                                                                               &trans     &kp C_VOL_UP     &kp C_PREV       &kp C_MUTE
+        &kp C_PP          &kp C_NEXT       &kp C_VOL_DN     &trans                                                                                               &trans     &kp C_VOL_DN     &kp C_NEXT       &kp C_PP
+                                                            &ht_curved LGUI SYM_EXCL    &ht_splayed LSHIFT SYM_QUEST     &ht_splayed RSHIFT SYM_QUEST            &ht_curved RGUI SYM_EXCL
       >;
     };
 
