@@ -246,6 +246,28 @@
           bindings = <&kp>, <&kp>;
       };
 
+      ht_curved_mg: ht_curved_mg {
+          compatible = "zmk,behavior-hold-tap";
+          label = "HT_CURVED_MG";
+          #binding-cells = <2>;
+          flavor = "balanced";
+          tapping-term-ms = <200>;
+          quick-tap-ms = <175>;
+          require-prior-idle-ms = <150>;
+          bindings = <&kp>, <&mg_dot>;
+      };
+
+      ht_splayed_mg: ht_splayed_mg {
+          compatible = "zmk,behavior-hold-tap";
+          label = "HT_SPLAYED_MG";
+          #binding-cells = <2>;
+          flavor = "balanced";
+          tapping-term-ms = <200>;
+          quick-tap-ms = <175>;
+          require-prior-idle-ms = <150>;
+          bindings = <&kp>, <&mg_comma>;
+      };
+
       ht_combo_ru: ht_combo_ru {
           compatible = "zmk,behavior-hold-tap";
           label = "HT_COMBO_RU";
@@ -336,7 +358,7 @@
       bindings = <
         &sym_at_mm        &sym_lpar_mm     &sym_rpar_mm     &trans                          &trans        &sym_rpar_mm     &sym_lpar_mm     &sym_at_mm
         &sym_hash_mm      &sym_quest_mm    &sym_slash_mm    &none                           &none         &sym_slash_mm    &sym_quest_mm    &sym_hash_mm
-                                                            &trans    &trans      &trans    &trans
+                                                            &ht_curved_mg LGUI 0    &ht_splayed_mg LSHIFT 0      &ht_splayed_mg RSHIFT 0    &ht_curved_mg RGUI 0
       >;
     };
   };
