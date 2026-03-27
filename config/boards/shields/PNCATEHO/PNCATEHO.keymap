@@ -37,6 +37,7 @@
 #define HOLD_MEDIA_L 5            // hold-media
 #define HOLD_NUM_L 6              // hold-numbers
 #define HOLD_SYM_L 7              // hold-symbols
+#define HOLD_BRACKETS_L 8         // hold-brackets
 
 // Кастомные символы
 #define SYM_PERCENT  PRCNT          // %
@@ -72,9 +73,9 @@
 #define SYM_GT       RA(LS(N7))     // >
 #define SYM_EMPH     RA(E)          // ударение
 #define SYM_LEFT     RA(J)          // ←
-#define SYM_UP     RA(I)            // ↑
+#define SYM_UP       RA(I)          // ↑
 #define SYM_DOWN     RA(K)          // ↓
-#define SYM_RIGHT     RA(L)         // →
+#define SYM_RIGHT    RA(L)          // →
 
 // Левая сторона
 #define TLP 0   // top left pinky
@@ -223,6 +224,30 @@
       MOD_MPH(sym_quest_mm, &kp SYM_QUEST, &kp SYM_EXCL,   &kp SYM_APOS,   &kp SYM_LT)
       MOD_MPH(sym_slash_mm, &kp SYM_SLASH, &kp SYM_BSLH,   &kp SYM_DQUOTE, &kp SYM_GT)
 
+      // td_bkt: tap-dance для квадратных скобок, 1 тап = [, 2 тапа = ]
+      td_bkt: td_bkt {
+          compatible = "zmk,behavior-tap-dance";
+          #binding-cells = <0>;
+          tapping-term-ms = <200>;
+          bindings = <&kp SYM_LBKT>, <&kp SYM_RBKT>;
+      };
+
+      // td_ang: tap-dance для угловых скобок, 1 тап = >, 2 тапа = <
+      td_ang: td_ang {
+          compatible = "zmk,behavior-tap-dance";
+          #binding-cells = <0>;
+          tapping-term-ms = <200>;
+          bindings = <&kp SYM_GT>, <&kp SYM_LT>;
+      };
+
+      // td_brc: tap-dance для фигурных скобок, 1 тап = {, 2 тапа = }
+      td_brc: td_brc {
+          compatible = "zmk,behavior-tap-dance";
+          #binding-cells = <0>;
+          tapping-term-ms = <200>;
+          bindings = <&kp SYM_LBRACE>, <&kp SYM_RBRACE>;
+      };
+
       // --- Настройки Hold-Tap для Thumb-клавиш и Комбо ---
       // Подробное описание параметров см. в docs/hold_tap_settings.md
       // tapping-term-ms: время удержания для срабатывания Hold (200мс)
@@ -304,7 +329,7 @@
     // &lt — layer-tap клавиша, которая будет срабатывать при удержании
     ru_layer {
       bindings = <
-        &lt HOLD_NUM_L B    &none    &none    &lt HOLD_SYM_L J                                                                  &lt HOLD_SYM_L J        &none    &none    &lt HOLD_NUM_L B
+        &lt HOLD_NUM_L B    &lt HOLD_BRACKETS_L F    &none    &lt HOLD_SYM_L J                                                      &lt HOLD_SYM_L J        &none    &lt HOLD_BRACKETS_L F    &lt HOLD_NUM_L B
         &lt HOLD_NAV_L H    &none    &none    &lt HOLD_MEDIA_L Y                                                                &lt HOLD_MEDIA_L Y      &none    &none    &lt HOLD_NAV_L H
                                               &ht_curved LGUI BSPC    &ht_splayed LSHIFT SPACE      &ht_splayed RSHIFT SPACE    &ht_curved RGUI BSPC
       >;
@@ -363,6 +388,14 @@
         &sym_at_mm        &sym_lpar_mm     &sym_rpar_mm     &trans                          &trans        &sym_rpar_mm     &sym_lpar_mm     &sym_at_mm
         &sym_hash_mm      &sym_quest_mm    &sym_slash_mm    &none                           &none         &sym_slash_mm    &sym_quest_mm    &sym_hash_mm
                                                             &ht_curved_mg LGUI 0    &ht_splayed_mg LSHIFT 0      &ht_splayed_mg RSHIFT 0    &ht_curved_mg RGUI 0
+      >;
+    };
+
+    hold_brackets_layer {
+      bindings = <
+        &kp LALT          &trans           &td_bkt          &td_ang                         &td_ang        &td_bkt          &trans           &kp RALT
+        &kp LALT          &trans           &td_brc          &kp SYM_BSLH                    &kp SYM_BSLH   &td_brc          &trans           &kp RALT
+                                                            &ht_curved LGUI SYM_BSLH    &ht_splayed LSHIFT SYM_SLASH      &ht_splayed RSHIFT SYM_SLASH    &ht_curved RGUI SYM_BSLH
       >;
     };
   };
