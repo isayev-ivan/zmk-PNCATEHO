@@ -345,12 +345,11 @@
       >;
     };
 
-    // TODO где-то указаны
     hold_num_layer {
       bindings = <
-        &trans            &kp N3           &kp N2           &kp N1                                         &kp N1     &kp N2           &kp N3           &trans
-        &none             &kp N6           &kp N5           &kp N0                                         &kp N0     &kp N5           &kp N6           &none
-                                                            &trans           &trans     &trans             &trans
+        &trans            &kp N3           &kp N2           &kp N1                                                                                          &kp N1     &kp N2           &kp N3           &trans
+        &none             &kp N6           &kp N5           &kp N4                                                                                          &kp N4     &kp N5           &kp N6           &none
+                                                            &ht_curved LGUI N0    &ht_splayed LSHIFT SYM_EQUAL     &ht_splayed RSHIFT SYM_EQUAL             &ht_curved RGUI N0
       >;
     };
 
