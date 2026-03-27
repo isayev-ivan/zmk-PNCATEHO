@@ -38,6 +38,7 @@
 #define HOLD_NUM_L 6              // hold-numbers
 #define HOLD_SYM_L 7              // hold-symbols
 #define HOLD_BRACKETS_L 8         // hold-brackets
+#define HOLD_TYPO_L 9             // hold-typo
 
 // Кастомные символы
 #define SYM_PERCENT  PRCNT          // %
@@ -76,6 +77,8 @@
 #define SYM_UP       RA(I)          // ↑
 #define SYM_DOWN     RA(K)          // ↓
 #define SYM_RIGHT    RA(L)          // →
+#define SYM_COLON    LS(RA(SEMICOLON))    // :
+#define SYM_SEMICOL  RA(SEMICOLON)        // ;
 
 // Левая сторона
 #define TLP 0   // top left pinky
@@ -330,7 +333,7 @@
     ru_layer {
       bindings = <
         &lt HOLD_NUM_L B    &lt HOLD_BRACKETS_L F    &none    &lt HOLD_SYM_L J                                                      &lt HOLD_SYM_L J        &none    &lt HOLD_BRACKETS_L F    &lt HOLD_NUM_L B
-        &lt HOLD_NAV_L H    &none    &none    &lt HOLD_MEDIA_L Y                                                                &lt HOLD_MEDIA_L Y      &none    &none    &lt HOLD_NAV_L H
+        &lt HOLD_NAV_L H    &lt HOLD_TYPO_L C    &none    &lt HOLD_MEDIA_L Y                                                        &lt HOLD_MEDIA_L Y      &none    &lt HOLD_TYPO_L C    &lt HOLD_NAV_L H
                                               &ht_curved LGUI BSPC    &ht_splayed LSHIFT SPACE      &ht_splayed RSHIFT SPACE    &ht_curved RGUI BSPC
       >;
     };
@@ -396,6 +399,14 @@
         &kp LALT          &trans           &td_bkt          &td_ang                         &td_ang        &td_bkt          &trans           &kp RALT
         &kp LALT          &trans           &td_brc          &kp SYM_BSLH                    &kp SYM_BSLH   &td_brc          &trans           &kp RALT
                                                             &ht_curved LGUI SYM_BSLH    &ht_splayed LSHIFT SYM_SLASH      &ht_splayed RSHIFT SYM_SLASH    &ht_curved RGUI SYM_BSLH
+      >;
+    };
+    //TODO Завести дефис RA(MINUS)
+    hold_typo_layer {
+      bindings = <
+        &kp LCTRL         &trans           &kp SYM_MINUS    &kp RA(MINUS)               &kp RA(MINUS)     &kp SYM_MINUS    &trans           &kp RCTRL
+        &kp LCTRL         &trans           &kp SYM_LGUIL    &kp SYM_RGUIL                   &kp SYM_RGUIL         &kp SYM_LGUIL    &trans           &kp RCTRL
+                                                            &ht_curved LGUI SYM_COLON    &ht_splayed LSHIFT SYM_SEMICOL      &ht_splayed RSHIFT SYM_SEMICOL    &ht_curved RGUI SYM_COLON
       >;
     };
   };
