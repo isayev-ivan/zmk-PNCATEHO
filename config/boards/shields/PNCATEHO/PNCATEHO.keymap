@@ -70,6 +70,11 @@
 #define SYM_DQUOTE   RA(LS(SQT))    // “
 #define SYM_LT       RA(LS(N6))     // <
 #define SYM_GT       RA(LS(N7))     // >
+#define SYM_EMPH     RA(E)          // ударение
+#define SYM_LEFT     RA(J)          // ←
+#define SYM_UP     RA(I)            // ↑
+#define SYM_DOWN     RA(K)          // ↓
+#define SYM_RIGHT     RA(L)         // →
 
 // Левая сторона
 #define TLP 0   // top left pinky
@@ -214,7 +219,7 @@
       MOD_MPH(sym_at_mm,    &kp SYM_AT,    &kp SYM_DOLLAR, &kp SYM_RUBLE,  &kp SYM_AMP)
       MOD_MPH(sym_lpar_mm,  &kp SYM_LPAR,  &kp SYM_LBKT,   &kp SYM_LGUIL,  &kp SYM_LBRACE)
       MOD_MPH(sym_rpar_mm,  &kp SYM_RPAR,  &kp SYM_RBKT,   &kp SYM_RGUIL,  &kp SYM_RBRACE)
-      MOD_MPH(sym_hash_mm,  &kp SYM_HASH,  &kp SYM_TILDE,  &kp SYM_GRAVE,  &kp SYM_PERCENT)
+      MOD_MPH(sym_hash_mm,  &kp SYM_HASH,  &kp SYM_TILDE,  &kp SYM_GRAVE,  &kp SYM_EMPH)
       MOD_MPH(sym_quest_mm, &kp SYM_QUEST, &kp SYM_EXCL,   &kp SYM_APOS,   &kp SYM_LT)
       MOD_MPH(sym_slash_mm, &kp SYM_SLASH, &kp SYM_BSLH,   &kp SYM_DQUOTE, &kp SYM_GT)
 
