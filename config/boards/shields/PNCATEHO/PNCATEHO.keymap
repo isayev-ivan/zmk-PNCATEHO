@@ -401,7 +401,7 @@
                                                             &ht_curved LGUI SYM_BSLH    &ht_splayed LSHIFT SYM_SLASH      &ht_splayed RSHIFT SYM_SLASH    &ht_curved RGUI SYM_BSLH
       >;
     };
-    //TODO Завести дефис RA(MINUS)
+    // Завести дефис RA(MINUS)
     hold_typo_layer {
       bindings = <
         &kp LCTRL         &trans           &kp SYM_MINUS    &kp RA(MINUS)               &kp RA(MINUS)     &kp SYM_MINUS    &trans           &kp RCTRL
