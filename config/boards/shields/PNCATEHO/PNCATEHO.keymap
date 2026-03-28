@@ -78,8 +78,8 @@
 #define SYM_UP       RA(I)          // ↑
 #define SYM_DOWN     RA(K)          // ↓
 #define SYM_RIGHT    RA(L)          // →
-#define SYM_COLON    LS(RA(SEMICOLON))    // :
-#define SYM_SEMICOL  RA(SEMICOLON)        // ;
+#define SYM_COLON    RA(SEMICOLON)       // :
+#define SYM_SEMICOL  LS(RA(SEMICOLON))   // ;
 
 // Левая сторона
 #define TLP 0   // top left pinky
@@ -335,8 +335,8 @@
 
     hold_brackets_layer {
       bindings = <
-        &kp LALT          &trans           &td_bkt          &td_ang                         &td_ang        &td_bkt          &trans           &kp RALT
-        &kp LALT          &trans           &td_brc          &kp SYM_BSLH                    &kp SYM_BSLH   &td_brc          &trans           &kp RALT
+        &kp LALT          &trans           &td_bkt          &td_ang                         &td_ang          &td_bkt          &trans           &kp RALT
+        &kp LALT          &trans           &td_brc          &kp SYM_GRAVE                    &kp SYM_GRAVE   &td_brc          &trans           &kp RALT
                                                             &ht_curved LGUI SYM_BSLH    &ht_splayed LSHIFT SYM_SLASH      &ht_splayed RSHIFT SYM_SLASH    &ht_curved RGUI SYM_BSLH
       >;
     };

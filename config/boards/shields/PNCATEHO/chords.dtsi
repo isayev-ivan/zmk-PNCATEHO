@@ -46,8 +46,8 @@ TCOMBO(tab       , &kp TAB     , &kp LA(TAB)  , &kp LC(TAB)  , &none         , T
 TCOMBO(enter     , &kp ENTER   , &kp LS(ENTER), &none        , &none         , TLI BLI      , TRI BRI      )
 TCOMBO(boot      , &none       , &none        , &ext_power EP_OFF, &bootloader   , TLP TLR TLM TLI, TRP TRR TRM TRI)
 TCOMBO(bt        , &bt BT_SEL 0, &bt BT_SEL 1 , &bt BT_SEL 2 , &bt BT_CLR        , BLP BLR BLM BLI, BRP BRR BRM BRI)
-TCOMBO(mg_comma  , &mg_comma   , &mg_dot      , &kp RA(SEMI) , &kp LS(RA(SEMI))  , TLP TLR TLM  , TRP TRR TRM  )
-TCOMBO(minus_dash, &kp SYM_MINUS   , &kp SYM_MATHMIN, &kp UNDER    , &kp PIPE    , BLP BLR BLM  , BRP BRR BRM  )
+TCOMBO(mg_comma  , &mg_comma   , &kp SYM_COLON , &mg_dot      , &kp SYM_SEMICOL  , TLP TLR TLM  , TRP TRR TRM  )
+TCOMBO(minus_dash, &kp SYM_MINUS  , &kp UNDER , &kp SYM_MATHMIN   , &kp PIPE     , BLP BLR BLM  , BRP BRR BRM  )
 
 
 // Hold Numbers Layer Combos — двукнопия
