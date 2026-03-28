@@ -9,6 +9,19 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/ext_power.h>
 #include "chord_macros.dtsi"
+#include <dt-bindings/zmk/mouse.h>
+
+
+// Глобальные параметры скорости/ускорения мыши: &mmv для движения курсора, &msc для скролла.
+&mmv {
+  time-to-max-speed-ms = <500>;
+  acceleration-exponent = <1>;
+};
+
+&msc {
+  time-to-max-speed-ms = <500>;
+  acceleration-exponent = <1>;
+};
 
 
 #define COMBO_TIMEOUT 70          // timeout комбо (мс)
@@ -146,10 +159,10 @@
       /*
         * когда мы зададим клавише на слое поведение «&sym_at_mm» это будет означать:
         * — &kp SYM_AT когда tap
-        * — &kp SYM_DOLLAR c cmd, 
+        * — &kp SYM_DOLLAR c cmd,
         * — &kp SYM_RUBLE c shift
         * — &kp SYM_AMP c cmd+shift
-      */ 
+      */
       MOD_MPH(sym_at_mm,    &kp SYM_AT,    &kp SYM_DOLLAR, &kp SYM_RUBLE,  &kp SYM_AMP)
       MOD_MPH(sym_lpar_mm,  &kp SYM_LPAR,  &kp SYM_LBKT,   &kp SYM_LGUIL,  &kp SYM_LBRACE)
       MOD_MPH(sym_rpar_mm,  &kp SYM_RPAR,  &kp SYM_RBKT,   &kp SYM_RGUIL,  &kp SYM_RBRACE)
@@ -257,9 +270,9 @@
     // &lt — layer-tap клавиша, которая будет срабатывать при удержании
     ru_layer {
       bindings = <
-        &lt HOLD_NUM_L B    &lt HOLD_NUM_L F                  &none    &lt HOLD_SYM_L J                                                      &lt HOLD_SYM_L J        &none    &lt HOLD_BRACKETS_L F                  &lt HOLD_NUM_L B
-        &lt HOLD_NAV_L H    &lt HOLD_NUM_L C                      &none    &lt HOLD_MEDIA_L Y                                                     &lt HOLD_MEDIA_L Y      &none    &lt HOLD_TYPO_L C                      &lt HOLD_NAV_L H
-                                              &ht_curved LGUI BSPC    &ht_splayed LSHIFT SPACE      &ht_splayed RSHIFT SPACE    &ht_curved RGUI BSPC
+        &lt HOLD_NUM_L B    &lt HOLD_NUM_L F    &none    &lt HOLD_SYM_L J                                                                  &lt HOLD_SYM_L J        &none    &lt HOLD_BRACKETS_L F   &lt HOLD_NUM_L B
+        &lt HOLD_NAV_L H    &lt HOLD_NUM_L C    &none    &lt HOLD_MEDIA_L Y                                                                &lt HOLD_MEDIA_L Y      &none    &lt HOLD_TYPO_L C       &lt HOLD_NAV_L H
+                                                         &ht_curved LGUI BSPC    &ht_splayed LSHIFT SPACE      &ht_splayed RSHIFT SPACE    &ht_curved RGUI BSPC
       >;
     };
 
