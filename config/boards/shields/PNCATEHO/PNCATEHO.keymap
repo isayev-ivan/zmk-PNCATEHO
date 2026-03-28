@@ -176,7 +176,7 @@
           compatible = "zmk,behavior-tap-dance";
           #binding-cells = <0>;
           tapping-term-ms = <300>;
-          bindings = <&kp LA(LBKT)>, <&kp LA(RBKT)>;
+          bindings = <&kp SYM_LBKT>, <&kp SYM_RBKT>;
       };
 
       // td_ang: tap-dance для угловых скобок, 1 тап = >, 2 тапа = <
@@ -184,7 +184,7 @@
           compatible = "zmk,behavior-tap-dance";
           #binding-cells = <0>;
           tapping-term-ms = <300>;
-          bindings = <&kp RA(LS(N7))>, <&kp RA(LS(N6))>;
+          bindings = <&kp SYM_GT>, <&kp SYM_LT>;
       };
 
       // td_brc: tap-dance для фигурных скобок, 1 тап = {, 2 тапа = }
@@ -192,7 +192,7 @@
           compatible = "zmk,behavior-tap-dance";
           #binding-cells = <0>;
           tapping-term-ms = <300>;
-          bindings = <&kp LS(LA(LBKT))>, <&kp LS(LA(RBKT))>;
+          bindings = <&kp SYM_LBRACE>, <&kp SYM_RBRACE>;
       };
 
       // --- Настройки Hold-Tap для Thumb-клавиш и Комбо ---
