@@ -33,7 +33,7 @@
 #define ENG_L 1                   // основной EN слой
 #define NAV_L 2                   // навигация
 #define MOUSE_L 3                 // мышь
-#define HOLD_NAV_L 4              // hold-navigationn
+#define HOLD_NAV_L 4              // hold-navigation
 #define HOLD_MEDIA_L 5            // hold-media
 #define HOLD_NUM_L 6              // hold-numbers
 #define HOLD_SYM_L 7              // hold-symbols
