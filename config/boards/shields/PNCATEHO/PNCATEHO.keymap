@@ -32,12 +32,13 @@
 #define RU_L 0                    // основной RU слой
 #define ENG_L 1                   // основной EN слой
 #define NAV_L 2                   // навигация
-#define HOLD_NAV_L 3              // hold-navigationn
-#define HOLD_MEDIA_L 4            // hold-media
-#define HOLD_NUM_L 5              // hold-numbers
-#define HOLD_SYM_L 6              // hold-symbols
-#define HOLD_BRACKETS_L 7         // hold-brackets
-#define HOLD_TYPO_L 8             // hold-typo
+#define MOUSE_L 3                 // мышь
+#define HOLD_NAV_L 4              // hold-navigationn
+#define HOLD_MEDIA_L 5            // hold-media
+#define HOLD_NUM_L 6              // hold-numbers
+#define HOLD_SYM_L 7              // hold-symbols
+#define HOLD_BRACKETS_L 8         // hold-brackets
+#define HOLD_TYPO_L 9             // hold-typo
 
 // Кастомные символы
 #define SYM_PERCENT  PRCNT          // %
@@ -289,6 +290,14 @@
         &kp PG_UP         &kp HOME         &kp UP           &kp END                     &kp HOME           &kp UP           &kp END          &kp PG_UP
         &kp PG_DN         &kp LEFT         &kp DOWN         &kp RIGHT                   &kp LEFT           &kp DOWN         &kp RIGHT        &kp PG_DN
                                                             &trans           &trans     &trans             &trans
+      >;
+    };
+
+    mouse_layer {
+      bindings = <
+        &msc SCRL_UP      &mkp RCLK        &mmv MOVE_UP     &mkp LCLK                              &mkp LCLK          &mmv MOVE_UP     &mkp RCLK        &msc SCRL_UP
+        &msc SCRL_DOWN    &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT                        &mmv MOVE_LEFT     &mmv MOVE_DOWN   &mmv MOVE_RIGHT  &msc SCRL_DOWN
+                                                            &trans           &trans      &trans    &trans
       >;
     };
 
