@@ -272,7 +272,7 @@
     // &lt — layer-tap клавиша, которая будет срабатывать при удержании
     ru_layer {
       bindings = <
-        &lt HOLD_NUM_L B    &ht_hold_brackets HOLD_BRACKETS_L F    &none    &lt HOLD_SYM_L J                                                      &lt HOLD_SYM_L J        &none    &ht_hold_brackets HOLD_BRACKETS_L F    &lt HOLD_NUM_L B
+        &lt HOLD_NUM_L B    &lt HOLD_BRACKETS_L F                  &none    &lt HOLD_SYM_L J                                                      &lt HOLD_SYM_L J        &none    &lt HOLD_BRACKETS_L F                  &lt HOLD_NUM_L B
         &lt HOLD_NAV_L H    &ht_hold_typo HOLD_TYPO_L C            &none    &lt HOLD_MEDIA_L Y                                                     &lt HOLD_MEDIA_L Y      &none    &ht_hold_typo HOLD_TYPO_L C            &lt HOLD_NAV_L H
                                               &ht_curved LGUI BSPC    &ht_splayed LSHIFT SPACE      &ht_splayed RSHIFT SPACE    &ht_curved RGUI BSPC
       >;
