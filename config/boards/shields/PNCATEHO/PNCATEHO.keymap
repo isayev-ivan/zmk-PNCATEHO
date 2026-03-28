@@ -323,6 +323,22 @@
           require-prior-idle-ms = <150>;
           bindings = <&kp>, <&mac_to_ru>;
       };
+
+      ht_hold_brackets: ht_hold_brackets {
+          compatible = "zmk,behavior-hold-tap";
+          #binding-cells = <0>;
+          flavor = "hold-preferred";
+          tapping-term-ms = <200>;
+          bindings = <&mo HOLD_BRACKETS_L>, <&kp F>;
+      };
+
+      ht_hold_typo: ht_hold_typo {
+          compatible = "zmk,behavior-hold-tap";
+          #binding-cells = <0>;
+          flavor = "hold-preferred";
+          tapping-term-ms = <200>;
+          bindings = <&mo HOLD_TYPO_L>, <&kp C>;
+      };
   };
 
   keymap {
@@ -333,8 +349,8 @@
     // &lt — layer-tap клавиша, которая будет срабатывать при удержании
     ru_layer {
       bindings = <
-        &lt HOLD_NUM_L B    &lt HOLD_BRACKETS_L F    &none    &lt HOLD_SYM_L J                                                      &lt HOLD_SYM_L J        &none    &lt HOLD_BRACKETS_L F    &lt HOLD_NUM_L B
-        &lt HOLD_NAV_L H    &lt HOLD_TYPO_L C    &none    &lt HOLD_MEDIA_L Y                                                        &lt HOLD_MEDIA_L Y      &none    &lt HOLD_TYPO_L C    &lt HOLD_NAV_L H
+        &lt HOLD_NUM_L B    &ht_hold_brackets    &none    &lt HOLD_SYM_L J                                                      &lt HOLD_SYM_L J        &none    &ht_hold_brackets    &lt HOLD_NUM_L B
+        &lt HOLD_NAV_L H    &ht_hold_typo        &none    &lt HOLD_MEDIA_L Y                                                     &lt HOLD_MEDIA_L Y      &none    &ht_hold_typo        &lt HOLD_NAV_L H
                                               &ht_curved LGUI BSPC    &ht_splayed LSHIFT SPACE      &ht_splayed RSHIFT SPACE    &ht_curved RGUI BSPC
       >;
     };
