@@ -175,7 +175,7 @@
       td_bkt: td_bkt {
           compatible = "zmk,behavior-tap-dance";
           #binding-cells = <0>;
-          tapping-term-ms = <300>;
+          tapping-term-ms = <250>;
           bindings = <&kp SYM_LBKT>, <&kp SYM_RBKT>;
       };
 
@@ -183,7 +183,7 @@
       td_ang: td_ang {
           compatible = "zmk,behavior-tap-dance";
           #binding-cells = <0>;
-          tapping-term-ms = <300>;
+          tapping-term-ms = <250>;
           bindings = <&kp SYM_GT>, <&kp SYM_LT>;
       };
 
@@ -191,7 +191,7 @@
       td_brc: td_brc {
           compatible = "zmk,behavior-tap-dance";
           #binding-cells = <0>;
-          tapping-term-ms = <300>;
+          tapping-term-ms = <250>;
           bindings = <&kp SYM_LBRACE>, <&kp SYM_RBRACE>;
       };
 
