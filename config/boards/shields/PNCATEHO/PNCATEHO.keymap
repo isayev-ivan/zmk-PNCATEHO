@@ -49,7 +49,8 @@
 #define SYM_DOLLAR   RA(N4)         // $
 #define SYM_RUBLE    RA(H)          // ₽
 #define SYM_CARET    RA(F)          // ^
-#define SYM_MINUS    KP_MINUS       // -
+#define SYM_MINUS    MINUS          // -
+#define SYM_MATHMIN  LS(RA(MINUS))  // –
 #define SYM_DOT      KP_DOT         // .
 #define SYM_AT       AT             // @
 #define SYM_AMP      AMPS           // &

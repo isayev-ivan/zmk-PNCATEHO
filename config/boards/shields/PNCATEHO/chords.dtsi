@@ -45,9 +45,9 @@ TCOMBO(esc       , &kp ESC     , &none        , &kp N1       , &none         , T
 TCOMBO(tab       , &kp TAB     , &kp LA(TAB)  , &kp LC(TAB)  , &none         , TLP BLP      , TRP BRP      )
 TCOMBO(enter     , &kp ENTER   , &kp LS(ENTER), &none        , &none         , TLI BLI      , TRI BRI      )
 TCOMBO(boot      , &none       , &none        , &ext_power EP_OFF, &bootloader   , TLP TLR TLM TLI, TRP TRR TRM TRI)
-TCOMBO(bt        , &bt BT_SEL 0, &bt BT_SEL 1 , &bt BT_SEL 2 , &bt BT_CLR    , BLP BLR BLM BLI, BRP BRR BRM BRI)
-TCOMBO(mg_comma  , &mg_comma   , &mg_dot      , &kp RA(SEMI) , &kp LS(RA(SEMI)), TLP TLR TLM  , TRP TRR TRM  )
-TCOMBO(minus_dash, &kp MINUS   , &kp LA(LS(MINUS)), &kp UNDER    , &kp PIPE      , BLP BLR BLM  , BRP BRR BRM  )
+TCOMBO(bt        , &bt BT_SEL 0, &bt BT_SEL 1 , &bt BT_SEL 2 , &bt BT_CLR        , BLP BLR BLM BLI, BRP BRR BRM BRI)
+TCOMBO(mg_comma  , &mg_comma   , &mg_dot      , &kp RA(SEMI) , &kp LS(RA(SEMI))  , TLP TLR TLM  , TRP TRR TRM  )
+TCOMBO(minus_dash, &kp SYM_MINUS   , &kp SYM_MATHMIN, &kp UNDER    , &kp PIPE    , BLP BLR BLM  , BRP BRR BRM  )
 
 
 // Hold Numbers Layer Combos — двукнопия
@@ -56,10 +56,10 @@ COMBO_MIRROR_LAYERS(num_7, &kp N7, TLM TLI, TRM TRI, HOLD_NUM_L)
 COMBO_MIRROR_LAYERS(num_9, &kp N9, BLM BLI, BRM BRI, HOLD_NUM_L)
 
 // Hold Numbers Layer Combos — комбо с thumb
-LAYER_TCOMBO_NO_BASE(num_2, HOLD_NUM_L, &kp SYM_PERCENT, &kp SYM_NUMERO, &none       , TLM, TRM)
-LAYER_TCOMBO_NO_BASE(num_1, HOLD_NUM_L, &kp SYM_STAR,    &kp SYM_PLUS,   &none       , TLI, TRI)
-LAYER_TCOMBO_NO_BASE(num_5, HOLD_NUM_L, &kp SYM_DOLLAR,  &kp SYM_RUBLE,  &none       , BLM, BRM)
-LAYER_TCOMBO_NO_BASE(num_4, HOLD_NUM_L, &kp SYM_CARET,   &kp SYM_MINUS,  &kp SYM_DOT , BLI, BRI)
+LAYER_TCOMBO_NO_BASE(num_2, HOLD_NUM_L, &kp SYM_PERCENT, &kp SYM_NUMERO,  &none       , TLM, TRM)
+LAYER_TCOMBO_NO_BASE(num_1, HOLD_NUM_L, &kp SYM_STAR,    &kp SYM_PLUS,    &none       , TLI, TRI)
+LAYER_TCOMBO_NO_BASE(num_5, HOLD_NUM_L, &kp SYM_DOLLAR,  &kp SYM_RUBLE,   &none       , BLM, BRM)
+LAYER_TCOMBO_NO_BASE(num_4, HOLD_NUM_L, &kp SYM_CARET,   &kp SYM_MATHMIN, &kp SYM_DOT , BLI, BRI)
 
 // Hold symbols layer combos
 LAYER_TCOMBO_NO_BASE(sym_at,    HOLD_SYM_L, &kp SYM_DOLLAR, &kp SYM_RUBLE,  &kp SYM_AMP,    TLP, TRP)
