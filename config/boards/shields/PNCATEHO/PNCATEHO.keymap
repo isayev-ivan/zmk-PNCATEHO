@@ -8,20 +8,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/ext_power.h>
-#include <dt-bindings/zmk/mouse.h>
 #include "chord_macros.dtsi"
-
-
-// Глобальные параметры скорости/ускорения мыши: &mmv для движения курсора, &msc для скролла.
-&mmv {
-  time-to-max-speed-ms = <500>;
-  acceleration-exponent = <1>;
-};
-
-&msc {
-  time-to-max-speed-ms = <500>;
-  acceleration-exponent = <1>;
-};
 
 
 #define COMBO_TIMEOUT 70          // timeout комбо (мс)
@@ -32,13 +19,12 @@
 #define RU_L 0                    // основной RU слой
 #define ENG_L 1                   // основной EN слой
 #define NAV_L 2                   // навигация
-#define MOUSE_L 3                 // мышь
-#define HOLD_NAV_L 4              // hold-navigationn
-#define HOLD_MEDIA_L 5            // hold-media
-#define HOLD_NUM_L 6              // hold-numbers
-#define HOLD_SYM_L 7              // hold-symbols
-#define HOLD_BRACKETS_L 8         // hold-brackets
-#define HOLD_TYPO_L 9             // hold-typo
+#define HOLD_NAV_L 3              // hold-navigationn
+#define HOLD_MEDIA_L 4            // hold-media
+#define HOLD_NUM_L 5              // hold-numbers
+#define HOLD_SYM_L 6              // hold-symbols
+#define HOLD_BRACKETS_L 7         // hold-brackets
+#define HOLD_TYPO_L 8             // hold-typo
 
 // Кастомные символы
 #define SYM_PERCENT  PRCNT          // %
@@ -157,6 +143,13 @@
   };
 
   behaviors {
+      /*
+        * когда мы зададим клавише на слое поведение «&sym_at_mm» это будет означать:
+        * — &kp SYM_AT когда tap
+        * — &kp SYM_DOLLAR c cmd, 
+        * — &kp SYM_RUBLE c shift
+        * — &kp SYM_AMP c cmd+shift
+      */ 
       MOD_MPH(sym_at_mm,    &kp SYM_AT,    &kp SYM_DOLLAR, &kp SYM_RUBLE,  &kp SYM_AMP)
       MOD_MPH(sym_lpar_mm,  &kp SYM_LPAR,  &kp SYM_LBKT,   &kp SYM_LGUIL,  &kp SYM_LBRACE)
       MOD_MPH(sym_rpar_mm,  &kp SYM_RPAR,  &kp SYM_RBKT,   &kp SYM_RGUIL,  &kp SYM_RBRACE)
@@ -301,14 +294,6 @@
       >;
     };
 
-    mouse_layer {
-      bindings = <
-        &msc SCRL_UP      &mkp RCLK        &mmv MOVE_UP     &mkp LCLK                              &mkp LCLK          &mmv MOVE_UP     &mkp RCLK        &msc SCRL_UP
-        &msc SCRL_DOWN    &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT                        &mmv MOVE_LEFT     &mmv MOVE_DOWN   &mmv MOVE_RIGHT  &msc SCRL_DOWN
-                                                            &trans           &trans      &trans    &trans
-      >;
-    };
-
     hold_nav_layer {
       bindings = <
         &trans            &kp HOME         &kp UP           &kp END                               &kp HOME            &kp UP           &kp END          &trans
@@ -348,7 +333,7 @@
                                                             &ht_curved LGUI SYM_BSLH    &ht_splayed LSHIFT SYM_SLASH      &ht_splayed RSHIFT SYM_SLASH    &ht_curved RGUI SYM_BSLH
       >;
     };
-    // Завести дефис RA(MINUS)
+
     hold_typo_layer {
       bindings = <
         &kp LCTRL         &trans           &kp SYM_MINUS    &kp RA(MINUS)               &kp RA(MINUS)     &kp SYM_MINUS    &trans           &kp RCTRL
