@@ -260,7 +260,6 @@
       // flavor "balanced": корректное разрешение конфликтов при перекатах пальцев
       ht_curved: ht_curved {
           compatible = "zmk,behavior-hold-tap";
-          label = "HT_CURVED"; // TODO вроде устарело?
           #binding-cells = <2>;
           flavor = "balanced";
           tapping-term-ms = <200>;
@@ -271,7 +270,6 @@
 
       ht_splayed: ht_splayed {
           compatible = "zmk,behavior-hold-tap";
-          label = "HT_SPLAYED";
           #binding-cells = <2>;
           flavor = "balanced";
           tapping-term-ms = <200>;
@@ -282,7 +280,6 @@
 
       ht_curved_mg: ht_curved_mg {
           compatible = "zmk,behavior-hold-tap";
-          label = "HT_CURVED_MG";
           #binding-cells = <2>;
           flavor = "balanced";
           tapping-term-ms = <200>;
@@ -293,7 +290,6 @@
 
       ht_splayed_mg: ht_splayed_mg {
           compatible = "zmk,behavior-hold-tap";
-          label = "HT_SPLAYED_MG";
           #binding-cells = <2>;
           flavor = "balanced";
           tapping-term-ms = <200>;
@@ -304,7 +300,6 @@
 
       ht_combo_ru: ht_combo_ru {
           compatible = "zmk,behavior-hold-tap";
-          label = "HT_COMBO_RU";
           #binding-cells = <2>;
           flavor = "balanced";
           tapping-term-ms = <200>;
@@ -315,7 +310,6 @@
 
       ht_combo_en: ht_combo_en {
           compatible = "zmk,behavior-hold-tap";
-          label = "HT_COMBO_EN";
           #binding-cells = <2>;
           flavor = "balanced";
           tapping-term-ms = <200>;
