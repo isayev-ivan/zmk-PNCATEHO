@@ -157,70 +157,6 @@
   };
 
   behaviors {
-      // TODO надо будет подчистить лишнее
-
-      // Ставит вопросительный знак, а с зажатием Shift - восклицательный знак
-      quest_excl: quest_excl {
-          compatible = "zmk,behavior-mod-morph";
-          bindings = <&kp RA(LS(SLASH))>, <&kp EXCL>;
-
-          #binding-cells = <0>;
-          mods = <(MOD_LSFT|MOD_RSFT)>;
-      };
-
-      // Ставит скобку "(", а с зажатием Shift - "<"
-      bracket_left: bracket_left {
-          compatible = "zmk,behavior-mod-morph";
-          bindings = <&kp LPAR>, <&kp RA(LS(N6))>;
-
-          #binding-cells = <0>;
-          mods = <(MOD_LSFT|MOD_RSFT)>;
-          keep-mods = <(MOD_LSFT|MOD_RSFT)>;
-      };
-      // Ставит скобку ")", а с зажатием Shift - ">"
-      bracket_right: bracket_right {
-          compatible = "zmk,behavior-mod-morph";
-          bindings = <&kp RPAR>, <&kp RA(LS(N7))>;
-
-          #binding-cells = <0>;
-          mods = <(MOD_LSFT|MOD_RSFT)>;
-          keep-mods = <(MOD_LSFT|MOD_RSFT)>;
-      };
-
-      // Ставит ",", а с зажатием Shift - "→"
-      comma_right: comma_right {
-          compatible = "zmk,behavior-mod-morph";
-          bindings = <&kp RA(N6)>, <&kp RA(L)>;
-
-          #binding-cells = <0>;
-          mods = <(MOD_LSFT|MOD_RSFT)>;
-      };
-
-      // Ставит "-", а с зажатием Shift - "↓"
-      minus_down: minus_down {
-          compatible = "zmk,behavior-mod-morph";
-          bindings = <&kp MINUS>, <&kp RA(K)>;
-
-          #binding-cells = <0>;
-          mods = <(MOD_LSFT|MOD_RSFT)>;
-      };
-      // Ставит "#", а с зажатием Shift - "↑"
-      up_hash: up_hash {
-          compatible = "zmk,behavior-mod-morph";
-          bindings = <&kp HASH>, <&kp RA(I)>;
-
-          #binding-cells = <0>;
-          mods = <(MOD_LSFT|MOD_RSFT)>;
-      };
-      // Ставит "=", а с зажатием Shift - "←"
-      equal_left: equal_left {
-          compatible = "zmk,behavior-mod-morph";
-          bindings = <&kp EQUAL>, <&kp RA(J)>;
-
-          #binding-cells = <0>;
-          mods = <(MOD_LSFT|MOD_RSFT)>;
-      };
-
       MOD_MPH(sym_at_mm,    &kp SYM_AT,    &kp SYM_DOLLAR, &kp SYM_RUBLE,  &kp SYM_AMP)
       MOD_MPH(sym_lpar_mm,  &kp SYM_LPAR,  &kp SYM_LBKT,   &kp SYM_LGUIL,  &kp SYM_LBRACE)
       MOD_MPH(sym_rpar_mm,  &kp SYM_RPAR,  &kp SYM_RBKT,   &kp SYM_RGUIL,  &kp SYM_RBRACE)
@@ -320,18 +256,18 @@
 
       ht_hold_brackets: ht_hold_brackets {
           compatible = "zmk,behavior-hold-tap";
-          #binding-cells = <0>;
+          #binding-cells = <2>;
           flavor = "hold-preferred";
           tapping-term-ms = <200>;
-          bindings = <&mo HOLD_BRACKETS_L>, <&kp F>;
+          bindings = <&mo>, <&kp>;
       };
 
       ht_hold_typo: ht_hold_typo {
           compatible = "zmk,behavior-hold-tap";
-          #binding-cells = <0>;
+          #binding-cells = <2>;
           flavor = "hold-preferred";
           tapping-term-ms = <200>;
-          bindings = <&mo HOLD_TYPO_L>, <&kp C>;
+          bindings = <&mo>, <&kp>;
       };
   };
 
@@ -343,8 +279,8 @@
     // &lt — layer-tap клавиша, которая будет срабатывать при удержании
     ru_layer {
       bindings = <
-        &lt HOLD_NUM_L B    &ht_hold_brackets    &none    &lt HOLD_SYM_L J                                                      &lt HOLD_SYM_L J        &none    &ht_hold_brackets    &lt HOLD_NUM_L B
-        &lt HOLD_NAV_L H    &ht_hold_typo        &none    &lt HOLD_MEDIA_L Y                                                     &lt HOLD_MEDIA_L Y      &none    &ht_hold_typo        &lt HOLD_NAV_L H
+        &lt HOLD_NUM_L B    &ht_hold_brackets HOLD_BRACKETS_L F    &none    &lt HOLD_SYM_L J                                                      &lt HOLD_SYM_L J        &none    &ht_hold_brackets HOLD_BRACKETS_L F    &lt HOLD_NUM_L B
+        &lt HOLD_NAV_L H    &ht_hold_typo HOLD_TYPO_L C            &none    &lt HOLD_MEDIA_L Y                                                     &lt HOLD_MEDIA_L Y      &none    &ht_hold_typo HOLD_TYPO_L C            &lt HOLD_NAV_L H
                                               &ht_curved LGUI BSPC    &ht_splayed LSHIFT SPACE      &ht_splayed RSHIFT SPACE    &ht_curved RGUI BSPC
       >;
     };
