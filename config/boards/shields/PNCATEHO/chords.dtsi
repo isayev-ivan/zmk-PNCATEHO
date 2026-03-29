@@ -1,19 +1,27 @@
 #include "chord_macros.dtsi"
 
+/* Одно комбо зеркалится на две стороны
+ * - имя, - поведение при нажатии, - на каких клавишах слева, - справа, - на каких слоях применять
+ */ 
+// переключения языка
 COMBO_MIRROR_LAYERS(lang_ru, &ht_combo_ru LS(LGUI) 0, LOT LIT, ROT RIT, RU_L)
 COMBO_MIRROR_LAYERS(lang_en, &ht_combo_en LS(LGUI) 0, LOT LIT, ROT RIT, ENG_L)
 
-// Без базовой клавиши, чтобы базово вызывать hold-cлой
-TCOMBO_NO_BASE(b         , &kp B       , &kp LS(B)    , &kp LEFT     , &kp LS(LEFT)  , TLP          , TRP  )
-TCOMBO_NO_BASE(j         , &kp J       , &kp LS(J)    , &kp RIGHT    , &kp LS(RIGHT) , TLI          , TRI  )
-TCOMBO_NO_BASE(h         , &kp H       , &kp LS(H)    , &sk LGUI     , &kp HOME      , BLP          , BRP  )
-TCOMBO_NO_BASE(y         , &kp Y       , &kp LS(Y)    , &sk LSHIFT   , &kp END       , BLI          , BRI  )
-TCOMBO_NO_BASE(f         , &kp F       , &kp LS(F)    , &kp UP       , &kp LS(UP)    , TLR          , TRR  )
-TCOMBO_NO_BASE(c         , &kp C       , &kp LS(C)    , &sk LALT     , &kp PG_UP     , BLR          , BRR  )
+/* Комбо без базового tap поведения (чтобы не конфликтовать с hold-cлоями, tap поведение прописано в слое
+ * - имя, - поведение с cогнутым thumb, - поведение с разогнутым thumb, - с двумя thumb, - клавиши слева, - клавиши справа
+*/ 
+TCOMBO_NO_BASE(b , &kp LEFT    , &kp LS(B)    , &kp LS(LEFT)  , TLP          , TRP  )
+TCOMBO_NO_BASE(j , &kp RIGHT   , &kp LS(J)    , &kp LS(RIGHT) , TLI          , TRI  )
+TCOMBO_NO_BASE(h , &sk LGUI    , &kp LS(H)    , &kp HOME      , BLP          , BRP  )
+TCOMBO_NO_BASE(y , &sk LSHIFT  , &kp LS(Y)    , &kp END       , BLI          , BRI  )
+TCOMBO_NO_BASE(f , &kp UP      , &kp LS(F)    , &kp LS(UP)    , TLR          , TRR  )
+TCOMBO_NO_BASE(c , &sk LALT    , &kp LS(C)    , &kp PG_UP     , BLR          , BRR  )
 
-//    (name,   press,      curved,        splayed,            both,          chord,       chord)
+//     name,       press,        curved,        splayed,       both,           chord left,    chord right
+// одноклавишные
 TCOMBO(t         , &kp T       , &kp LS(T)    , &kp DOWN     , &kp LS(DOWN)  , TLM          , TRM          )
 TCOMBO(n         , &kp N       , &kp LS(N)    , &sk LCTRL    , &kp PG_DN     , BLM          , BRM          )
+// двуклавишные
 TCOMBO(d         , &kp D       , &kp LS(D)    , &kp N1       , &kp F1        , TLP TLI      , TRP TRI      )
 TCOMBO(k         , &kp K       , &kp LS(K)    , &kp N2       , &kp F2        , BLP BLI      , BRP BRI      )
 TCOMBO(r         , &kp R       , &kp LS(R)    , &kp N3       , &kp F3        , BLP BLR      , BRP BRR      )
@@ -38,16 +46,21 @@ TCOMBO(o         , &kp O       , &kp LS(O)    , &kp SLASH    , &none         , T
 TCOMBO(sqt       , &kp SQT     , &kp LS(SQT)  , &kp QMARK    , &none         , TLM BLR      , TRM BRR      )
 TCOMBO(a         , &kp A       , &kp LS(A)    , &kp MINUS    , &none         , TLM BLI      , TRM BRI      )
 TCOMBO(rbkt      , &kp RBKT    , &kp LS(RBKT) , &kp UNDER    , &none         , TLR BLP      , TRR BRP      )
-TCOMBO(grave     , &kp GRAVE   , &kp LS(GRAVE), &kp EQUAL    , &none         , BLR BLM BLI  , BRR BRM BRI  )
-TCOMBO(nubs      , &kp NUBS    , &kp LS(NUBS) , &kp PLUS     , &none         , TLR TLM TLI  , TRR TRM TRI  )
+
 TCOMBO(del       , &kp DEL     , &none        , &kp LC(DEL)  , &none         , TLR BLR      , TRR BRR      )
 TCOMBO(esc       , &kp ESC     , &none        , &kp N1       , &none         , TLM BLM      , TRM BRM      )
 TCOMBO(tab       , &kp TAB     , &kp LA(TAB)  , &kp LC(TAB)  , &none         , TLP BLP      , TRP BRP      )
 TCOMBO(enter     , &kp ENTER   , &kp LS(ENTER), &none        , &none         , TLI BLI      , TRI BRI      )
-TCOMBO(boot      , &none       , &none        , &ext_power EP_OFF, &bootloader   , TLP TLR TLM TLI, TRP TRR TRM TRI)
-TCOMBO(bt        , &bt BT_SEL 0, &bt BT_SEL 1 , &bt BT_SEL 2 , &bt BT_CLR        , BLP BLR BLM BLI, BRP BRR BRM BRI)
+
+// трехклавишные
+TCOMBO(grave     , &kp GRAVE   , &kp LS(GRAVE), &kp EQUAL    , &none         , BLR BLM BLI  , BRR BRM BRI  )
+TCOMBO(nubs      , &kp NUBS    , &kp LS(NUBS) , &kp PLUS     , &none         , TLR TLM TLI  , TRR TRM TRI  )
 TCOMBO(mg_comma  , &mg_comma   , &kp SYM_COLON , &mg_dot      , &kp SYM_SEMICOL  , TLP TLR TLM  , TRP TRR TRM  )
 TCOMBO(minus_dash, &kp SYM_MINUS  , &kp UNDER , &kp SYM_MATHMIN   , &kp PIPE     , BLP BLR BLM  , BRP BRR BRM  )
+
+// четырехклавишные
+TCOMBO(boot      , &none       , &none        , &ext_power EP_OFF, &bootloader   , TLP TLR TLM TLI, TRP TRR TRM TRI)
+TCOMBO(bt        , &bt BT_SEL 0, &bt BT_SEL 1 , &bt BT_SEL 2 , &bt BT_CLR        , BLP BLR BLM BLI, BRP BRR BRM BRI)
 
 
 // Hold Numbers Layer Combos — двукнопия
@@ -56,24 +69,24 @@ COMBO_MIRROR_LAYERS(num_7, &kp N7, TLM TLI, TRM TRI, HOLD_NUM_L)
 COMBO_MIRROR_LAYERS(num_9, &kp N9, BLM BLI, BRM BRI, HOLD_NUM_L)
 
 // Hold Numbers Layer Combos — комбо с thumb
-LAYER_TCOMBO_NO_BASE(num_2, HOLD_NUM_L, &kp SYM_PERCENT, &kp SYM_NUMERO,  &none       , TLM, TRM)
-LAYER_TCOMBO_NO_BASE(num_1, HOLD_NUM_L, &kp SYM_STAR,    &kp SYM_PLUS,    &none       , TLI, TRI)
-LAYER_TCOMBO_NO_BASE(num_5, HOLD_NUM_L, &kp SYM_DOLLAR,  &kp SYM_RUBLE,   &none       , BLM, BRM)
-LAYER_TCOMBO_NO_BASE(num_4, HOLD_NUM_L, &kp SYM_CARET,   &kp SYM_MATHMIN, &kp SYM_DOT , BLI, BRI)
+TCOMBO_NO_BASE_LAYERS(num_2, &kp SYM_PERCENT, &kp SYM_NUMERO,  &none       , TLM, TRM, HOLD_NUM_L)
+TCOMBO_NO_BASE_LAYERS(num_1, &kp SYM_STAR,    &kp SYM_PLUS,    &none       , TLI, TRI, HOLD_NUM_L)
+TCOMBO_NO_BASE_LAYERS(num_5, &kp SYM_DOLLAR,  &kp SYM_RUBLE,   &none       , BLM, BRM, HOLD_NUM_L)
+TCOMBO_NO_BASE_LAYERS(num_4, &kp SYM_CARET,   &kp SYM_MATHMIN, &kp SYM_DOT , BLI, BRI, HOLD_NUM_L)
 
 // Hold symbols layer combos
-LAYER_TCOMBO_NO_BASE(sym_at,    HOLD_SYM_L, &kp SYM_DOLLAR, &kp SYM_RUBLE,  &kp SYM_AMP,    TLP, TRP)
-LAYER_TCOMBO_NO_BASE(sym_lpar,  HOLD_SYM_L, &kp SYM_LBKT,   &kp SYM_LGUIL,  &kp SYM_LBRACE, TLR, TRR)
-LAYER_TCOMBO_NO_BASE(sym_rpar,  HOLD_SYM_L, &kp SYM_RBKT,   &kp SYM_RGUIL,  &kp SYM_RBRACE, TLM, TRM)
-LAYER_TCOMBO_NO_BASE(sym_hash,  HOLD_SYM_L, &kp SYM_TILDE,  &kp SYM_GRAVE,  &kp SYM_EMPH, BLP, BRP)
-LAYER_TCOMBO_NO_BASE(sym_quest, HOLD_SYM_L, &kp SYM_EXCL,   &kp SYM_APOS,   &kp SYM_LT,     BLR, BRR)
-LAYER_TCOMBO_NO_BASE(sym_slash, HOLD_SYM_L, &kp SYM_BSLH,   &kp SYM_DQUOTE, &kp SYM_GT,     BLM, BRM)
+TCOMBO_NO_BASE_LAYERS(sym_at,    &kp SYM_DOLLAR, &kp SYM_RUBLE,  &kp SYM_AMP,    TLP, TRP, HOLD_SYM_L)
+TCOMBO_NO_BASE_LAYERS(sym_lpar,  &kp SYM_LBKT,   &kp SYM_LGUIL,  &kp SYM_LBRACE, TLR, TRR, HOLD_SYM_L)
+TCOMBO_NO_BASE_LAYERS(sym_rpar,  &kp SYM_RBKT,   &kp SYM_RGUIL,  &kp SYM_RBRACE, TLM, TRM, HOLD_SYM_L)
+TCOMBO_NO_BASE_LAYERS(sym_hash,  &kp SYM_TILDE,  &kp SYM_GRAVE,  &kp SYM_EMPH,   BLP, BRP, HOLD_SYM_L)
+TCOMBO_NO_BASE_LAYERS(sym_quest, &kp SYM_EXCL,   &kp SYM_APOS,   &kp SYM_LT,     BLR, BRR, HOLD_SYM_L)
+TCOMBO_NO_BASE_LAYERS(sym_slash, &kp SYM_BSLH,   &kp SYM_DQUOTE, &kp SYM_GT,     BLM, BRM, HOLD_SYM_L)
 
 // Hold navigation layer combos
-LAYER_TCOMBO_NO_BASE(nav_up,    HOLD_NAV_L, &none, &kp SYM_UP,    &none, TLM, TRM)
-LAYER_TCOMBO_NO_BASE(nav_left,  HOLD_NAV_L, &none, &kp SYM_LEFT,  &none, BLR, BRR)
-LAYER_TCOMBO_NO_BASE(nav_down,  HOLD_NAV_L, &none, &kp SYM_DOWN,  &none, BLM, BRM)
-LAYER_TCOMBO_NO_BASE(nav_right, HOLD_NAV_L, &none, &kp SYM_RIGHT, &none, BLI, BRI)
+TCOMBO_NO_BASE_LAYERS(nav_up,    &none, &kp SYM_UP,    &none, TLM, TRM, HOLD_NAV_L)
+TCOMBO_NO_BASE_LAYERS(nav_left,  &none, &kp SYM_LEFT,  &none, BLR, BRR, HOLD_NAV_L)
+TCOMBO_NO_BASE_LAYERS(nav_down,  &none, &kp SYM_DOWN,  &none, BLM, BRM, HOLD_NAV_L)
+TCOMBO_NO_BASE_LAYERS(nav_right, &none, &kp SYM_RIGHT, &none, BLI, BRI, HOLD_NAV_L)
 
 COMBO_MIRROR_LAYERS(hb_dquote, &kp SYM_DQUOTE, TLM TLI, TRM TRI, HOLD_BRACKETS_L)
 COMBO_MIRROR_LAYERS(hb_apos,   &kp SYM_APOS,   BLM BLI, BRM BRI, HOLD_BRACKETS_L)

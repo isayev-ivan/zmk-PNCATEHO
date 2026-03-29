@@ -1,0 +1,103 @@
+/*
+  * когда мы зададим клавише на слое поведение «&sym_at_mm» это будет означать:
+  * — &kp SYM_AT когда tap
+  * — &kp SYM_DOLLAR c cmd,
+  * — &kp SYM_RUBLE c shift
+  * — &kp SYM_AMP c cmd+shift
+*/
+MOD_MPH(sym_at_mm,    &kp SYM_AT,    &kp SYM_DOLLAR, &kp SYM_RUBLE,  &kp SYM_AMP)
+MOD_MPH(sym_lpar_mm,  &kp SYM_LPAR,  &kp SYM_LBKT,   &kp SYM_LGUIL,  &kp SYM_LBRACE)
+MOD_MPH(sym_rpar_mm,  &kp SYM_RPAR,  &kp SYM_RBKT,   &kp SYM_RGUIL,  &kp SYM_RBRACE)
+MOD_MPH(sym_hash_mm,  &kp SYM_HASH,  &kp SYM_TILDE,  &kp SYM_GRAVE,  &kp SYM_EMPH)
+MOD_MPH(sym_quest_mm, &kp SYM_QUEST, &kp SYM_EXCL,   &kp SYM_APOS,   &kp SYM_LT)
+MOD_MPH(sym_slash_mm, &kp SYM_SLASH, &kp SYM_BSLH,   &kp SYM_DQUOTE, &kp SYM_GT)
+
+// td_bkt: tap-dance для квадратных скобок, 1 тап = [, 2 тапа = ]
+td_bkt: td_bkt {
+    compatible = "zmk,behavior-tap-dance";
+    #binding-cells = <0>;
+    tapping-term-ms = <250>;
+    bindings = <&kp SYM_LBKT>, <&kp SYM_RBKT>;
+};
+
+// td_ang: tap-dance для угловых скобок, 1 тап = >, 2 тапа = <
+td_ang: td_ang {
+    compatible = "zmk,behavior-tap-dance";
+    #binding-cells = <0>;
+    tapping-term-ms = <250>;
+    bindings = <&kp SYM_GT>, <&kp SYM_LT>;
+};
+
+// td_brc: tap-dance для фигурных скобок, 1 тап = {, 2 тапа = }
+td_brc: td_brc {
+    compatible = "zmk,behavior-tap-dance";
+    #binding-cells = <0>;
+    tapping-term-ms = <250>;
+    bindings = <&kp SYM_LBRACE>, <&kp SYM_RBRACE>;
+};
+
+// --- Настройки Hold-Tap для Thumb-клавиш и Комбо ---
+// Подробное описание параметров см. в docs/hold_tap_settings.md
+// tapping-term-ms: время удержания для срабатывания Hold (200мс)
+// quick-tap-ms: окно для двойного клика, чтобы "зажать" Tap-клавишу (например, Backspace) (175мс)
+// require-prior-idle-ms: защита от случайных модов при быстрой печати (150мс)
+// flavor "balanced": корректное разрешение конфликтов при перекатах пальцев
+ht_curved: ht_curved {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <175>;
+    require-prior-idle-ms = <150>;
+    bindings = <&kp>, <&kp>; // TODO разобраться что за бобуйня пустая
+};
+
+ht_splayed: ht_splayed {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <175>;
+    require-prior-idle-ms = <150>;
+    bindings = <&kp>, <&kp>;
+};
+
+ht_curved_mg: ht_curved_mg {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <175>;
+    require-prior-idle-ms = <150>;
+    bindings = <&kp>, <&mg_dot>;
+};
+
+ht_splayed_mg: ht_splayed_mg {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <175>;
+    require-prior-idle-ms = <150>;
+    bindings = <&kp>, <&mg_comma>;
+};
+
+ht_combo_ru: ht_combo_ru {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <175>;
+    require-prior-idle-ms = <150>;
+    bindings = <&kp>, <&mac_to_en>;
+};
+
+ht_combo_en: ht_combo_en {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <175>;
+    require-prior-idle-ms = <150>;
+    bindings = <&kp>, <&mac_to_ru>;
+};

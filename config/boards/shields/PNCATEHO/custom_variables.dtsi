@@ -1,0 +1,80 @@
+#define COMBO_TIMEOUT 70          // timeout комбо (мс)
+#define COMBO_LAYERS RU_L ENG_L   // слои, где активны базовые комбо
+#define STICKY_TIMEOUT 500        // timeout sticky-модификаторов (мс)
+
+// Слои
+#define RU_L 0                    // основной RU слой
+#define ENG_L 1                   // основной EN слой
+#define NAV_L 2                   // навигация
+#define MOUSE_L 3                 // мышь
+#define HOLD_NAV_L 4              // hold-navigation
+#define HOLD_MEDIA_L 5            // hold-media
+#define HOLD_NUM_L 6              // hold-numbers
+#define HOLD_SYM_L 7              // hold-symbols
+#define HOLD_BRACKETS_L 8         // hold-brackets
+#define HOLD_TYPO_L 9             // hold-typo
+
+// Кастомные символы
+#define SYM_PERCENT  PRCNT          // %
+#define SYM_NUMERO   RA(N)          // №
+#define SYM_EQUAL    EQUAL          // =
+#define SYM_PLUS     PLUS           // +
+#define SYM_STAR     KP_MULTIPLY    // *
+#define SYM_DOLLAR   RA(N4)         // $
+#define SYM_RUBLE    RA(H)          // ₽
+#define SYM_CARET    RA(F)          // ^
+#define SYM_MINUS    MINUS          // -
+#define SYM_MATHMIN  LS(RA(MINUS))  // –
+#define SYM_DOT      KP_DOT         // .
+#define SYM_AT       AT             // @
+#define SYM_AMP      AMPS           // &
+#define SYM_LBKT     LA(LBKT)       // [
+#define SYM_RBKT     LA(RBKT)       // ]
+#define SYM_LGUIL    RA(N9)         // «
+#define SYM_RGUIL    RA(N0)         // »
+#define SYM_LBRACE   LS(LA(LBKT))   // {
+#define SYM_RBRACE   LS(LA(RBKT))   // }
+#define SYM_LPAR     LPAR           // (
+#define SYM_RPAR     RPAR           // )
+#define SYM_TILDE    LS(RA(GRAVE))  // ~
+#define SYM_GRAVE    RA(GRAVE)      // `
+#define SYM_HASH     HASH           // #
+#define SYM_EXCL     EXCL           // !
+#define SYM_QUEST    LS(RA(SLASH))  // ?
+#define SYM_APOS     RA(SQT)        // ‘
+#define SYM_BSLH     RA(BSLH)       // backslash
+#define SYM_SLASH    RA(SLASH)      // /
+#define SYM_DQUOTE   RA(LS(SQT))    // “
+#define SYM_LT       RA(LS(N6))     // <
+#define SYM_GT       RA(LS(N7))     // >
+#define SYM_EMPH     RA(E)          // ударение
+#define SYM_LEFT     RA(J)          // ←
+#define SYM_UP       RA(I)          // ↑
+#define SYM_DOWN     RA(K)          // ↓
+#define SYM_RIGHT    RA(L)          // →
+#define SYM_COLON    RA(SEMICOLON)       // :
+#define SYM_SEMICOL  LS(RA(SEMICOLON))   // ;
+
+// Левая сторона
+#define TLP 0   // top left pinky
+#define TLR 1   // top left ring
+#define TLM 2   // top left middle
+#define TLI 3   // top left index
+#define BLP 8   // bottom left pinky
+#define BLR 9   // bottom left ring
+#define BLM 10  // bottom left middle
+#define BLI 11  // bottom left index
+#define LIT 16  // I-THUMB (Внутренняя для руки, согнутый палец, ближе к мизинцу, левее)
+#define LOT 17  // O-THUMB (Внешняя для руки, вытянутый палец, ближе к указательному, правее)
+
+// Правая сторона
+#define TRP 7   // top right pinky
+#define TRR 6   // top right ring
+#define TRM 5   // top right middle
+#define TRI 4   // top right index
+#define BRP 15  // bottom right pinky
+#define BRR 14  // bottom right ring
+#define BRM 13  // bottom right middle
+#define BRI 12  // bottom right index
+#define ROT 19  // O-THUMB (Внешняя для руки, вытянутый палец, ближе к указательному, левее)
+#define RIT 18  // I-THUMB (Внутренняя для руки, согнутый палец, ближе к мизинцу, правее)

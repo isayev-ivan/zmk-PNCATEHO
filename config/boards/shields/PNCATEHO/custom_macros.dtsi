@@ -1,0 +1,35 @@
+// Магическая точка: ставит точку и пробел, зажимая левую Shift
+mg_dot: mg_dot {
+  compatible = "zmk,behavior-macro";
+  #binding-cells = <0>;
+  bindings = <&kp RA(N7) &kp SPACE &sk LSHFT>;
+  wait-ms = <5>;
+  tap-ms = <5>;
+};
+
+// Магическая запятая: ставит запятую и пробел
+mg_comma: mg_comma {
+  compatible = "zmk,behavior-macro";
+  #binding-cells = <0>;
+  bindings = <&kp RA(N6) &kp SPACE>;
+  wait-ms = <5>;
+  tap-ms = <5>;
+};
+
+// Переключение языка на английский
+mac_to_en: mac_to_en {
+  compatible = "zmk,behavior-macro";
+  #binding-cells = <0>;
+  bindings = <&kp LS(LC(LA(N1))) &to ENG_L>;
+  wait-ms = <5>;
+  tap-ms = <5>;
+};
+
+// Переключение языка на русский
+mac_to_ru: mac_to_ru {
+  compatible = "zmk,behavior-macro";
+  #binding-cells = <0>;
+  bindings = <&kp LS(LC(LA(N2))) &to RU_L>;
+  wait-ms = <5>;
+  tap-ms = <5>;
+};
