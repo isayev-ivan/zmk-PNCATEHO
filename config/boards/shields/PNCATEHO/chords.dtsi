@@ -53,8 +53,8 @@ TCOMBO(enter      , &kp ENTER        , &none          , &kp LS(ENTER)    , &none
 // трехклавишные
 TCOMBO(grave      , &kp GRAVE        , &kp EQUAL      , &kp LS(GRAVE)    , &none            , BLR BLM BLI     , BRR BRM BRI     )
 TCOMBO(nubs       , &kp NUBS         , &kp PLUS       , &kp LS(NUBS)     , &none            , TLR TLM TLI     , TRR TRM TRI     )
-TCOMBO(mg_comma   , &mg_comma        , &mg_dot        , &kp SYM_COLON    , &kp SYM_SEMICOL  , TLP TLR TLM     , TRP TRR TRM     )
-TCOMBO(minus_dash , &kp SYM_MINUS    , &kp SYM_MATHMIN, &kp UNDER        , &kp PIPE         , BLP BLR BLM     , BRP BRR BRM     )
+TCOMBO(mg_comma   , &mg_comma        , &kp SYM_COLON  , &mg_dot          , &kp SYM_SEMICOL  , TLP TLR TLM     , TRP TRR TRM     )
+TCOMBO(minus_dash , &kp SYM_MINUS    , &kp UNDER      , &kp SYM_MATHMIN  , &kp PIPE         , BLP BLR BLM     , BRP BRR BRM     )
 
 // четырехклавишные
 TCOMBO(boot       , &none           , &none          , &ext_power EP_OFF, &bootloader      , TLP TLR TLM TLI , TRP TRR TRM TRI )
