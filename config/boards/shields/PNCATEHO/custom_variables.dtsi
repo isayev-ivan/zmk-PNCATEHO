@@ -13,6 +13,7 @@
 #define HOLD_SYM_L 7              // hold-symbols
 #define HOLD_BRACKETS_L 8         // hold-brackets
 #define HOLD_TYPO_L 9             // hold-typo
+#define HOLD_MOD_L 10             // hold-sticky-mods
 
 // Кастомные символы раскладка TREKL
 #define SYM_PERCENT  PRCNT          // %

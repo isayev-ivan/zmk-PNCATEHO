@@ -52,8 +52,8 @@
     // &lt — layer-tap клавиша, которая будет срабатывать при удержании
     ru_layer {
       bindings = <
-        &lt HOLD_NUM_L B    &lt HOLD_BRACKETS_L F    &none    &lt HOLD_SYM_L J                                                                  &lt HOLD_SYM_L J        &none    &lt HOLD_BRACKETS_L F   &lt HOLD_NUM_L B
-        &lt HOLD_NAV_L H    &lt HOLD_TYPO_L C        &none    &lt HOLD_MEDIA_L Y                                                                &lt HOLD_MEDIA_L Y      &none    &lt HOLD_TYPO_L C       &lt HOLD_NAV_L H
+        &lt HOLD_NUM_L B    &lt HOLD_BRACKETS_L F    &lt HOLD_MOD_L T    &lt HOLD_SYM_L J                                                       &lt HOLD_SYM_L J        &lt HOLD_MOD_L T   &lt HOLD_BRACKETS_L F   &lt HOLD_NUM_L B
+        &lt HOLD_NAV_L H    &lt HOLD_TYPO_L C        &none    &lt HOLD_MEDIA_L Y                                                                &lt HOLD_MEDIA_L Y      &none              &lt HOLD_TYPO_L C       &lt HOLD_NAV_L H
                                                               &ht_curved LGUI BSPC    &ht_splayed LSHIFT SPACE      &ht_splayed RSHIFT SPACE    &ht_curved RGUI BSPC
       >;
     };
@@ -127,6 +127,14 @@
         &kp LCTRL         &trans           &kp SYM_MINUS    &kp RA(MINUS)               &kp RA(MINUS)     &kp SYM_MINUS    &trans           &kp RCTRL
         &kp LCTRL         &trans           &kp SYM_LGUIL    &kp SYM_RGUIL                   &kp SYM_RGUIL         &kp SYM_LGUIL    &trans           &kp RCTRL
                                                             &ht_curved LGUI SYM_COLON    &ht_splayed LSHIFT SYM_SEMICOL      &ht_splayed RSHIFT SYM_SEMICOL    &ht_curved RGUI SYM_COLON
+      >;
+    };
+
+    hold_mod_layer {
+      bindings = <
+        &none             &sk LCTRL        &none            &sk LALT                                             &sk RALT          &none            &sk RCTRL        &none
+        &none             &none            &none            &none                                                &none             &none            &none            &none
+                                                            &sk LGUI         &sk LSHIFT        &sk RSHIFT        &sk RGUI
       >;
     };
   };
