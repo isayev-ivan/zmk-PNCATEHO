@@ -1,131 +1,95 @@
-# ZMK: что значит `&lt`, `&kp` и другие используемые штуки
+# ZMK: справочник биндингов в текущем конфиге PNCATEHO
 
-Ниже — практический справочник именно по тому, что используется в:
+Актуально для:
 
 - `config/boards/shields/PNCATEHO/PNCATEHO.keymap`
 - `config/boards/shields/PNCATEHO/chords.dtsi`
+- `config/boards/shields/PNCATEHO/custom_behaviors.dtsi`
+- `config/boards/shields/PNCATEHO/custom_macros.dtsi`
+- `config/boards/shields/PNCATEHO/chord_macros.dtsi`
 
-## 1) Базовые поведения (behaviors)
+## 1) Базовые behavior-узлы
 
-- `&kp KEY` — отправить keycode.
-  - Пример: `&kp A`, `&kp ENTER`, `&kp SYM_AT`.
-- `&lt LAYER KEY` — layer-tap: удержание включает слой, тап отправляет `KEY`.
-  - Пример: `&lt HOLD_SYM_L J`.
-- `&trans` — прозрачная клавиша: взять действие с нижележащего слоя.
-- `&none` — пусто: ничего не делать.
-- `&sk MOD` — sticky-модификатор (модификатор «залипает» на следующее нажатие).
-  - Глобальные параметры `&sk` задаются в keymap:
-    - `release-after-ms = <N>` — максимальное время жизни залипания в мс.\
-      Если после нажатия `&sk MOD` за `N` мс не нажать следующую клавишу, модификатор автоматически сбросится.
-    - `quick-release` — отпускать sticky-модификатор сразу после первого модифицированного нажатия (one-shot поведение).
-  - Практически это работает так:
-    - нажал `&sk LSHIFT` → Shift «вооружен»;
-    - нажал следующую клавишу (например `a`) → получаешь `A`;
-    - из-за `quick-release` Shift сразу отключается и дальше печать обычная.
-- `&to LAYER` — безусловно переключиться на слой.
-- `&tog LAYER` — toggle слоя (вкл/выкл).
+- `&kp KEY` — отправка keycode.
+- `&lt LAYER KEY` — layer-tap: tap = `KEY`, hold = включение `LAYER`.
+- `&trans` — прозрачный биндинг.
+- `&none` — пустой биндинг.
+- `&sk MOD` — sticky-модификатор.
+- `&to LAYER` — безусловный переход на слой.
+- `&tog LAYER` — переключение состояния слоя.
 
-## 2) Мышь
+Глобальные настройки `&sk` заданы в `PNCATEHO.keymap`:
 
-- `&mmv DIRECTION` — движение курсора.
-  - Примеры: `MOVE_UP`, `MOVE_LEFT`, `MOVE_RIGHT`, `MOVE_DOWN`.
-- `&msc DIRECTION` — скролл.
-  - Примеры: `SCRL_UP`, `SCRL_DOWN`.
-- `&mkp BTN` — кнопка мыши.
-  - Примеры: `LCLK`, `RCLK`.
+- `release-after-ms = <STICKY_TIMEOUT>;`
+- `quick-release;`
 
-## 3) Bluetooth / питание / спец-действия
+## 2) Мышь, BT, питание
 
-- `&bt BT_SEL N` — выбрать BT-профиль `N`.
-- `&bt BT_CLR` — очистить BT-связи.
-- `&bootloader` — вход в bootloader.
-- `&ext_power EP_OFF` — выключить внешнее питание.
+- `&mmv MOVE_*` — движение курсора.
+- `&msc SCRL_*` — вертикальный скролл.
+- `&mkp LCLK|RCLK` — кнопки мыши.
+- `&bt BT_SEL N` / `&bt BT_CLR` — выбор и очистка BT-профилей.
+- `&bootloader` — вход в загрузчик.
+- `&ext_power EP_OFF` — отключение внешнего питания.
 
-## 4) Пользовательские behaviors и macros из keymap
+## 3) Пользовательские macro/behavior-узлы
 
-Внутри `/ { macros { ... } }` и `/ { behaviors { ... } }` создаются локальные сущности, которые потом вызываются как `&имя`.
+Определены через include-файлы:
 
-- Макросы:
-  - `&mg_dot`, `&mg_comma` — макросы набора пунктуации.
-  - `&mac_to_en`, `&mac_to_ru` — макросы смены языка.
-- Behaviors:
-  - `&ht_curved`, `&ht_splayed` — hold-tap для больших пальцев.
-  - `&ht_combo_ru`, `&ht_combo_en` — hold-tap, где hold вызывает языковой макрос.
-  - `&quest_excl`, `&bracket_left`, `&bracket_right`, и т.д. — mod-morph behaviors.
-    - `mod-morph` — поведение «одна клавиша, два результата в зависимости от активных модификаторов».
-    - В вашем keymap эти behaviors проверяют `Shift` (`mods = <(MOD_LSFT|MOD_RSFT)>`).
-    - Если Shift не зажат, отправляется первый биндинг из `bindings = <A>, <B>`.
-    - Если Shift зажат, отправляется второй биндинг.
-    - Пример: `quest_excl` даёт `?` без Shift и `!` с Shift.
-    - Пример: `bracket_left` даёт `(` без Shift и `<` с Shift.
+- `custom_macros.dtsi`: `&mg_dot`, `&mg_comma`, `&mac_to_en`, `&mac_to_ru`
+- `custom_behaviors.dtsi`: `&td_bkt`, `&td_ang`, `&td_brc`, `&ht_*`, `&sym_*_mm`
 
-## 5) Модификаторные обёртки keycode
+Ключевые группы:
 
-Это не отдельные behaviors, а функции-обёртки keycode:
+- `&sym_*_mm` — 4-состояния через `MOD_MPH` (base/cmd/shift/cmd+shift).
+- `&td_*` — tap-dance для скобок.
+- `&ht_curved`, `&ht_splayed` — универсальные hold-tap.
+- `&ht_curved_mg`, `&ht_splayed_mg` — hold-tap с tap-макросами пунктуации.
+- `&ht_combo_ru`, `&ht_combo_en` — hold-tap с языковыми макросами.
+
+## 4) Модификаторные обертки keycode
 
 - `LS(X)` — Shift + `X`
 - `LC(X)` — Ctrl + `X`
-- `LA(X)` — Alt/Option + `X`
+- `LA(X)` — Alt + `X`
 - `LG(X)` — GUI/Cmd + `X`
-- `RA(X)` — Right Alt/AltGr + `X`
+- `RA(X)` — Right Alt + `X`
 
-Можно вкладывать:
+Примеры вложений:
 
-- `LS(RA(SLASH))` → Shift + RightAlt + Slash
-- `LS(LC(LA(N1)))` → Shift + Ctrl + Alt + 1
+- `LS(RA(SLASH))`
+- `LS(LC(LA(N1)))`
 
-## 6) Синтаксис devicetree, который тут постоянно встречается
+## 5) Комбо-макросы (актуальные имена)
 
-- `bindings = <...>;` — список действий/аргументов.
-- В `behavior-mod-morph` часто 2 биндинга:\
-  `bindings = <tap_binding>, <shift_binding>;`
-- `#binding-cells = <N>;` — сколько аргументов принимает behavior при вызове.
-  - Пример: `#binding-cells = <2>` у hold-tap, поэтому вызов вида `&ht_curved LGUI BSPC`.
+Определены в `chord_macros.dtsi`:
 
-## 7) Комбо-макросы из `chords.dtsi`
+- `TCOMBO(...)` — полный набор: base + curved + splayed + both.
+- `TCOMBO_NO_BASE(...)` — только curved/splayed/both (без base).
+- `TCOMBO_LAYERS(...)` — то же, что `TCOMBO`, но с явным `LAYERS`.
+- `TCOMBO_NO_BASE_LAYERS(...)` — то же, что `TCOMBO_NO_BASE`, но с явным `LAYERS`.
+- `TCOMBO_ONLY_BASE_LAYERS(...)` — только base (зеркально для левой/правой).
+- `TCOMBO_ONLY_BASE_LAYERS_IDLE(...)` — как выше + `require-prior-idle-ms`.
+- `MOD_MPH(...)` — генератор иерархии `behavior-mod-morph`.
 
-Это C-preprocessor макросы, которые генерируют devicetree-ноды combo.
+Важно: `TCOMBO_ONLY_BASE_LAYERS(...)` концептуально действительно является “only base” парой к `TCOMBO_NO_BASE(...)`.
 
-- `TCOMBO(...)` — полный комбо-набор (база + варианты с thumbs).
-- `TCOMBO_NO_BASE(...)` — без базового одиночного комбо.
-- `LAYER_TCOMBO(...)` — то же, но ограничено конкретным слоем.
-- `LAYER_TCOMBO_NO_BASE(...)` — слой + без базового комбо.
-- `COMBO_MIRROR_LAYERS(...)` — зеркальная пара комбо (левая/правая стороны).
-- `COMBO_MIRROR_LAYERS_IDLE(...)` — зеркальная пара комбо с порогом «тишины» перед срабатыванием.
-  - Что это значит: макрос создаёт левую и правую версии одного комбо, как `COMBO_MIRROR_LAYERS`, но добавляет `require-prior-idle-ms = <IDLE_MS>`.
-  - На что влияет: комбо не сработает, если перед ним были недавние нажатия клавиш (меньше `IDLE_MS` мс назад). Это режет случайные срабатывания во время быстрой печати.
-  - Как это ощущается:
-    - `IDLE_MS` меньше (например 50) → комбо срабатывают легче/быстрее, но выше риск ложных срабатываний.
-    - `IDLE_MS` больше (например 200) → комбо стабильнее, но нужно чуть заметнее «пауза перед аккордом».
-  - Примеры из вашего `chords.dtsi`:
-    - `COMBO_MIRROR_LAYERS_IDLE(lock_nav, ..., 150)` — `tog NAV_L` срабатывает только если перед аккордом было ~150 мс покоя.
-    - `COMBO_MIRROR_LAYERS_IDLE(lock_mouse, ..., 150)` — то же для `tog MOUSE_L`.
-  - Когда использовать: для «режимных» или опасных комбо (lock/toggle), где ложное срабатывание критичнее, чем небольшая задержка.
+## 6) Поля combo-нод
 
-Параметры combo-нод, которые они генерируют:
+- `timeout-ms` — окно распознавания аккорда.
+- `key-positions` — позиции клавиш в аккорде.
+- `layers` — список слоев, где комбо активно.
+- `require-prior-idle-ms` — защита от ложных срабатываний в потоке печати.
 
-- `timeout-ms` — окно одновременного нажатия для распознавания комбо.
-- `key-positions` — позиции клавиш, формирующих комбо.
-- `layers` — слои, на которых комбо активно.
-- `require-prior-idle-ms` — защита от случайных срабатываний при потоке печати.
+## 7) Позиционные alias
 
-## 8) Позиционные alias (что такое `TLI`, `BLM`, `LIT`, `ROT`)
+Alias объявлены в `custom_variables.dtsi`:
 
-В `keymap` определены человекочитаемые alias на физические позиции:
+- Левая половина: `TLP TLR TLM TLI`, `BLP BLR BLM BLI`, `LIT LOT`
+- Правая половина: `TRP TRR TRM TRI`, `BRP BRR BRM BRI`, `RIT ROT`
 
-- Левая сетка: `TLP TLR TLM TLI` (верх), `BLP BLR BLM BLI` (низ)
-- Правая сетка: `TRP TRR TRM TRI` (верх), `BRP BRR BRM BRI` (низ)
-- Большие пальцы:
-  - `LIT`, `LOT` — левая рука (inner/outer thumb)
-  - `RIT`, `ROT` — правая рука (inner/outer thumb)
+## 8) Короткие примеры из текущего keymap
 
-Именно эти alias используются в `key-positions` комбо-макросов.
-
-## 9) Быстрые примеры чтения строк
-
-- `&lt HOLD_NUM_L B`\
-  \= тап `B`, удержание временно включает слой `HOLD_NUM_L`.
-- `&ht_curved LGUI BSPC`\
-  \= поведение hold-tap: hold даёт `LGUI`, tap даёт `BSPC`.
-- `TCOMBO(f, &kp F, &kp LS(F), &kp UP, &kp LS(UP), TLR, TRR)`\
-  \= генерируются комбо для `f` на обеих половинах, включая варианты с thumb-модификаторами.
+- `&lt HOLD_NUM_L B` — tap `B`, hold слой `HOLD_NUM_L`.
+- `&ht_curved LGUI BSPC` — hold `LGUI`, tap `BSPC`.
+- `TCOMBO_NO_BASE(b, &kp LEFT, &kp LS(B), &kp LS(LEFT), TLP, TRP)` — для `b`: curved = `LEFT`, splayed = `B`, both = `Shift+LEFT`.

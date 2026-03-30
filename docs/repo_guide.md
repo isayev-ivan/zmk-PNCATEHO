@@ -13,6 +13,10 @@ zmk-PNCATEHO/
 │   ├── west.yml         # Манифест зависимостей (управляет версиями модулей ZMK)
 │   └── boards/shields/PNCATEHO/  # Определение вашего "щита" (клавиатуры)
 │       ├── PNCATEHO.keymap       # Основная карта клавиш
+│       ├── custom_variables.dtsi # Общие константы и позиционные alias
+│       ├── custom_macros.dtsi    # Пользовательские макросы
+│       ├── custom_behaviors.dtsi # Пользовательские behaviors
+│       ├── chord_macros.dtsi     # Макросы-генераторы для chords/behaviors
 │       ├── PNCATEHO.dtsi         # Описание "железа" (матрица, пины)
 │       ├── chords.dtsi           # Описание аккордов (Combos) - САМОЕ ВАЖНОЕ
 │       ├── *.overlay             # Наложения для левой/правой половинок
@@ -26,10 +30,10 @@ zmk-PNCATEHO/
 Ваша клавиатура использует **аккордовый ввод** (комбинации клавиш).
 
 *   **Файл:** `config/boards/shields/PNCATEHO/chords.dtsi`
-*   **Как это работает:** В этом файле определены макросы `TCOMBO`.
+*   **Как это работает:** В этом файле определены вызовы макросов `TCOMBO*`.
     *   Пример: `TCOMBO(B, &kp B, &kp LS(B), ...)`
     *   Это означает, что при нажатии определенной комбинации клавиш (определенной в аргументах `TLP`, `TRP` и т.д.) будет отправлен код `B`.
-*   **Базовый слой:** Файл `config/boards/shields/PNCATEHO/PNCATEHO.keymap` в данный момент почти пуст (`&none`). Это нормально для чисто аккордовой клавиатуры, где все действия вызываются через `combos`.
+*   **Роль `PNCATEHO.keymap`:** Это оркестратор всей системы слоев/поведений, он не пустой и активно использует `&lt`, `&ht_*`, tap-dance и include-файлы `custom_*`.
 
 ### 2. Настройки системы (Сон, Bluetooth)
 *   **Файл:** `config/PNCATEHO.conf`
@@ -68,3 +72,10 @@ west build -b nice_nano//zmk -- -DSHIELD=PNCATEHO_right
 4.  `SPLAYED_BINDINGS`: Что происходит при нажатии аккорда + разогнутый большой палец (бывш. outer).
 5.  `BOTH_BINDINGS`: Аккорд + оба больших пальца.
 6.  `LEFT_KEYPOS` / `RIGHT_KEYPOS`: Позиции клавиш, которые нужно нажать для срабатывания аккорда.
+
+Также используются:
+
+- `TCOMBO_NO_BASE(...)`
+- `TCOMBO_NO_BASE_LAYERS(...)`
+- `TCOMBO_ONLY_BASE_LAYERS(...)`
+- `TCOMBO_ONLY_BASE_LAYERS_IDLE(...)`

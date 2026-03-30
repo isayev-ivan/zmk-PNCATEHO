@@ -2,7 +2,7 @@
 
 Этот файл расшифровывает сокращения вида `TLP`, `BLR`, `LOT` и т.д. из прошивки клавиатуры.
 
-Источник сокращений: [config/boards/shields/PNCATEHO/PNCATEHO.keymap](/Users/iv_/WebstormProjects/zmk-PNCATEHO/config/boards/shields/PNCATEHO/PNCATEHO.keymap#L17)
+Источник сокращений: `config/boards/shields/PNCATEHO/custom_variables.dtsi`
 
 ## Общий принцип
 

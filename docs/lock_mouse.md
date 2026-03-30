@@ -18,15 +18,16 @@
 | --- | --- |
 | **Верхний ряд** | Scroll Up \| Right Click \| Move Up \| Left Click |
 | **Нижний ряд** | Scroll Down \| Move Left \| Move Down \| Move Right |
-| **Большой палец** | (Как в навигации: Backspace / Space) |
+| **Большой палец** | (Как в базовом слое: Curved=Backspace, Splayed=Space) |
 
 ### Правая половина
 | Клавиша | Функция |
 | --- | --- |
 | **Верхний ряд** | Left Click \| Move Up \| Right Click \| Scroll Up |
 | **Нижний ряд** | Move Left \| Move Down \| Move Right \| Scroll Down |
-| **Большой палец** | (Как в навигации: Space / Backspace) |
+| **Большой палец** | (Как в базовом слое: Curved=Backspace, Splayed=Space) |
 
 ## Примечания
 - Для работы мыши в конфигурации включена опция `CONFIG_ZMK_MOUSE=y`.
 - Режим является "липким" (Toggle), то есть остается активным до повторного нажатия аккорда активации.
+- Технически аккорд задается через `TCOMBO_ONLY_BASE_LAYERS_IDLE(lock_mouse, &tog MOUSE_L, ..., 150)` в `chords.dtsi`.

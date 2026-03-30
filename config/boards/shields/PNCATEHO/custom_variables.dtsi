@@ -2,7 +2,7 @@
 #define COMBO_LAYERS RU_L ENG_L   // слои, где активны базовые комбо
 #define STICKY_TIMEOUT 500        // timeout sticky-модификаторов (мс)
 
-// Слои
+// Названия слоёв
 #define RU_L 0                    // основной RU слой
 #define ENG_L 1                   // основной EN слой
 #define NAV_L 2                   // навигация
@@ -14,7 +14,7 @@
 #define HOLD_BRACKETS_L 8         // hold-brackets
 #define HOLD_TYPO_L 9             // hold-typo
 
-// Кастомные символы
+// Кастомные символы раскладка TREKL
 #define SYM_PERCENT  PRCNT          // %
 #define SYM_NUMERO   RA(N)          // №
 #define SYM_EQUAL    EQUAL          // =
@@ -55,7 +55,7 @@
 #define SYM_COLON    RA(SEMICOLON)       // :
 #define SYM_SEMICOL  LS(RA(SEMICOLON))   // ;
 
-// Левая сторона
+// Клавиши левой стороны
 #define TLP 0   // top left pinky
 #define TLR 1   // top left ring
 #define TLM 2   // top left middle
@@ -67,7 +67,7 @@
 #define LIT 16  // I-THUMB (Внутренняя для руки, согнутый палец, ближе к мизинцу, левее)
 #define LOT 17  // O-THUMB (Внешняя для руки, вытянутый палец, ближе к указательному, правее)
 
-// Правая сторона
+// Клавиши правой стороны
 #define TRP 7   // top right pinky
 #define TRR 6   // top right ring
 #define TRM 5   // top right middle

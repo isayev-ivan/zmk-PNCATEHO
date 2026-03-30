@@ -154,16 +154,16 @@ NAME: NAME { \
 };
 
 /**
- * Макрос для создания простых зеркальных комбо (одно действие, две стороны).
- * Удобно для комбо, не требующих thumb-модификаторов (например, 4, 7, 8, 9 на слое цифр).
- * 
+ * Макрос для создания base-only комбо (без curved/splayed/both вариантов).
+ * Генерирует только базовый tap-слой в зеркальном виде: левая и правая стороны.
+ *
  * @param NAME Базовое имя комбо (будут созданы combo_l_NAME и combo_r_NAME)
  * @param BINDINGS Действие при срабатывании комбо
  * @param LEFT_KEYPOS Позиции клавиш на левой половине
  * @param RIGHT_KEYPOS Позиции клавиш на правой половине
  * @param LAYERS Слой(и), на котором(ых) работает комбо
  */
-#define COMBO_MIRROR_LAYERS(NAME, BINDINGS, LEFT_KEYPOS, RIGHT_KEYPOS, LAYERS) \
+#define TCOMBO_ONLY_BASE_LAYERS(NAME, BINDINGS, LEFT_KEYPOS, RIGHT_KEYPOS, LAYERS) \
 combo_l_##NAME { \
 	timeout-ms = <COMBO_TIMEOUT>; \
 	bindings = <BINDINGS>; \
@@ -178,12 +178,12 @@ combo_r_##NAME { \
 };
 
 /**
- * Вариация COMBO_MIRROR_LAYERS с дополнительным параметром require-prior-idle-ms.
+ * Вариация TCOMBO_ONLY_BASE_LAYERS с дополнительным параметром require-prior-idle-ms.
  * Полезно для комбо, которые могут случайно срабатывать при быстрой печати.
- * 
+ *
  * @param IDLE_MS Время (в мс), которое клавиатура должна бездействовать перед срабатыванием комбо
  */
-#define COMBO_MIRROR_LAYERS_IDLE(NAME, BINDINGS, LEFT_KEYPOS, RIGHT_KEYPOS, LAYERS, IDLE_MS) \
+#define TCOMBO_ONLY_BASE_LAYERS_IDLE(NAME, BINDINGS, LEFT_KEYPOS, RIGHT_KEYPOS, LAYERS, IDLE_MS) \
 combo_l_##NAME { \
 	timeout-ms = <COMBO_TIMEOUT>; \
 	bindings = <BINDINGS>; \

@@ -6,7 +6,7 @@
 
 ### Шаги для сборки:
 
-1.  **Внесите изменения** в файлы конфигурации (например, в `config/PNCATEHO.keymap` или `config/chords.dtsi`).
+1.  **Внесите изменения** в файлы конфигурации (например, в `config/boards/shields/PNCATEHO/PNCATEHO.keymap` или `config/boards/shields/PNCATEHO/chords.dtsi`).
 2.  **Закоммитьте и отправьте (push)** изменения в ваш репозиторий на GitHub.
     ```bash
     git add .

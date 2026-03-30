@@ -1,74 +1,55 @@
-# Справочник аккордов (Chords Reference)
+# Справочник аккордов (актуальный)
 
-Здесь приведена таблица всех аккордов, определенных в файле `chords.dtsi`.
-Аккорды позволяют вводить различные символы в зависимости от того, какие дополнительные клавиши (большие пальцы) нажаты.
+Источник истины: `config/boards/shields/PNCATEHO/chords.dtsi`.
 
-## Легенда клавиш (физическое расположение)
+## Семантика вариантов
 
-Для удобства используются сокращения.
-Левая рука (Left):
-*   `TLP` = **Лев. Мизинец** (верхний ряд)
-*   `TLR` = **Лев. Безымянный** (верхний ряд)
-*   `TLM` = **Лев. Средний** (верхний ряд)
-*   `TLI` = **Лев. Указательный** (верхний ряд)
-*   `BLP` = **Лев. Мизинец** (нижний ряд)
-*   `BLR` = **Лев. Безымянный** (нижний ряд)
-*   `BLM` = **Лев. Средний** (нижний ряд)
-*   `BLI` = **Лев. Указательный** (нижний ряд)
+- **base** — обычный аккорд без thumbs.
+- **curved** — аккорд + `LIT/RIT`.
+- **splayed** — аккорд + `LOT/ROT`.
+- **both** — аккорд + оба thumbs.
 
-Правая рука (Right):
-*   `TRP`, `TRR`, `TRM`, `TRI` = Прав. Мизинец, Безымянный, Средний, Указательный (верх)
-*   `BRP`, `BRR`, `BRM`, `BRI` = Прав. Мизинец, Безымянный, Средний, Указательный (низ)
+## Используемые макросы
 
-Большие пальцы (модификаторы):
-*   **Внутр.** = Внутренний большой палец (Space)
-*   **Внешн.** = Внешний большой палец (Backspace)
+- `TCOMBO(...)` — base + curved + splayed + both.
+- `TCOMBO_NO_BASE(...)` — только curved/splayed/both.
+- `TCOMBO_NO_BASE_LAYERS(...)` — слой-ограниченный вариант без base.
+- `TCOMBO_ONLY_BASE_LAYERS(...)` — только base (зеркально на обе руки).
+- `TCOMBO_ONLY_BASE_LAYERS_IDLE(...)` — only-base + `require-prior-idle-ms`.
 
----
+## Ключевые одно-клавишные `TCOMBO_NO_BASE` (RU/ENG слои)
 
-## Таблица аккордов
+| Аккорд | Curved | Splayed | Both |
+| :--- | :--- | :--- | :--- |
+| `b` (`TLP`/`TRP`) | `LEFT` | `Shift+B` | `Shift+LEFT` |
+| `j` (`TLI`/`TRI`) | `RIGHT` | `Shift+J` | `Shift+RIGHT` |
+| `h` (`BLP`/`BRP`) | `Sticky GUI` | `Shift+H` | `HOME` |
+| `y` (`BLI`/`BRI`) | `Sticky Shift` | `Shift+Y` | `END` |
+| `f` (`TLR`/`TRR`) | `UP` | `Shift+F` | `Shift+UP` |
+| `c` (`BLR`/`BRR`) | `Sticky Alt` | `Shift+C` | `PG_UP` |
 
-| Аккорд (Левая рука) | Нажатие | с согнутым thumb (Curved) | с разогнутым thumb (Splayed) | оба (Both) |
-| :--- | :--- | :--- | :--- | :--- |
-| **TLP** (Лев. Мизинец верх) | `&kp B` (b) | `&kp LS(B)` (B) | `&kp LEFT` (Стрелка Влево) | `&kp LS(LEFT)` (Выделить Влево) |
-| **TLR** (Лев. Безымянный верх) | `&kp F` (f) | `&kp LS(F)` (F) | `&kp UP` (Стрелка Вверх) | `&kp LS(UP)` (Выделить Вверх) |
-| **TLM** (Лев. Средний верх) | `&kp T` (t) | `&kp LS(T)` (T) | `&kp DOWN` (Стрелка Вниз) | `&kp LS(DOWN)` (Выделить Вниз) |
-| **TLI** (Лев. Указательный верх) | `&kp J` (j) | `&kp LS(J)` (J) | `&kp RIGHT` (Стрелка Вправо) | `&kp LS(RIGHT)` (Выделить Вправо) |
-| **BLP** (Лев. Мизинец низ) | `&kp H` (h) | `&kp LS(H)` (H) | `&sk LGUI` (Win/Cmd) | `&kp HOME` (Home) |
-| **BLR** (Лев. Безымянный низ) | `&kp C` (c) | `&kp LS(C)` (C) | `&sk LALT` (Alt) | `&kp PG_UP` (Page Up) |
-| **BLM** (Лев. Средний низ) | `&kp N` (n) | `&kp LS(N)` (N) | `&sk LCTRL` (Ctrl) | `&kp PG_DN` (Page Down) |
-| **BLI** (Лев. Указательный низ) | `&kp Y` (y) | `&kp LS(Y)` (Y) | `&sk LSHIFT` (Shift) | `&kp END` (End) |
-| **TLP TLI** (Мизинец + Указательный верх) | `&kp D` (d) | `&kp LS(D)` (D) | `&kp N1` (1) | `&kp F1` (F1) |
-| **BLP BLI** (Мизинец + Указательный низ) | `&kp K` (k) | `&kp LS(K)` (K) | `&kp N2` (2) | `&kp F2` (F2) |
-| **BLP BLR** (Мизинец + Безымянный низ) | `&kp R` (r) | `&kp LS(R)` (R) | `&kp N3` (3) | `&kp F3` (F3) |
-| **BLM BLI** (Средний + Указательный низ) | `&kp V` (v) | `&kp LS(V)` (V) | `&kp N4` (4) | `&kp F4` (F4) |
-| **TLP TLR** (Мизинец + Безымянный верх) | `&kp L` (l) | `&kp LS(L)` (L) | `&kp N5` (5) | `&kp F5` (F5) |
-| **TLM TLI** (Средний + Указательный верх) | `&kp G` (g) | `&kp LS(G)` (G) | `&kp N6` (6) | `&kp F6` (F6) |
-| **BLR BLM** (Безымянный + Средний низ) | `&kp E` (e) | `&kp LS(E)` (E) | `&kp N7` (7) | `&kp F7` (F7) |
-| **TLR TLM** (Безымянный + Средний верх) | `&kp Z` (z) | `&kp LS(Z)` (Z) | `&kp N8` (8) | `&kp F8` (F8) |
-| **BLP BLM** (Мизинец + Средний низ) | `&kp S` (s) | `&kp LS(S)` (S) | `&kp N9` (9) | `&kp F9` (F9) |
-| **BLR BLI** (Безымянный + Указательный низ) | `&kp M` (m) | `&kp LS(M)` (M) | `&kp N0` (0) | `&kp F10` (F10) |
-| **TLP TLM** (Мизинец + Средний верх) | `&kp U` (u) | `&kp LS(U)` (U) | `&kp EXCL` (!) | `&kp F11` (F11) |
-| **TLR TLI** (Безымянный + Указательный верх) | `&kp P` (p) | `&kp LS(P)` (P) | `&kp AT` (@) | `&kp F12` (F12) |
-| **TLP BLI** (Мизинец верх + Указательный низ) | `&kp COMMA` (,) | `&kp LS(COMMA)` (<) | `&kp HASH` (#) | `&none` |
-| **BLP TLI** (Мизинец низ + Указательный верх) | `&kp X` (x) | `&kp LS(X)` (X) | `&kp DLLR` ($) | `&none` |
-| **TLP BLM** (Мизинец верх + Средний низ) | `&kp Q` (q) | `&kp LS(Q)` (Q) | `&kp PRCNT` (%) | `&none` |
-| **BLR TLI** (Безымянный низ + Указательный верх) | `&kp LBKT` ([) | `&kp LS(LBKT)` ({) | `&kp CARET` (^) | `&none` |
-| **BLP TLM** (Мизинец низ + Средний верх) | `&kp SEMI` (;) | `&kp LS(SEMI)` (:) | `&kp AMPS` (&) | `&none` |
-| **TLR BLI** (Безымянный верх + Указательный низ) | `&kp I` (i) | `&kp LS(I)` (I) | `&kp STAR` (*) | `&none` |
-| **TLP BLR** (Мизинец верх + Безымянный низ) | `&kp DOT` (.) | `&kp LS(DOT)` (>) | `&kp LPAR` (() | `&none` |
-| **TLI BLM** (Указательный верх + Средний низ) | `&kp W` (w) | `&kp LS(W)` (W) | `&kp RPAR` ()) | `&none` |
-| **TLR BLM** (Безымянный верх + Средний низ) | `&kp O` (o) | `&kp LS(O)` (O) | `&kp SLASH` (/) | `&none` |
-| **TLM BLR** (Средний верх + Безымянный низ) | `&kp SQT` (') | `&kp LS(SQT)` (") | `&kp QMARK` (?) | `&none` |
-| **TLM BLI** (Средний верх + Указательный низ) | `&kp A` (a) | `&kp LS(A)` (A) | `&kp MINUS` (-) | `&none` |
-| **TLR BLP** (Безымянный верх + Мизинец низ) | `&kp RBKT` (]) | `&kp LS(RBKT)` (}) | `&kp UNDER` (_) | `&none` |
-| **TLR TLM TLI** (Безымянный + Средний + Указательный верх) | `&kp GRAVE` (`) | `&kp LS(GRAVE)` (~) | `&kp EQUAL` (=) | `&none` |
-| **BLR BLM BLI** (Безымянный + Средний + Указательный низ) | `&kp NUBS` (\) | `&kp LS(NUBS)` (\|) | `&kp PLUS` (+) | `&none` |
-| **TLR BLR** (Безымянный верх + Безымянный низ) | `&kp DEL` (Delete) | `&none` | `&kp LC(DEL)` (Ctrl+Del) | `&none` |
-| **TLM BLM** (Средний верх + Средний низ) | `&kp ESC` (Esc) | `&none` | `&kp N1` (1) | `&none` |
-| **TLP BLP** (Мизинец верх + Мизинец низ) | `&kp TAB` (Tab) | `&kp LA(TAB)` (Alt+Tab) | `&kp LC(TAB)` (Ctrl+Tab) | `&none` |
-| **TLI BLI** (Указательный верх + Указательный низ) | `&kp ENTER` (Enter) | `&kp LS(ENTER)` (Shift+Enter) | `&none` | `&none` |
-| **TLP TLR TLM TLI** (Все 4 пальца верх) | `&none` | `&none` | `&ext_power EP_OFF` (Питание ВЫКЛ) | `&bootloader` (Bootloader) |
-| **BLP BLR BLM BLI** (Все 4 пальца низ) | `&bt BT_SEL 0` (BT 1) | `&bt BT_SEL 1` (BT 2) | `&bt BT_SEL 2` (BT 3) | `&bt BT_CLR` (BT Clear) |
-| **TLP TLR TLM** (Мизинец + Безымянный + Средний верх) | `&mg_comma` (Макрос: RA(6) + Пробел) | `&none` | `&none` | `&none` |
-| **BLP BLR BLM** (Мизинец + Безымянный + Средний низ) | `&mg_dot` (Макрос: RA(7) + Пробел) | `&none` | `&none` | `&none` |
+`n` задан через `TCOMBO`, но тоже дает sticky-модификатор: `splayed = Sticky Ctrl`.
+
+## Слой-специфичные группы
+
+- **Переключение языка:** `lang_ru`, `lang_en` (`TCOMBO_ONLY_BASE_LAYERS`).
+- **HOLD_NUM_L:**
+  - only-base: `num_8`, `num_7`, `num_9`
+  - no-base: `num_2`, `num_1`, `num_5`, `num_4`
+- **HOLD_SYM_L:** `sym_at`, `sym_lpar`, `sym_rpar`, `sym_hash`, `sym_quest`, `sym_slash`
+- **HOLD_NAV_L:** `nav_up`, `nav_left`, `nav_down`, `nav_right`
+- **HOLD_BRACKETS_L:** `hb_dquote`, `hb_apos`, `hb_pipe`
+- **HOLD_TYPO_L:** `ht_pipe`, `ht_tilde`
+- **HOLD_MEDIA_L:** `hm_shot_screen`, `hm_joxi`
+
+## Lock-комбо (toggle)
+
+- `lock_nav`: `TCOMBO_ONLY_BASE_LAYERS_IDLE(..., &tog NAV_L, ..., 150)`
+- `lock_mouse`: `TCOMBO_ONLY_BASE_LAYERS_IDLE(..., &tog MOUSE_L, ..., 150)`
+
+`150 ms` idle-порог снижает ложные активации при печати.
+
+## Примечание по полноте
+
+В файле `chords.dtsi` также определен полный набор букв/символов/функциональных аккордов (`TCOMBO(d..boot/bt)`).
+Для изменений корректнее редактировать именно `chords.dtsi`, а этот файл использовать как карту по группам и семантике.
