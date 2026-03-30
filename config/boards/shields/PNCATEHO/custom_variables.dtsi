@@ -1,6 +1,6 @@
 #define COMBO_TIMEOUT 70          // timeout комбо (мс)
 #define COMBO_LAYERS RU_L ENG_L   // слои, где активны базовые комбо
-#define STICKY_TIMEOUT 500        // timeout sticky-модификаторов (мс)
+#define STICKY_TIMEOUT 2000        // timeout sticky-модификаторов (мс)
 
 // Названия слоёв
 #define RU_L 0                    // основной RU слой
