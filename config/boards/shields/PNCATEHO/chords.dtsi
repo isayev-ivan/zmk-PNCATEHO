@@ -45,11 +45,6 @@ TCOMBO(sqt        , &kp SQT          , &kp QMARK      , &kp LS(SQT)      , &none
 TCOMBO(a          , &kp A            , &kp MINUS      , &kp LS(A)        , &none            , TLM BLI         , TRM BRI         )
 TCOMBO(rbkt       , &kp RBKT         , &kp UNDER      , &kp LS(RBKT)     , &none            , TLR BLP         , TRR BRP         )
 
-TCOMBO(del        , &kp DEL          , &kp LC(DEL)    , &none            , &none            , TLR BLR         , TRR BRR         )
-TCOMBO(esc        , &kp ESC          , &kp N1         , &none            , &none            , TLM BLM         , TRM BRM         )
-TCOMBO(tab        , &kp TAB          , &kp LC(TAB)    , &kp LA(TAB)      , &none            , TLP BLP         , TRP BRP         )
-TCOMBO(enter      , &kp ENTER        , &none          , &kp LS(ENTER)    , &none            , TLI BLI         , TRI BRI         )
-
 // трехклавишные
 TCOMBO(grave      , &kp GRAVE        , &kp EQUAL      , &kp LS(GRAVE)    , &none            , BLR BLM BLI     , BRR BRM BRI     )
 TCOMBO(nubs       , &kp NUBS         , &kp PLUS       , &kp LS(NUBS)     , &none            , TLR TLM TLI     , TRR TRM TRI     )
@@ -60,6 +55,10 @@ TCOMBO(minus_dash , &kp SYM_MINUS    , &kp UNDER      , &kp SYM_MATHMIN  , &kp P
 TCOMBO(boot       , &none           , &none          , &ext_power EP_OFF, &bootloader      , TLP TLR TLM TLI , TRP TRR TRM TRI )
 TCOMBO(bt         , &bt BT_SEL 0    , &bt BT_SEL 1   , &bt BT_SEL 2     , &bt BT_CLR       , BLP BLR BLM BLI , BRP BRR BRM BRI )
 
+TCOMBO_ONLY_BASE_LAYERS(del            , &kp DEL    , TLR BLR , TRR BRR , COMBO_LAYERS )
+TCOMBO_ONLY_BASE_LAYERS(esc            , &kp ESC    , TLM BLM , TRM BRM , COMBO_LAYERS )
+TCOMBO_ONLY_BASE_LAYERS(tab            , &kp TAB    , TLP BLP , TRP BRP , COMBO_LAYERS )
+TCOMBO_ONLY_BASE_LAYERS(enter          , &kp ENTER  , TLI BLI , TRI BRI , COMBO_LAYERS )
 
 // Hold Numbers Layer Combos — двукнопия
 TCOMBO_ONLY_BASE_LAYERS(num_8,           &kp N8, TLR TLM, TRR TRM, HOLD_NUM_L)
