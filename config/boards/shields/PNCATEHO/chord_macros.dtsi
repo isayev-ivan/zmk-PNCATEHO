@@ -35,13 +35,13 @@ combo_lb_##NAME { \
 }; \
 combo_ro_##NAME { \
         timeout-ms = <COMBO_TIMEOUT>; \
-        bindings = <SPLAYED_BINDINGS>; \
+        bindings = <CURVED_BINDINGS>; \
         key-positions = <RIGHT_KEYPOS ROT>; \
         layers = <LAYERS>; \
 }; \
 combo_ri_##NAME { \
         timeout-ms = <COMBO_TIMEOUT>; \
-        bindings = <CURVED_BINDINGS>; \
+        bindings = <SPLAYED_BINDINGS>; \
         key-positions = <RIGHT_KEYPOS RIT>; \
         layers = <LAYERS>; \
 }; \
