@@ -7,8 +7,8 @@ TCOMBO_ONLY_BASE_LAYERS(lang_en, &ht_combo_en LS(LGUI) 0  , LOT LIT    , ROT RIT
 /* Комбо без базового tap поведения (чтобы не конфликтовать с hold-cлоями, tap поведение прописано в слое)
  * - имя, - поведение с cогнутым thumb, - поведение с разогнутым thumb, - с двумя thumb, - клавиши слева, - клавиши справа
 */
-TCOMBO_NO_BASE(b                     , &kp LEFT       , &kp LS(B)        , &kp LS(LEFT)     , TLP             , TRP             )
-TCOMBO_NO_BASE(j                     , &kp RIGHT      , &kp LS(J)        , &kp LS(RIGHT)    , TLI             , TRI             )
+TCOMBO_NO_BASE(b                     , &kp LEFT       , &kp LS(B)        , &kp LS(LEFT)     , TLP             , TRI             )
+TCOMBO_NO_BASE(j                     , &kp RIGHT      , &kp LS(J)        , &kp LS(RIGHT)    , TLI             , TRP             )
 TCOMBO_NO_BASE(h                     , &sk LGUI       , &kp LS(H)        , &kp HOME         , BLP             , BRP             )
 TCOMBO_NO_BASE(y                     , &sk LSHIFT     , &kp LS(Y)        , &kp END          , BLI             , BRI             )
 TCOMBO_NO_BASE(f                     , &kp UP         , &kp LS(F)        , &kp LS(UP)       , TLR             , TRR             )
