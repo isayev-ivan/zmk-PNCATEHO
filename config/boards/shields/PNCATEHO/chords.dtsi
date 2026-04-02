@@ -80,11 +80,16 @@ TCOMBO_NO_BASE_LAYERS(num_4,       &kp SYM_CARET,   &kp SYM_MATHMIN, &kp SYM_DOT
 
 // Hold symbols layer combos
 TCOMBO_NO_BASE_LAYERS(sym_at,      &kp SYM_DOLLAR,  &kp SYM_RUBLE,   &kp SYM_AMP,    TLP, TRP, HOLD_SYM_L)
-TCOMBO_NO_BASE_LAYERS(sym_lpar,    &kp SYM_LBKT,    &kp SYM_LGUIL,   &kp SYM_LBRACE, TLR, TRR, HOLD_SYM_L)
-TCOMBO_NO_BASE_LAYERS(sym_rpar,    &kp SYM_RBKT,    &kp SYM_RGUIL,   &kp SYM_RBRACE, TLM, TRM, HOLD_SYM_L)
+
+TCOMBO_NO_BASE_LAYERS(sym_lpar,    &kp SYM_LBKT,    &kp SYM_LGUIL,   &kp SYM_LBRACE, TLR, TRM, HOLD_SYM_L)
+TCOMBO_NO_BASE_LAYERS(sym_rpar,    &kp SYM_RBKT,    &kp SYM_RGUIL,   &kp SYM_RBRACE, TLM, TRR, HOLD_SYM_L)
+
 TCOMBO_NO_BASE_LAYERS(sym_hash,    &kp SYM_TILDE,   &kp SYM_GRAVE,   &kp SYM_EMPH,   BLP, BRP, HOLD_SYM_L)
-TCOMBO_NO_BASE_LAYERS(sym_quest,   &kp SYM_EXCL,    &kp SYM_APOS,    &kp SYM_LT,     BLR, BRR, HOLD_SYM_L)
-TCOMBO_NO_BASE_LAYERS(sym_slash,   &kp SYM_BSLH,    &kp SYM_DQUOTE,  &kp SYM_GT,     BLM, BRM, HOLD_SYM_L)
+
+TCOMBO_NO_BASE_LEFT_LAYERS(sym_quest,   &kp SYM_EXCL,    &kp SYM_APOS,    &kp SYM_LT,     BLR, HOLD_SYM_L)
+TCOMBO_NO_BASE_LEFT_LAYERS(sym_slash,   &kp SYM_BSLH,    &kp SYM_DQUOTE,  &kp SYM_GT,     BLM, HOLD_SYM_L)
+TCOMBO_NO_BASE_RIGHT_LAYERS(sym_quest,   &kp SYM_EXCL,    &kp SYM_APOS,    &kp SYM_GT,    BRR, HOLD_SYM_L)
+TCOMBO_NO_BASE_RIGHT_LAYERS(sym_slash,   &kp SYM_BSLH,    &kp SYM_DQUOTE,  &kp SYM_LT,    BRM, HOLD_SYM_L)
 
 // Hold navigation layer combos
 TCOMBO_NO_BASE_LAYERS(nav_up,      &none,           &kp SYM_UP,    &none, TLM, TRM, HOLD_NAV_L)

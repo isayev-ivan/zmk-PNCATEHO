@@ -9,8 +9,12 @@ MOD_MPH(sym_at_mm,    &kp SYM_AT,    &kp SYM_DOLLAR, &kp SYM_RUBLE,  &kp SYM_AMP
 MOD_MPH(sym_lpar_mm,  &kp SYM_LPAR,  &kp SYM_LBKT,   &kp SYM_LGUIL,  &kp SYM_LBRACE)
 MOD_MPH(sym_rpar_mm,  &kp SYM_RPAR,  &kp SYM_RBKT,   &kp SYM_RGUIL,  &kp SYM_RBRACE)
 MOD_MPH(sym_hash_mm,  &kp SYM_HASH,  &kp SYM_TILDE,  &kp SYM_GRAVE,  &kp SYM_EMPH)
-MOD_MPH(sym_quest_mm, &kp SYM_QUEST, &kp SYM_EXCL,   &kp SYM_APOS,   &kp SYM_LT)
-MOD_MPH(sym_slash_mm, &kp SYM_SLASH, &kp SYM_BSLH,   &kp SYM_DQUOTE, &kp SYM_GT)
+
+// отдельно на левую и правую руку
+MOD_MPH(sym_quest_mm_l, &kp SYM_QUEST, &kp SYM_EXCL,   &kp SYM_APOS,   &kp SYM_LT)
+MOD_MPH(sym_slash_mm_l, &kp SYM_SLASH, &kp SYM_BSLH,   &kp SYM_DQUOTE, &kp SYM_GT)
+MOD_MPH(sym_quest_mm_r, &kp SYM_QUEST, &kp SYM_EXCL,   &kp SYM_APOS,   &kp SYM_GT)
+MOD_MPH(sym_slash_mm_r, &kp SYM_SLASH, &kp SYM_BSLH,   &kp SYM_DQUOTE, &kp SYM_LT)
 
 // td_bkt: tap-dance для квадратных скобок, 1 тап = [, 2 тапа = ]
 td_bkt: td_bkt {
