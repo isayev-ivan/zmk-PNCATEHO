@@ -124,8 +124,8 @@
 
     hold_typo_layer {
       bindings = <
-        &kp LCTRL         &trans           &kp SYM_MINUS    &kp RA(MINUS)               &kp RA(MINUS)     &kp SYM_MINUS    &trans           &kp RCTRL
-        &kp LCTRL         &trans           &kp SYM_LGUIL    &kp SYM_RGUIL                   &kp SYM_RGUIL         &kp SYM_LGUIL    &trans           &kp RCTRL
+        &kp LCTRL         &trans           &kp SYM_MINUS    &kp RA(MINUS)                                                                                      &kp RA(MINUS)         &kp SYM_MINUS    &trans           &kp RCTRL
+        &kp LCTRL         &trans           &kp SYM_LGUIL    &kp SYM_RGUIL                                                                                      &kp SYM_LGUIL         &kp SYM_RGUIL    &trans           &kp RCTRL
                                                             &ht_curved LGUI SYM_COLON    &ht_splayed LSHIFT SYM_SEMICOL      &ht_splayed RSHIFT SYM_SEMICOL    &ht_curved RGUI SYM_COLON
       >;
     };
