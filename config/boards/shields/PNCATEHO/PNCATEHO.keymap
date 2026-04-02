@@ -108,7 +108,7 @@
 
     hold_sym_layer {
       bindings = <
-        &sym_at_mm        &sym_lpar_mm     &sym_rpar_mm     &trans                                                                          &trans        &sym_lpar_mm     &sym_rpar_mm     &sym_at_mm
+        &sym_at_mm        &sym_lpar_mm     &sym_rpar_mm     &trans                                                                          &trans        &sym_rpar_mm     &sym_lpar_mm     &sym_at_mm
         &sym_hash_mm      &sym_quest_mm    &sym_slash_mm    &none                                                                           &none         &sym_slash_mm    &sym_quest_mm    &sym_hash_mm
                                                             &ht_curved_mg LGUI 0    &ht_splayed_mg LSHIFT 0      &ht_splayed_mg RSHIFT 0    &ht_curved_mg RGUI 0
       >;
