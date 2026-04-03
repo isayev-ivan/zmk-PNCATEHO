@@ -55,6 +55,8 @@
 #define SYM_RIGHT    RA(L)          // →
 #define SYM_COLON    RA(SEMICOLON)       // :
 #define SYM_SEMICOL  LS(RA(SEMICOLON))   // ;
+#define SYM_DOT_A    RA(N7)         // .
+#define SYM_COMMA_A  RA(N6)         // ,
 
 // Клавиши левой стороны
 #define TLP 0   // top left pinky
